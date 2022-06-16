@@ -1,0 +1,24 @@
+{
+  "name": "giv",
+  "version": "1.0.0",
+  "description": "Social app designed to improve foot traffic to local charities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jesse-Lemieux/giv.git"
+  },
+  "keywords": [
+    "Charity",
+    "Social",
+    "Media"
+  ],
+  "author": "Jesse Lemieux, Nick Melanson, Erica Trenholm, Matt Noreika",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jesse-Lemieux/giv/issues"
+  },
+  "homepage": "https://github.com/Jesse-Lemieux/giv#readme"
+}
