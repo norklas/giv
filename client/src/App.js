@@ -1,5 +1,5 @@
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // import Home from "../pages/Home"
 // import Login from "../pages/Login"
@@ -25,11 +25,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-        <div className="App">
-          <header className="App-header">
-            Welcome
-          </header>
-        </div>
+      <Router>
+          <div>
+            Hello.
+          </div>
+        </Router>
     </ApolloProvider>
   );
 }
