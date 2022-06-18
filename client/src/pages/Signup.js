@@ -1,4 +1,4 @@
-const Header = () => {
+const Signup = () => {
 
 
 
@@ -7,4 +7,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default Signup;
