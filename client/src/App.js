@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+// import Home from "../pages/Home"
+// import Login from "../pages/Login"
+// import Signup from "../pages/Signup"
+// import SingleCause from "../pages/SingleCause"
+// import UserProfile from "../pages/UserProfile"
+
+// import Header from "../components/Header"
+// import Footer from "../components/Footer"
+
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql'
+})
+
+// setup authLink once JWT is setup
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <Router>
+          <div>
+            Hello.
+          </div>
+        </Router>
+    </ApolloProvider>
   );
 }
 
