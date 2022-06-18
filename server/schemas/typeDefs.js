@@ -16,6 +16,7 @@ const typeDefs = gql`
     url: String
     category: String
     medals: [Medal]
+    location: String
   }
 
   type Comment {

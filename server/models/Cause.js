@@ -28,7 +28,12 @@ const causeSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'Medal'
       }
-    ]
+    ],
+    location: {
+      type: String,
+      minlength: 1,
+      maxlength: 400
+    }
   }  
 );
 
