@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
@@ -48,6 +48,13 @@ const typeDefs = gql`
     causeId: ID
     userId: ID
   }
-`
+
+  type Query {
+    me: User
+    users: [User]
+    causes(username: String): [Cause]
+    cause(_id: ID!): Cause
+  }
+`;
 
 module.exports = typeDefs;
