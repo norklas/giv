@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
+const {pointSchema} = require('./Point')
 
 const userSchema = new Schema(
   {
@@ -27,10 +28,6 @@ const userSchema = new Schema(
         ref: "Cause",
       },
     ],
-    points: {
-      type: Number,
-      default: 0,
-    },
     totalDonations: {
       type: Number,
       default: 0,

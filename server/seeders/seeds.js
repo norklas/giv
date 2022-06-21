@@ -4,8 +4,6 @@ const {
   User,
   Cause,
   Category,
-  Comment,
-  Medal,
   Point,
   Share,
 } = require("../models");
@@ -14,8 +12,6 @@ db.once("open", async () => {
   await User.deleteMany({});
   await Cause.deleteMany({});
   await Category.deleteMany({});
-  await Comment.deleteMany({});
-  await Medal.deleteMany({});
   await Point.deleteMany({});
   await Share.deleteMany({});
 

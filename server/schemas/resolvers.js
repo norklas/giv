@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Cause } = require('../models');
+const { User, Cause, Point } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -55,8 +55,12 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
-    }
-}
-};
+    },
+    addPoints: async (parent, args) => {
+        point = Point.create(args)
 
-module.exports = resolvers;
+        return point
+        
+}}}
+
+module.exports = resolvers
