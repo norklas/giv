@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'proxima-nova', sans-serif;
+    font-weight: 300;
+    color: #333333;
+    background-color: #f1f3f5;
+}
+
+.global-container {
+    max-width: 66rem;
+    margin: auto;
+}
+
+/* HEADER/NAVIGATION */
+
+header {
+    padding: 10px 20px;
+    border-bottom: #dad9d9 solid 1px;
+    background-color: white;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    font-size: 15px;
+    font-weight: 300;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+nav ul li:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.nav-btn {
+    font-size: 15px;
+    background: linear-gradient(90deg, #76B041 0%, #2EC4B6 100%);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    color: white;
+}
+
+.nav-btn:hover {
+    background: #76B041;
+}
+
+a img {
+    padding-top: 10px;
+    width: 60px;
+}
+
+h1 {
+    font-size: 42px;
+    padding-bottom: 30px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+p {
+    padding-bottom: 10px;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(90deg, #143642 0%, #2EC4B6 100%);
+    /* background-image: url(../../assets/hero2.jpg); */
+    background-size: cover;
+    background-position: center;
+    height: 80px;
+}
+
+.hero-text {
+    padding-left: 20px;
+    padding-top: 70px;
+    margin-top: auto;
+}
+
+.hero-btn {
+    background-color: #A8C256;
+    border-radius: 25px;
+    border: none;
+    padding: 15px 25px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.hero-btn:hover {
+    background-color: #ff9c11;
+    cursor: pointer;
+}
+
+/* HOME */
+.home {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.underline {
+    font-style: italic;
+    font-family: 'maecenas', serif;
+    font-weight: 600;
+    font-size: 36px;
+    text-decoration: underline solid #A8C256 4px;
+}
+
+.card {
+    margin-top: 10px;
+    text-align: left;
+    background-color: white;
+    border-radius: 6px;
+    /* box-shadow: 2px 2px 10px #e6e4e4; */
+    margin: 30px 20px 0px 20px;
+    border: #dad9d9 solid 1px;
+}
+
+.card-top {
+    border-bottom: #dad9d9 solid 1px;
+    padding: 30px;
+}
+
+.card-bottom {
+    padding: 10px 30px 20px 30px;
+}
+
+.date {
+    font-size: 14px;
+    color: gray;
+    padding-top: 10px;
+}
+
+.author {
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.category-btn {
+    margin-top: 10px;
+    padding: 5px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-family: 'proxima-nova', sans-serif;
+}
+
+.disaster-relief {
+    background-color: #aef1ff;
+    border: solid 1px #00d4ff;
+}
+
+.cancer-research {
+    background-color: rgb(201, 120, 120);
+    border: solid 1px maroon;
+}
