@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Cause, Comment, Point, Share, Medal, Category } = require('../models');
+const { User, Cause } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -36,7 +36,7 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
-      const token = signToken(user);
+      const token =  signToken(user);
 
       return { token, user };
     },
@@ -55,34 +55,6 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
-    },
-    addCause: async (parent, args, context) => {
-      if (context.user) {
-        const thought = await Cause.create({ ...args, username: context.user.username });
-
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { thoughts: cause._id } },
-          { new: true }
-        );
-
-        return thought;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addComment: async (parent, {  causeId, commentBody }, context) => {
-      if (context.user) {
-        const updatedCause = await Cause.findOneAndUpdate(
-          { _id: causeId },
-          { $push: { comments: { commentBody, username: context.user.username } } },
-          { new: true, runValidators: true }
-        );
-
-        return updatedCause;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
     }
 }
 };

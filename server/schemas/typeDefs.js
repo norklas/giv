@@ -16,6 +16,7 @@ const typeDefs = gql`
     url: String
     category: String
     medals: [Medal]
+    comments:[Comment]
     location: String
   }
 
@@ -51,9 +52,21 @@ const typeDefs = gql`
 
   type Query {
     me: User
+    user: User
     users: [User]
     causes(username: String): [Cause]
     cause(_id: ID!): Cause
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): User
+
   }
 `;
 

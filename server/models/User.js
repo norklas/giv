@@ -29,12 +29,10 @@ const userSchema = new Schema(
     ],
     points: {
       type: Number,
-      required: true,
       default: 0,
     },
     totalDonations: {
       type: Number,
-      required: true,
       default: 0,
     },
   },
