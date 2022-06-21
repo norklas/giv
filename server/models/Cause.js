@@ -1,4 +1,6 @@
 const { Schema, model } = require('mongoose');
+const commentSchema = require('./Comment')
+const medalSchema = require('./Medal')
 
 const causeSchema = new Schema(
   {
@@ -23,12 +25,8 @@ const causeSchema = new Schema(
       required: true,
       ref: 'Category'
     },
-    medals: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Medal'
-      }
-    ],
+    medals: [medalSchema],
+    comments: [commentSchema],
     location: {
       type: String,
       minlength: 1,

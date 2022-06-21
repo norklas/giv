@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema } = require("mongoose");
 
 const medalSchema = new Schema({
   title: {
@@ -11,7 +11,11 @@ const medalSchema = new Schema({
     type: Number,
     required: true,
   },
+},
+{
+  toJSON: {
+    getters: true
+  }
 });
 
-const Medal = model("Medal", medalSchema);
-module.exports = Medal;
+module.exports = medalSchema;

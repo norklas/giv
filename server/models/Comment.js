@@ -1,23 +1,29 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const commentSchema = new Schema(
   {
-    commentText: {
+    commentBody: {
       type: String,
-      minlength: 1,
-      maxlength: 280,
+      required: true,
+      maxlength: 280
+    },
+    username: {
+      type: String,
       required: true
     },
-    causeId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Cause'
-    },
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: timestamp => dateFormat(timestamp)
     }
-  }  
+  },
+  {
+    toJSON: {
+      getters: true
+    }
+  }
 );
 
-const Comment = model('Comment', commentSchema);
-module.exports = Comment;
+
+module.exports = commentSchema
