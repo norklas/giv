@@ -64,6 +64,7 @@ const typeDefs = gql`
     deleteUser(userId: ID!): Auth
     deleteCause(causeId: ID!): Cause
     deleteComment(causeId: ID!, commentId: ID!): Cause
+    updateUser(username: String, email: String, password: String): User
   }
 `;
 

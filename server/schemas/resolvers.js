@@ -2,8 +2,10 @@ const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
+const { trusted } = require("mongoose");
 const { User, Cause  } = require("../models");
 const { signToken } = require("../utils/auth");
+const bcrypt = require('bcrypt')
 
 const resolvers = {
   Query: {
@@ -249,6 +251,38 @@ const resolvers = {
         await cause.save()
       }
       return cause
+    },
+    updateUser: async (parent, args, context) => {
+      if(context.user){
+        if(args.username){
+          console.log(args)
+        return await User.findByIdAndUpdate(
+          {_id: context.user._id},
+          {username: args.username},
+          {new: true}
+        )
+        }
+        if(args.password){
+          const saltRounds = 12;
+          const hash = await bcrypt.hash(args.password, saltRounds)
+          console.log(args)
+        return await User.findByIdAndUpdate(
+          {_id: context.user._id},
+          {password: hash},
+          {new: true}
+        )
+        }
+        if(args.email){
+          console.log(args)
+        return await User.findByIdAndUpdate(
+          {_id: context.user._id},
+          {email: args.email},
+          {new: true}
+        )
+        }
+        
+      }
+      throw new AuthenticationError("You need to be logged in!");
     }
   }
 };
