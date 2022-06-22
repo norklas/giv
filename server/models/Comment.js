@@ -3,7 +3,7 @@ const dateFormat = require("../utils/dateFormat");
 
 const commentSchema = new Schema(
   {
-    commentBody: {
+    body: {
       type: String,
       required: true,
       maxlength: 280,
@@ -16,14 +16,6 @@ const commentSchema = new Schema(
       type: Date,
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
-    },
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-    causeId: {
-      type: Schema.Types.ObjectId,
-      ref: "Cause",
     },
   },
   {

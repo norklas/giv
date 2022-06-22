@@ -20,10 +20,9 @@ const typeDefs = gql`
 
   type Comment {
     _id: ID
+    createdAt: String
     username: String
-    commentBody: String
-    causeId: ID
-    userId: ID
+    body: String
   }
 
   type Category {
@@ -63,7 +62,7 @@ const typeDefs = gql`
       url: String!
       location: String!
     ): Cause
-    addComment(commentBody: String!, causeId: ID!): Comment
+    addComment(causeId: ID!, body: String!): Cause
   }
 `;
 
