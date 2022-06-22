@@ -36,6 +36,7 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
       console.log(args, user, token);
+
       return { token, user };
     },
     login: async (parent, { email, password }) => {
@@ -54,16 +55,36 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPoints: async (parent, args, context) => {
+    addUserPoints: async (parent, args, context) => {
+      console.log(args, context.user)
       if (context.user) {
-        const point = await Point.create({ ...args, userId: context.user._id });
+        const count = args.purchaseNumber
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { points: point._id } },
+          { $inc: { points: count }},
           { new: true }
         );
-        return point;
+        return count;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    addCausePoints: async (parent, args, context) => {
+      console.log(args, context.user)
+      if (context.user) {
+        const count = args.donationNumber
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $dec: { points: count }},
+          { new: true }
+        );
+
+        await Cause.findByIdAndUpdate(
+          {_id: args.causeId},
+          
+        )
+        return count;
       }
       throw new AuthenticationError("You need to be logged in!");
     },

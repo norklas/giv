@@ -21,12 +21,11 @@ const userSchema = new Schema(
       minlength: 5,
       maxlength: 20,
     },
-    points: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Point'
-      }
-    ],
+    points: {
+      type: Number,
+      required: true,
+      default: 0
+    },
     causes: [
       {
         type: Schema.Types.ObjectId,

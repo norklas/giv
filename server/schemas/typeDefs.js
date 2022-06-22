@@ -6,7 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     causes: [Cause]
-    points: [Point]
+    points: Int
   }
 
   type Cause {
@@ -36,9 +36,6 @@ const typeDefs = gql`
     pointMin: Int
   }
 
-  type Point {
-    _id: ID!
-  }
 
   type Query {
     me: User
@@ -56,7 +53,8 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addPoints(userId: ID!): Point
+    addUserPoints(userId: ID!, purchaseNumber: Int!): User
+    addCausePoints(causeId: ID!, donationNumber: Int!): Cause
     addCause(
       title: String!
       description: String!
