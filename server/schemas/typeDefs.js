@@ -42,7 +42,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    user: User
+    user(_id: ID!): User
     users: [User]
     causes(username: String): [Cause]
     cause(_id: ID!): Cause
@@ -65,6 +65,9 @@ const typeDefs = gql`
       location: String!
     ): Cause
     addComment(causeId: ID!, body: String!): Cause
+    deleteUser(userId: ID!): Auth
+    deleteCause(causeId: ID!): Cause
+    deleteComment(causeId: ID!, commentId: ID!): Cause
   }
 `;
 

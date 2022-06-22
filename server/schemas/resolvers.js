@@ -233,7 +233,24 @@ const resolvers = {
 
       throw new UserInputError("Cause not found");
     },
-  },
+    deleteUser: async (parent, args, context) => {
+      const deletedUser = await User.findByIdAndDelete(args.userId)
+      return deletedUser
+    },
+    deleteCause: async (parent, args, context) => {
+      const deletedCause = await Cause.findByIdAndDelete(args.causeId)
+      return deletedCause
+    },
+    deleteComment: async (parent, {causeId, commentId}, context) => {
+      const cause = await Cause.findById(causeId)
+      if(cause){
+        const commentIndex = cause.comments.findIndex((c)=>{c.id===commentId})
+        cause.comments.splice(commentIndex, 1)
+        await cause.save()
+      }
+      return cause
+    }
+  }
 };
 
 module.exports = resolvers;
