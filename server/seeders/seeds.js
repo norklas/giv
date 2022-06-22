@@ -3,44 +3,13 @@ const db = require("../config/connection");
 const {
   User,
   Cause,
-  Category,
 } = require("../models");
 
 db.once("open", async () => {
   await User.deleteMany({});
   await Cause.deleteMany({});
-  await Category.deleteMany({});
 
   // create categories
-  const categoryTitles = [
-    "Disaster Relief",
-    "Medical - Cancer Research",
-    "Medical - Mental Health",
-    "Medical - Lung Disease",
-    "Medical - ALS",
-    "Medical - Diabetes",
-    "Medical - MDS",
-    "Homeless Services",
-    "Hunger",
-    "Developing Nations",
-    "Animal Welfare",
-    "Community Development",
-    "Special Education",
-    "Museum",
-    "Scholarship",
-    "Humanitarian Relief",
-    "Non-Medical Research",
-    "Environmental",
-    "Parks",
-  ];
-
-  const categoryData = [];
-  for (let i = 0; i < categoryTitles.length; i++) {
-    categoryData.push({ title: categoryTitles[i] });
-  }
-
-  const createdCategories = await Category.collection.insertMany(categoryData);
-  console.log("Seeded Categories");
 
   // create causes
   const causeData = [];
