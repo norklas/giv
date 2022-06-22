@@ -14,9 +14,6 @@ const typeDefs = gql`
     title: String
     description: String
     url: String
-    category: String
-    medals: [Medal]
-    comments:[Comment]
     location: String
   }
 
@@ -65,6 +62,10 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): User
     addPoints(userId: ID!): Point
+    addCause(title: String!,
+       description: String!, 
+       url: String!,  
+       location: String!): Cause
 
   }
 `;

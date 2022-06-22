@@ -22,7 +22,6 @@ const causeSchema = new Schema(
     },
     category: {
       type: Schema.Types.ObjectId,
-      required: true,
       ref: 'Category'
     },
     medals: [medalSchema],
