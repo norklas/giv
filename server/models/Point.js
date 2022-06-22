@@ -2,11 +2,16 @@ const { Schema, model } = require('mongoose');
 
 const pointSchema = new Schema(
   {
-    pointBody: {
-      type: String,
-      length: 280
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     }
-  }  
+  },
+  {
+    toJSON: {
+      getters: true
+    }
+  } 
 );
 
 const Point = model('Point', pointSchema);

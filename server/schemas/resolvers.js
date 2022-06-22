@@ -56,11 +56,19 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPoints: async (parent, args) => {
-        point = Point.create(args)
+    addPoints: async (parent, args, context) => {
+        if (context.user) {
+            const point = await Point.create({ ...args, userId: context.user._id});
 
-        return point
-        
+            await User.findByIdAndUpdate(
+                {_id: context.user._id},
+                {$push: { points: point._id}},
+                {new: true}
+            );
+            return point
+        }
+        throw new AuthenticationError('You need to be logged in!');
+
 }}}
 
 module.exports = resolvers

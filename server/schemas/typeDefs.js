@@ -6,6 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     causes: [Cause]
+    points: [Point]
   }
 
   type Cause {
@@ -45,7 +46,6 @@ const typeDefs = gql`
 
   type Point {
     _id: ID!
-    pointBody: String!
   }
 
   type Query {
@@ -64,7 +64,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): User
-    addPoints(pointBody: String!): Point
+    addPoints(userId: ID!): Point
 
   }
 `;
