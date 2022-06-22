@@ -34,13 +34,6 @@ const typeDefs = gql`
     pointMin: Int
   }
 
-  type Share {
-    _id: ID
-    title: String
-    description: String
-    url: String
-  }
-
   type Point {
     _id: ID!
   }

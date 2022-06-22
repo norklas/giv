@@ -5,7 +5,6 @@ const {
   Cause,
   Category,
   Point,
-  Share,
 } = require("../models");
 
 db.once("open", async () => {
@@ -13,7 +12,6 @@ db.once("open", async () => {
   await Cause.deleteMany({});
   await Category.deleteMany({});
   await Point.deleteMany({});
-  await Share.deleteMany({});
 
   // create categories
   const categoryTitles = [
