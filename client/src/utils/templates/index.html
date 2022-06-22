@@ -18,6 +18,14 @@
                 <img src="../../assets/givlogo.svg" alt="giv logo">
             </a>
 
+            <!-- SEARCH BAR -->
+            <div class="search-bar">
+                <input class="search" type="text" placeholder="Search..">
+                <button type="submit" class="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                 </button>
+            </div>
+
             <!-- NAVIGATION -->
             <nav>
                 <ul>
@@ -35,11 +43,97 @@
 
     </section>
 
+
+    <!-- COMMENT MODAL -->
+    <!-- <div id="comment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form>
+                <h3>giv. a comment:</h3>
+                <textarea></textarea>
+                <button type="submit" id="submit-btn" class="submit-btn">Add comment</button>
+            </form>
+        </div>
+    </div> -->
+
+    <!-- SIGN UP MODAL -->
+    <!-- <div id="sign-up-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-top">
+                <h3>Sign up</h3>
+            </div>
+            <div class="modal-bottom">
+                <form>
+                    <label for="username">Username</label>
+                    <input class="input" type="text" id="username" name="username">
+                    <label for="email">Email Address</label>
+                    <input class="input" type="text" id="email" name="email">
+                    <label for="password">Password</label>
+                    <input class="input" type="password" id="password" name="password">
+                    <button type="submit" id="submit-btn" class="submit-btn">Sign up</button>
+                    <p>Already have an account? <a href="">Log in!</a></p>
+                </form>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- LOGIN MODAL -->
+    <!-- <div id="sign-up-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-top">
+                <h3>Log in</h3>
+            </div>
+            <div class="modal-bottom">
+                <form>
+                    <label for="email">Email Address</label>
+                    <input class="input" type="email" id="email" name="email">
+                    <label for="password">Password</label>
+                    <input class="input" type="password" id="password" name="password">
+                    <button type="submit" id="submit-btn" class="submit-btn">Log in</button>
+                    <p>Don't have an account? <a href="">Sign up!</a></p>
+                </form>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- CREATE CAUSE MODAL -->
+    <div id="sign-up-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-top">
+                <h3>Create a Cause</h3>
+            </div>
+            <div class="modal-bottom">
+                <form>
+                    <label for="title">Title</label>
+                    <input class="input" type="text" id="cause-title" name="cause-title">
+
+                    <label for="website">Organization Website</label>
+                    <input class="input" type="link" id="charity-website" name="charity-website">
+
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                      <option value="cancer-research">Cancer Research</option>
+                      <option value="disaster-relief">Disaster Relief</option>
+                    </select>
+
+                    <label for="title">Tell us more...</label>
+                    <textarea></textarea>
+                
+                    <button type="submit" id="submit-btn" class="submit-btn">Post</button>
+                    <p>Don't have an account? <a href="">Sign up!</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- MAIN SECTION -->
     <main class="global-container">
 
-        <!-- home -->
-        <div class="home">
+        <!-- Home -->
+        <!-- <div class="home">
             <h2>Discover your local causes</h2>
 
             <div class="card">
@@ -50,7 +144,7 @@
                     <div class="author">Erica Trenholm</div>
                 </div>
                 <div class="card-bottom">
-                    <button class="category-btn disaster-relief">Distaster Relief</button>
+                    <button class="category-btn disaster-relief">Disaster Relief</button>
                 </div>
             </div>
 
@@ -62,18 +156,61 @@
                     <div class="author">Erica Trenholm</div>
                 </div>
                 <div class="card-bottom">
-                    <button class="category-btn disaster-relief">Distaster Relief</button>
+                    <button class="category-btn disaster-relief">Disaster Relief</button>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- Single Cause -->
+        <div class="single-cause">
+            <div class="card">
+                <div class="single-card-top">
+                    <button class="category-btn category-btn-single-cause disaster-relief">Disaster Relief</button>
+                </div>
+                <div class="single-card-bottom">
+                    <h3>Support Example Charity</h3>
+                    <p class="date">June 16, 2022</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis bibendum eu dui id finibus. Nulla fringilla quis tellus et ultricies. Quisque aliquam lacinia mi in tincidunt. Sed vitae tincidunt sapien, non accumsan augue. Aenean id scelerisque risus. Ut interdum imperdiet nulla at laoreet. Maecenas eu lectus quam. Aenean tincidunt sodales ante vitae varius. Duis sagittis lorem quis ex posuere aliquet. Sed nisi mauris, placerat ac suscipit id, laoreet vitae sem. Nullam non diam ultricies, dictum purus eget, egestas leo.</p>
+                    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec ut elit eu nibh aliquam imperdiet. Aenean semper aliquet sem, sit amet finibus ligula blandit quis. Duis vel risus sodales, condimentum lorem eu, efficitur ante. Morbi feugiat tristique eros, eget convallis augue mattis sed. Sed ultrices libero vitae lacus tincidunt, at fermentum ipsum viverra. Aliquam pharetra eget velit ac tristique. Cras sed lorem nulla. Praesent nec sollicitudin dui. Vivamus feugiat eu justo eget pellentesque. Sed a dolor vitae leo porttitor tincidunt eget eu justo. Donec vehicula consectetur nunc nec lacinia. Ut a urna ut nulla posuere tempus eget eget massa. Vestibulum ullamcorper felis sit amet lacus pellentesque pellentesque. Curabitur sit amet neque vitae libero pharetra fringilla id ut tortor. Nam ac libero tellus.</p>
+                    <div class="author">Erica Trenholm</div>
+                    <button class="web-btn">Visit website</button>
                 </div>
             </div>
 
-
+            <div class="card">
+                <div class="comment-card-top">
+                    <h3>5 Comments</h3>
+                </div>
+                <div class="comment-card-bottom">
+                    <div class="single-comment">
+                        <h4>Username</h4>
+                        <p class="date">June 21, 2022</p>
+                        <p>Just donated, good luck!</p>
+                    </div>
+                    <div class="single-comment">
+                        <h4>Username</h4>
+                        <p class="date">June 21, 2022</p>
+                        <p>Just donated, good luck!</p>
+                    </div>
+                    <div class="single-comment">
+                        <h4>Username</h4>
+                        <p class="date">June 21, 2022</p>
+                        <p>Just donated, good luck!</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    </div>
 
     </main>
 
     <!-- FOOTER -->
     <footer>
-
+        <div>
+            <p>©2022 giv.</p>
+        </div>
     </footer>
 
 </body>
