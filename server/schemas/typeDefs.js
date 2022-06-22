@@ -15,11 +15,13 @@ const typeDefs = gql`
     description: String
     url: String
     location: String
+    comments: [Comment]
   }
 
   type Comment {
     _id: ID
-    commentText: String
+    username: String
+    commentBody: String
     causeId: ID
     userId: ID
   }
@@ -55,11 +57,13 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addPoints(userId: ID!): Point
-    addCause(title: String!,
-       description: String!, 
-       url: String!,  
-       location: String!): Cause
-
+    addCause(
+      title: String!
+      description: String!
+      url: String!
+      location: String!
+    ): Cause
+    addComment(commentBody: String!, causeId: ID!): Comment
   }
 `;
 

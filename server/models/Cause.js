@@ -1,38 +1,41 @@
-const { Schema, model } = require('mongoose');
-const commentSchema = require('./Comment')
-const medalSchema = require('./Medal')
+const { Schema, model } = require("mongoose");
+const Comment = require("./Comment");
+const medalSchema = require("./Medal");
 
-const causeSchema = new Schema(
-  {
-    title: {
-      type: String,
-      required: true,
-      minlength: 1,
-      maxlength: 50
-    },
-    description: {
-      type: String,
-      required: true,
-      minlength: 1,
-      maxlength: 280
-    },
-    url: {
-      type: String,
-      required: true
-    },
-    category: {
+const causeSchema = new Schema({
+  title: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 50,
+  },
+  description: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 280,
+  },
+  url: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: "Category",
+  },
+  medals: [medalSchema],
+  comments: [
+    {
       type: Schema.Types.ObjectId,
-      ref: 'Category'
+      ref: "Comment",
     },
-    medals: [medalSchema],
-    comments: [commentSchema],
-    location: {
-      type: String,
-      minlength: 1,
-      maxlength: 400
-    }
-  }  
-);
+  ],
+  location: {
+    type: String,
+    minlength: 1,
+    maxlength: 400,
+  },
+});
 
-const Cause = model('Cause', causeSchema);
+const Cause = model("Cause", causeSchema);
 module.exports = Cause;

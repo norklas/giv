@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Cause, Point } = require("../models");
+const { User, Cause, Point, Comment } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -35,7 +35,7 @@ const resolvers = {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-        console.log(args, user, token)
+      console.log(args, user, token);
       return { token, user };
     },
     login: async (parent, { email, password }) => {
@@ -67,20 +67,38 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-  addCause: async (parent, args, context) => {
-    if (context.user) {
-      const cause = await Cause.create({ ...args, userId: context.user._id });
+    addCause: async (parent, args, context) => {
+      if (context.user) {
+        const cause = await Cause.create({ ...args, userId: context.user._id });
 
-      await User.findByIdAndUpdate(
-        { _id: context.user._id },
-        { $push: { causes: cause._id } },
-        { new: true }
-      );
-      return cause;
-    }
-    throw new AuthenticationError("You need to be logged in!");
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { causes: cause._id } },
+          { new: true }
+        );
+        return cause;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    addComment: async (parent, args, context) => {
+      if (context.user) {
+        const comment = await Comment.create({
+          ...args,
+          username: context.user.username,
+          userId: context.user._id,
+        });
+        await Cause.findByIdAndUpdate(
+          { _id: args.causeId },
+          { $push: { comments: comment.commentBody } },
+          { new: true }
+        );
+
+        return comment;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
-},
 };
 
 module.exports = resolvers;
