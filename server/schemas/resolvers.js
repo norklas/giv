@@ -79,13 +79,14 @@ const resolvers = {
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $dec: { points: count }},
+          { $inc: { points: -count }},
           { new: true }
         );
 
         await Cause.findByIdAndUpdate(
           {_id: args.causeId},
-          
+          { $inc: { points: count }},
+          { new: true }
         )
         return count;
       }

@@ -36,6 +36,11 @@ const causeSchema = new Schema({
     minlength: 1,
     maxlength: 400,
   },
+  points: {
+    type: Number,
+    required: true,
+    default: 0
+  },
 });
 
 const Cause = model("Cause", causeSchema);

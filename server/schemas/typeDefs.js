@@ -16,6 +16,7 @@ const typeDefs = gql`
     url: String
     location: String
     comments: [Comment]
+    points: Int
   }
 
   type Comment {
