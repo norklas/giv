@@ -106,6 +106,87 @@ const resolvers = {
 
         }
 
+        if( count > 199  && count < 300){
+          
+         
+          await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { $inc: { points: -count }},
+            { new: true }
+          );
+
+          await Cause.findByIdAndUpdate(
+            {_id: args.causeId},
+            { $inc: { points: count }},
+            { new: true }
+          )
+          console.log(cause.medals)
+          cause.medals.unshift({
+            body: 'Silver',
+            username: context.user.username,
+            createdAt: new Date().toISOString()
+          })
+          await cause.save()
+          console.log(cause.medals)
+
+          return cause;
+
+        }
+
+        if( count > 299  && count < 500){
+          
+         
+          await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { $inc: { points: -count }},
+            { new: true }
+          );
+
+          await Cause.findByIdAndUpdate(
+            {_id: args.causeId},
+            { $inc: { points: count }},
+            { new: true }
+          )
+          console.log(cause.medals)
+          cause.medals.unshift({
+            body: 'Gold',
+            username: context.user.username,
+            createdAt: new Date().toISOString()
+          })
+          await cause.save()
+          console.log(cause.medals)
+
+          return cause;
+
+        }
+        if( count > 500){
+          
+         
+          await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { $inc: { points: -count }},
+            { new: true }
+          );
+
+          await Cause.findByIdAndUpdate(
+            {_id: args.causeId},
+            { $inc: { points: count }},
+            { new: true }
+          )
+          console.log(cause.medals)
+          cause.medals.unshift({
+            body: 'Platinum',
+            username: context.user.username,
+            createdAt: new Date().toISOString()
+          })
+          await cause.save()
+          console.log(cause.medals)
+
+          return cause;
+
+        }
+
+
         await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $inc: { points: -count }},
