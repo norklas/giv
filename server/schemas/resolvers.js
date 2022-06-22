@@ -1,4 +1,7 @@
-const { AuthenticationError } = require("apollo-server-express");
+const {
+  AuthenticationError,
+  UserInputError,
+} = require("apollo-server-express");
 const { User, Cause, Point, Comment } = require("../models");
 const { signToken } = require("../utils/auth");
 
@@ -101,23 +104,23 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addComment: async (parent, args, context) => {
-      if (context.user) {
-        const comment = await Comment.create({
-          ...args,
-          username: context.user.username,
-          userId: context.user._id,
-        });
-        await Cause.findByIdAndUpdate(
-          { _id: args.causeId },
-          { $push: { comments: comment.commentBody } },
-          { new: true }
-        );
+    addComment: async (parent, { causeId, body }, context) => {
+      const cause = await Cause.findById(causeId);
 
-        return comment;
+      console.log(cause);
+
+      if (cause) {
+        cause.comments.unshift({
+          body,
+          createdAt: new Date().toISOString(),
+        });
+
+        await cause.save();
+
+        return cause;
       }
 
-      throw new AuthenticationError("You need to be logged in!");
+      throw new UserInputError("Cause not found");
     },
   },
 };

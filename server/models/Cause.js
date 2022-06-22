@@ -26,8 +26,9 @@ const causeSchema = new Schema({
   medals: [medalSchema],
   comments: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Comment",
+      body: String,
+      username: String,
+      createdAt: String,
     },
   ],
   location: {
