@@ -9,6 +9,20 @@ const typeDefs = gql`
     points: Int
   }
 
+  type Comment {
+    _id: ID
+    body: String
+    username: String
+    createdAt: String
+  }
+
+  type Medal {
+    _id: ID
+    body: String
+    username: String
+    createdAt: String
+  }
+
   type Cause {
     _id: ID
     title: String
@@ -16,24 +30,13 @@ const typeDefs = gql`
     url: String
     location: String
     comments: [Comment]
+    medals: [Medal]
     points: Int
-  }
-
-  type Comment {
-    _id: ID
-    createdAt: String
-    username: String
-    body: String
   }
 
   type Category {
     _id: ID
     title: String
-  }
-
-  type Medal {
-    title: String
-    pointMin: Int
   }
 
 

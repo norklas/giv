@@ -2,7 +2,7 @@ const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const { User, Cause, Point, Comment } = require("../models");
+const { User, Cause  } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -73,9 +73,38 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     addCausePoints: async (parent, args, context) => {
-      console.log(args, context.user)
       if (context.user) {
+        console.log(args)
+        const cause = await Cause.findById(args.causeId)
+        
         const count = args.donationNumber
+        
+        if( count > 99  && count < 200){
+          
+         
+          await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { $inc: { points: -count }},
+            { new: true }
+          );
+
+          await Cause.findByIdAndUpdate(
+            {_id: args.causeId},
+            { $inc: { points: count }},
+            { new: true }
+          )
+          console.log(cause.medals)
+          cause.medals.unshift({
+            body: 'Bronze',
+            username: context.user.username,
+            createdAt: new Date().toISOString()
+          })
+          await cause.save()
+          console.log(cause.medals)
+
+          return cause;
+
+        }
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },

@@ -1,6 +1,4 @@
 const { Schema, model } = require("mongoose");
-const Comment = require("./Comment");
-const medalSchema = require("./Medal");
 
 const causeSchema = new Schema({
   title: {
@@ -23,7 +21,13 @@ const causeSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Category",
   },
-  medals: [medalSchema],
+  medals:  [
+    {
+      body: String,
+      username: String,
+      createdAt: String,
+    },
+  ],
   comments: [
     {
       body: String,
