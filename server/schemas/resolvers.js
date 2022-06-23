@@ -283,6 +283,55 @@ const resolvers = {
         
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+    updateCause: async (parent, args, context) => {
+      if(context.user){
+        if(args.causeId){
+          if(args.title){
+            console.log(args)
+          return await Cause.findByIdAndUpdate(
+            {_id: args.causeId},
+            {title: args.title},
+            {new: true}
+          )
+          }
+          if(args.description){
+            console.log(args)
+          return await Cause.findByIdAndUpdate(
+            {_id: args.causeId},
+            {description: args.description},
+            {new: true}
+          )
+          }
+          if(args.url){
+            console.log(args)
+          return await Cause.findByIdAndUpdate(
+            {_id: args.causeId},
+            {url: args.url},
+            {new: true}
+          )
+          }
+          if(args.location){
+            console.log(args)
+          return await Cause.findByIdAndUpdate(
+            {_id: args.causeId},
+            {location: args.location},
+            {new: true}
+          )
+          }
+          if(args.category){
+            console.log(args)
+          return await Cause.findByIdAndUpdate(
+            {_id: args.causeId},
+            {category: args.category},
+            {new: true}
+          )
+          }
+          
+        }
+        throw new UserInputError("No cause found with this ID!");
+      }
+      throw new AuthenticationError("You need to be logged in!");
     }
   }
 };
