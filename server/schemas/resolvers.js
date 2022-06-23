@@ -6,6 +6,7 @@ const { trusted } = require("mongoose");
 const { User, Cause  } = require("../models");
 const { signToken } = require("../utils/auth");
 const bcrypt = require('bcrypt')
+const dateFormat = require('../utils/dateFormat')
 
 const resolvers = {
   Query: {
@@ -76,7 +77,7 @@ const resolvers = {
     },
     addCausePoints: async (parent, args, context) => {
       if (context.user) {
-        console.log(args)
+        const currentDate = dateFormat(Date.now())
         const cause = await Cause.findById(args.causeId)
         
         const count = args.donationNumber
@@ -96,10 +97,11 @@ const resolvers = {
             { new: true }
           )
           console.log(cause.medals)
+          
           cause.medals.unshift({
             body: 'Bronze',
             username: context.user.username,
-            createdAt: new Date().toISOString()
+            createdAt: currentDate
           })
           await cause.save()
           console.log(cause.medals)
@@ -126,7 +128,7 @@ const resolvers = {
           cause.medals.unshift({
             body: 'Silver',
             username: context.user.username,
-            createdAt: new Date().toISOString()
+            createdAt: currentDate
           })
           await cause.save()
           console.log(cause.medals)
@@ -153,7 +155,7 @@ const resolvers = {
           cause.medals.unshift({
             body: 'Gold',
             username: context.user.username,
-            createdAt: new Date().toISOString()
+            createdAt: currentDate
           })
           await cause.save()
           console.log(cause.medals)
@@ -179,7 +181,7 @@ const resolvers = {
           cause.medals.unshift({
             body: 'Platinum',
             username: context.user.username,
-            createdAt: new Date().toISOString()
+            createdAt: currentDate
           })
           await cause.save()
           console.log(cause.medals)
@@ -219,13 +221,13 @@ const resolvers = {
     },
     addComment: async (parent, { causeId, body }, context) => {
       const cause = await Cause.findById(causeId);
-
+      const currentDate = dateFormat(Date.now())
       console.log(cause);
 
       if (cause) {
         cause.comments.unshift({
           body,
-          createdAt: new Date().toISOString(),
+          createdAt: currentDate,
           username: context.user.username
         });
 
