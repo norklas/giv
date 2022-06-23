@@ -1,0 +1,340 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'proxima-nova', sans-serif;
+    font-weight: 300;
+    color: #333333;
+    background-color: #f1f3f5;
+}
+
+.global-container {
+    max-width: 66rem;
+    margin: auto;
+    font-family: 'proxima-nova', sans-serif;
+}
+
+button {
+    font-family: 'proxima-nova', sans-serif;
+}
+
+/* HEADER/NAVIGATION */
+
+header {
+    padding: 10px 20px;
+    border-bottom: #dad9d9 solid 1px;
+    background-color: white;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar {
+    width: 50%;
+    margin: 0px
+}
+
+nav ul {
+    list-style: none;
+    font-size: 15px;
+    font-weight: 300;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+nav ul li:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.nav-btn {
+    font-size: 15px;
+    /* background: linear-gradient(90deg, #76B041 0%, #2EC4B6 100%); */
+    background-color: #FEA82F;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    color: white;
+}
+
+.nav-btn:hover {
+    background: linear-gradient(90deg, #143642 0%, #2EC4B6 100%);
+}
+
+a img {
+    padding-top: 10px;
+    width: 60px;
+}
+
+h1 {
+    font-size: 42px;
+    padding-bottom: 30px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+p {
+    padding-bottom: 10px;
+}
+
+a {
+    font-weight: 600;
+    color: #FEA82F;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(90deg, #143642 0%, #2EC4B6 100%);
+    /* background-image: url(../../assets/hero2.jpg); */
+    background-size: cover;
+    background-position: center;
+    height: 60px;
+}
+
+.hero-text {
+    padding-left: 20px;
+    padding-top: 70px;
+    margin-top: auto;
+}
+
+.hero-btn {
+    background-color: #2EC4B6;
+    border-radius: 25px;
+    border: none;
+    padding: 15px 25px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.hero-btn:hover {
+    background-color: #ff9c11;
+    cursor: pointer;
+}
+
+/* HOME */
+.home {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.underline {
+    font-style: italic;
+    font-family: 'maecenas', serif;
+    font-weight: 600;
+    font-size: 36px;
+    text-decoration: underline solid #A8C256 4px;
+}
+
+.card {
+    margin-top: 10px;
+    text-align: left;
+    background-color: white;
+    border-radius: 6px;
+    /* box-shadow: 2px 2px 10px #e6e4e4; */
+    margin: 30px 20px 0px 20px;
+    border: #dad9d9 solid 1px;
+}
+
+.card-top,
+.comment-card-top {
+    border-bottom: #dad9d9 solid 1px;
+    padding: 30px;
+}
+
+.card-bottom {
+    padding: 10px 30px 20px 30px;
+}
+
+.single-card-top {
+    padding: 10px 30px 0px 30px;
+    border-bottom: #dad9d9 solid 1px;
+}
+
+.single-card-bottom,
+.comment-card-bottom {
+    padding: 30px;
+}
+
+.date {
+    font-size: 14px;
+    color: gray;
+    padding-top: 10px;
+}
+
+.author {
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.category-btn {
+    margin-top: 10px;
+    padding: 5px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-family: 'proxima-nova', sans-serif;
+}
+
+.disaster-relief {
+    background-color: #ccf7ff;
+    border: solid 1px #00d4ff;
+}
+
+.cancer-research {
+    background-color: rgb(201, 120, 120);
+    border: solid 1px maroon;
+}
+
+/* SINGLE CAUSE */
+.single-cause {
+    margin-top: 60px;
+}
+
+.submit-btn,
+.web-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    background-color: #2EC4B6;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+}
+
+.category-btn-single-cause {
+    margin-bottom: 20px;
+}
+
+.submit-btn:hover,
+.web-btn:hover {
+    background-color: #21a89b;
+    cursor: pointer;
+}
+
+/* COMMENTS */
+.single-comment {
+    padding-bottom: 20px;
+}
+
+.leave-comment {
+    padding: 30px;
+}
+
+/* FORMS */
+.input,
+textarea,
+select {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+textarea {
+    height: 200px;
+}
+
+/* SEARCH BAR */
+
+.search-bar {
+    display: flex;
+}
+
+.search {
+    border: 0px;
+    background: #f1f3f5;
+}
+
+.search-button {
+    width: 40px;
+    height: 38px;
+    border: none;
+    background: #f1f3f5;
+    text-align: center;
+    color: black;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 60px;
+    border-top: #dad9d9 solid 1px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding: 30px;
+}
+
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 6px;
+    margin: 13% auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 600px; /* Could be more or less, depending on screen size */
+}
+
+.modal-top,
+.modal-bottom {
+    padding: 30px;
+}
+
+.modal-top {
+    padding: 30px;
+    border-bottom: #dad9d9 solid 1px;
+    background-color: #f1f3f5;
+    border-radius: 6px 6px 0 0;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 35px;
+    padding-top: 10px;
+    padding-right: 30px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
