@@ -32,6 +32,17 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_ME_BASIC = gql`
+  {
+    me {
+      _id
+      username
+      email
+      points
+    }
+  }
+`;
+
 export const QUERY_USER = gql`
   query user($id: ID!) {
     user(_id: $id) {
@@ -59,6 +70,17 @@ export const QUERY_USER = gql`
           createdAt
         }
       }
+      points
+    }
+  }
+`;
+
+export const QUERY_USER_BASIC = gql`
+  query user($id: ID!) {
+    user(_id: $id) {
+      __id
+      username
+      email
       points
     }
   }
