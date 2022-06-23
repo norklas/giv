@@ -6,6 +6,21 @@ const typeDefs = gql`
     username: String
     email: String
     causes: [Cause]
+    points: Int
+  }
+
+  type Comment {
+    _id: ID
+    body: String
+    username: String
+    createdAt: String
+  }
+
+  type Medal {
+    _id: ID
+    body: String
+    username: String
+    createdAt: String
   }
 
   type Cause {
@@ -13,44 +28,16 @@ const typeDefs = gql`
     title: String
     description: String
     url: String
-    category: String
-    medals: [Medal]
-    comments:[Comment]
     location: String
-  }
-
-  type Comment {
-    _id: ID
-    commentText: String
-    causeId: ID
-    userId: ID
-  }
-
-  type Category {
-    _id: ID
-    title: String
-  }
-
-  type Medal {
-    title: String
-    pointMin: Int
-  }
-
-  type Share {
-    _id: ID
-    title: String
-    description: String
-    url: String
-  }
-
-  type Point {
-    _id: ID!
-    pointBody: String!
+    comments: [Comment]
+    medals: [Medal]
+    category: String
+    points: Int
   }
 
   type Query {
     me: User
-    user: User
+    user(_id: ID!): User
     users: [User]
     causes(username: String): [Cause]
     cause(_id: ID!): Cause
@@ -63,9 +50,23 @@ const typeDefs = gql`
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): User
-    addPoints(pointBody: String!): Point
-
+    addUser(username: String!, email: String!, password: String!): Auth
+    addUserPoints(userId: ID!, purchaseNumber: Int!): User
+    addCausePoints(causeId: ID!, donationNumber: Int!): Cause
+    addCause(
+      title: String!
+      description: String!
+      url: String!
+      location: String!
+      category: String!
+    ): Cause
+    addComment(causeId: ID!, body: String!): Cause
+    deleteUser(userId: ID!): Auth
+    deleteCause(causeId: ID!): Cause
+    deleteComment(causeId: ID!, commentId: ID!): Cause
+    updateUser(username: String, email: String, password: String): User
+    updateCause(causeId: ID!, title: String, description: String, url: String, location: String, category: String): Cause
+    updateComment(causeId: ID!, commentId: ID!, body: String!): Cause
   }
 `;
 

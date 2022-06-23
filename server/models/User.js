@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const {pointSchema} = require('./Point')
 
 const userSchema = new Schema(
   {
@@ -21,6 +20,11 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
       maxlength: 20,
+    },
+    points: {
+      type: Number,
+      required: true,
+      default: 0
     },
     causes: [
       {
