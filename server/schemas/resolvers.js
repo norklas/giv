@@ -226,6 +226,7 @@ const resolvers = {
         cause.comments.unshift({
           body,
           createdAt: new Date().toISOString(),
+          username: context.user.username
         });
 
         await cause.save();
@@ -246,11 +247,17 @@ const resolvers = {
     deleteComment: async (parent, {causeId, commentId}, context) => {
       const cause = await Cause.findById(causeId)
       if(cause){
-        const commentIndex = cause.comments.findIndex((c)=>{c.id===commentId})
+        const commentIndex = cause.comments.findIndex(i => i.id === commentId)
+        if(commentIndex === -1){
+          throw new UserInputError("No comment found with this ID!")
+        }
+        else{
+        console.log(commentId, commentIndex)
         cause.comments.splice(commentIndex, 1)
         await cause.save()
       }
       return cause
+    }
     },
     updateUser: async (parent, args, context) => {
       if(context.user){
@@ -332,8 +339,21 @@ const resolvers = {
         throw new UserInputError("No cause found with this ID!");
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+    updateComment: async (parent, args, context) => {
+      const cause = await Cause.findById(args.causeId)
+      if(cause){
+        const commentIndex = cause.comments.findIndex(i => i.id === args.commentId)
+        if(commentIndex === -1){
+          throw new UserInputError("No comment found with this ID!")
+        }
+        else{
+        cause.comments[commentIndex].body = args.body
+        await cause.save()
+      }
+      return cause
+      }}
     }
-  }
 };
 
 module.exports = resolvers;
