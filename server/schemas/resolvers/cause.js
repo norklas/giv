@@ -71,7 +71,7 @@ module.exports = {
           return cause;
         }
 
-        if (count > 299 && count < 500) {
+        if (count > 299 && count <= 500) {
           await User.findByIdAndUpdate(
             { _id: context.user._id },
             { $inc: { points: -count } },
