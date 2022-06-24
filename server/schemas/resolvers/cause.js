@@ -3,6 +3,7 @@ const {
   UserInputError,
 } = require("apollo-server-express");
 const { Cause, User } = require("../../models");
+const dateFormat = require('../../utils/dateFormat')
 
 module.exports = {
   Query: {
@@ -18,7 +19,7 @@ module.exports = {
   Mutation: {
     addCausePoints: async (parent, args, context) => {
       if (context.user) {
-        console.log(args);
+        const currentDate = dateFormat(Date.now())
         const cause = await Cause.findById(args.causeId);
 
         const count = args.donationNumber;
@@ -39,7 +40,7 @@ module.exports = {
           cause.medals.unshift({
             body: "Bronze",
             username: context.user.username,
-            createdAt: new Date().toISOString(),
+            createdAt: currentDate,
           });
           await cause.save();
           console.log(cause.medals);
@@ -148,13 +149,13 @@ module.exports = {
     },
     addComment: async (parent, { causeId, body }, context) => {
       const cause = await Cause.findById(causeId);
-
+      const currentDate = dateFormat(Date.now())
       console.log(cause);
 
       if (cause) {
         cause.comments.unshift({
           body,
-          createdAt: new Date().toISOString(),
+          createdAt: currentDate,
         });
 
         await cause.save();
