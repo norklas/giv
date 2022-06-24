@@ -1,5 +1,6 @@
-const SingleCause = () => {
+import CommentList from "../components/CommentList";
 
+const SingleCause = () => {
 
 
     return (
@@ -23,21 +24,7 @@ const SingleCause = () => {
                 <h3>5 Comments</h3>
             </div>
             <div class="comment-card-bottom">
-                <div class="single-comment">
-                    <h4>Username</h4>
-                    <p class="date">June 21, 2022</p>
-                    <p>Just donated, good luck!</p>
-                </div>
-                <div class="single-comment">
-                    <h4>Username</h4>
-                    <p class="date">June 21, 2022</p>
-                    <p>Just donated, good luck!</p>
-                </div>
-                <div class="single-comment">
-                    <h4>Username</h4>
-                    <p class="date">June 21, 2022</p>
-                    <p>Just donated, good luck!</p>
-                </div>
+                <CommentList />
             </div>
         </div>
     </div>
