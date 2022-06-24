@@ -1,22 +1,69 @@
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from "../utils/queries";
+
+import icon1 from '../assets/DashboardIcon-1.svg'
 
 const UserDashboard = () => {
 
+    const { loading, data } = useQuery(QUERY_ME)
+    const userData = data?.me || {}
+
     return (            
-        <div class="single-cause">
+        <div class="dashboard">
+            <h2>{userData.username}'s Dashboard</h2>
+
+            <div class="dashboard-top">
+                <div class="small-card">
+                    <div class="icon left">
+                        <img className="dashboard-icon" src={icon1} alt="avatar" />
+                    </div>
+
+                    <div class="right">
+                        <h3>2300</h3>
+                        <p>Total Points</p>
+                    </div>
+                </div>
+
+
+                <div class="small-card">
+                    <div class="icon left">
+                        <img className="dashboard-icon" src={icon1} alt="avatar" />
+                    </div>
+
+                    <div class="right">
+                        <h3>2</h3>
+                        <p>Causes Posted</p>
+                    </div>
+                </div>
+
+
+                <div class="small-card">
+                    <div class="icon left">
+                        <img className="dashboard-icon" src={icon1} alt="avatar" />
+                    </div>
+
+                    <div class="right">
+                        <h3>Buy Points</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="create-btn">Create a cause</button>
+
+            <h3>Your causes</h3>
             <div class="card">
-                <div class="single-card-top">
-                    <button class="category-btn category-btn-single-cause disaster-relief">Disaster Relief</button>
-                </div>
-                <div class="single-card-bottom">
-                    <h3>Support Example Charity</h3>
+                <div class="card-top">
+                <button class="create-btn edit">Edit</button>
+                    <h3>Sample cause</h3>
                     <p class="date">June 16, 2022</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis bibendum eu dui id finibus. Nulla fringilla quis tellus et ultricies. Quisque aliquam lacinia mi in tincidunt. Sed vitae tincidunt sapien, non accumsan augue. Aenean id scelerisque risus. Ut interdum imperdiet nulla at laoreet. Maecenas eu lectus quam. Aenean tincidunt sodales ante vitae varius. Duis sagittis lorem quis ex posuere aliquet. Sed nisi mauris, placerat ac suscipit id, laoreet vitae sem. Nullam non diam ultricies, dictum purus eget, egestas leo.</p>
-                    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec ut elit eu nibh aliquam imperdiet. Aenean semper aliquet sem, sit amet finibus ligula blandit quis. Duis vel risus sodales, condimentum lorem eu, efficitur ante. Morbi feugiat tristique eros, eget convallis augue mattis sed. Sed ultrices libero vitae lacus tincidunt, at fermentum ipsum viverra. Aliquam pharetra eget velit ac tristique. Cras sed lorem nulla. Praesent nec sollicitudin dui. Vivamus feugiat eu justo eget pellentesque. Sed a dolor vitae leo porttitor tincidunt eget eu justo. Donec vehicula consectetur nunc nec lacinia. Ut a urna ut nulla posuere tempus eget eget massa. Vestibulum ullamcorper felis sit amet lacus pellentesque pellentesque. Curabitur sit amet neque vitae libero pharetra fringilla id ut tortor. Nam ac libero tellus.</p>
-                    <div class="author">Erica Trenholm</div>
-                    <button class="web-btn">Visit website</button>
+                    <p>Sample cause body</p>
                 </div>
-            </div>  
-        </div>
+                <div class="card-bottom">
+                    <button class="category-btn disaster-relief">category</button>
+                </div>
+            </div>
+        </div>      
     )
 }
 
