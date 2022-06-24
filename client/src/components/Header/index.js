@@ -3,6 +3,8 @@ import { useState } from 'react'
 import LoginModal from "../LoginModal"
 import SignupModal from "../SignupModal"
 import CauseModal from "../CauseModal"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
 
@@ -25,7 +27,7 @@ const Header = () => {
                     <div class="search-bar">
                         <input class="search" type="text" placeholder="Search.." />
                         <button type="submit" class="search-button">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon"/>
                         </button>
                     </div>
 

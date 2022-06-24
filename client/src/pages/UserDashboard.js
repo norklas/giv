@@ -2,6 +2,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from "../utils/queries";
 
 import icon1 from '../assets/DashboardIcon-1.svg'
+import icon2 from '../assets/DashboardIcon-2.svg'
+import icon3 from '../assets/DashboardIcon-3.svg'
 
 const UserDashboard = () => {
 
@@ -27,7 +29,7 @@ const UserDashboard = () => {
 
                 <div class="small-card">
                     <div class="icon left">
-                        <img className="dashboard-icon" src={icon1} alt="avatar" />
+                        <img className="dashboard-icon" src={icon2} alt="avatar" />
                     </div>
 
                     <div class="right">
@@ -39,7 +41,7 @@ const UserDashboard = () => {
 
                 <div class="small-card">
                     <div class="icon left">
-                        <img className="dashboard-icon" src={icon1} alt="avatar" />
+                        <img className="dashboard-icon" src={icon3} alt="avatar" />
                     </div>
 
                     <div class="right">
@@ -48,8 +50,6 @@ const UserDashboard = () => {
                 </div>
 
             </div>
-
-            <button class="create-btn">Create a cause</button>
 
             <h3>Your causes</h3>
             <div class="card">

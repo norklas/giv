@@ -145,6 +145,7 @@ a {
 .dashboard-top {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .small-card {
@@ -232,7 +233,8 @@ a {
 }
 
 .submit-btn:hover,
-.web-btn:hover {
+.web-btn:hover,
+.edit:hover {
   background-color: #21a89b;
   cursor: pointer;
 }
@@ -286,7 +288,10 @@ textarea {
   color: black;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
-  font-size: 20px;
+}
+
+.search-icon {
+  color: gray;
 }
 
 /* DASHBOARD */
@@ -363,3 +368,4 @@ footer {
   text-decoration: none;
   cursor: pointer;
 }
+
