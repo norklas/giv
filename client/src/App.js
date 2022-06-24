@@ -1,16 +1,12 @@
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import { BrowserRouter as Router, Routes, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from "./pages/Home"
-// import Login from "./pages/Login"
-// import Signup from "./pages/Signup"
-// import SingleCause from "./pages/SingleCause"
+import SingleCause from "./pages/SingleCause"
 // import UserProfile from "./pages/UserProfile"
 
 import Header from "./components/Header"
-// import Footer from "./components/Footer"
-
-import hero from "./assets/hero.jpg";
+import Footer from "./components/Footer"
 
 
 const httpLink = createHttpLink({
@@ -32,8 +28,10 @@ function App() {
           <main class="global-container">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/cause" element={<SingleCause />} />
             </Routes>
           </main>
+          <Footer />
       </Router>
     </ApolloProvider>
   );
