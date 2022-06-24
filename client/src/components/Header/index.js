@@ -1,6 +1,8 @@
 import logo from "../../assets/givlogo.svg"
 import { useState } from 'react'
 import LoginModal from "../LoginModal"
+import SignupModal from "../SignupModal"
+import CauseModal from "../CauseModal"
 
 const Header = () => {
 
@@ -11,7 +13,9 @@ const Header = () => {
 
     return (
         <div>
-            {isModalOpen && (<LoginModal onClose={toggleModal}/>)}
+            {isModalOpen && (<LoginModal onClose={toggleModal} />)}
+            {isModalOpen && (<SignupModal onClose={toggleModal} />)}
+            {isModalOpen && (<CauseModal onClose={toggleModal} />)}
             <header>
                 <div class="header-flex global-container">
                     <a href="/">
@@ -27,9 +31,9 @@ const Header = () => {
 
                     <nav>
                         <ul>
-                            <li>Sign up</li>
+                            <li onClick={() => toggleModal()}>Sign up</li>
                             <li onClick={() => toggleModal()}>Log in</li>
-                            <li><a href="" class="nav-btn">Create a Cause</a></li>
+                            <li onClick={() => toggleModal()}><a class="nav-btn">Create a Cause</a></li>
                         </ul>
                     </nav>
                 </div>

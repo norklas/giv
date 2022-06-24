@@ -94,18 +94,12 @@ a {
 }
 
 /* HERO */
-.hero {
+.header-gradient {
     background: linear-gradient(90deg, #143642 0%, #2EC4B6 100%);
     /* background-image: url(../../assets/hero2.jpg); */
     background-size: cover;
     background-position: center;
     height: 60px;
-}
-
-.hero-text {
-    padding-left: 20px;
-    padding-top: 70px;
-    margin-top: auto;
 }
 
 .hero-btn {
@@ -291,7 +285,7 @@ footer {
 
 /* MODAL */
 .modal {
-    display: none;
+    /* display: none; */
     position: fixed;
     z-index: 1;
     left: 0;
