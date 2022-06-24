@@ -60,6 +60,7 @@ module.exports = {
         );
         return count;
       }
+      
       throw new AuthenticationError("You need to be logged in!");
     },
   },
