@@ -74,7 +74,7 @@ const SignupModal = ({ onClose }) => {
                     <button type="submit" id="submit-btn" className="submit-btn">
                         Sign up
                     </button>
-                    {error && <div><p>Sign up failed. Please check your credentials.</p></div>}
+                    {error && <div><p>Sign up failed.</p></div>}
                     {/* <p>Already have an account? <a href="">Log in!</a></p> */}
                 </form>
             </div>
