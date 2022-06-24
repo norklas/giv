@@ -8,16 +8,26 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
 
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen)
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+    const toggleLoginModal = () => {
+        setIsLoginModalOpen(!isLoginModalOpen)
+    }
+
+    const [isSignupModalOpen, setIsSignupLoginModalOpen] = useState(false)
+    const toggleSignupModal = () => {
+        setIsSignupLoginModalOpen(!isSignupModalOpen)
+    }
+
+    const [isCauseModalOpen, setIsCauseLoginModalOpen] = useState(false)
+    const toggleCauseModal = () => {
+        setIsCauseLoginModalOpen(!isCauseModalOpen)
     }
 
     return (
         <div>
-            {isModalOpen && (<LoginModal onClose={toggleModal} />)}
-            {isModalOpen && (<SignupModal onClose={toggleModal} />)}
-            {isModalOpen && (<CauseModal onClose={toggleModal} />)}
+            {isLoginModalOpen && (<LoginModal onClose={toggleLoginModal} />)}
+            {isSignupModalOpen && (<SignupModal onClose={toggleSignupModal} />)}
+            {isCauseModalOpen && (<CauseModal onClose={toggleCauseModal} />)}
             <header>
                 <div class="header-flex global-container">
                     <a href="/">
@@ -33,9 +43,9 @@ const Header = () => {
 
                     <nav>
                         <ul>
-                            <li onClick={() => toggleModal()}>Sign up</li>
-                            <li onClick={() => toggleModal()}>Log in</li>
-                            <li onClick={() => toggleModal()}><a class="nav-btn">Create a Cause</a></li>
+                            <li onClick={() => toggleSignupModal()}>Sign up</li>
+                            <li onClick={() => toggleLoginModal()}>Log in</li>
+                            <li onClick={() => toggleCauseModal()}><a class="nav-btn">Create a Cause</a></li>
                         </ul>
                     </nav>
                 </div>
