@@ -1,24 +1,82 @@
+import { useState } from 'react'
+import Auth from '../../utils/auth'
+
+import { useMutation } from '@apollo/client'
+import { ADD_USER } from '../../utils/mutations'
+
 const SignupModal = ({ onClose }) => {
 
+    const [formState, setFormState] = useState({ username: '', email: '', password: '' })
+
+    const [addUser, { error }] = useMutation(ADD_USER)
+
+    const handleChange = (event) => {
+        const { name, value } = event.target
+        setFormState({
+            ...formState,
+            [name]: value
+        })
+    }
+
+    const handleSignupSubmit = async (event) => {
+        event.preventDefault()
+        try {
+            const { data } = await addUser ({
+                variables: { ...formState }
+            })
+            console.log(data)
+            Auth.login(data.addUser.token);
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
 
     return (
-        <div id="sign-up-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onClick={onClose}>&times;</span>
-            <div class="modal-top">
+        <div id="sign-up-modal" className="modal">
+        <div className="modal-content">
+            <span className="close" onClick={onClose}>&times;</span>
+            <div className="modal-top">
                 <h3>Sign up</h3>
             </div>
-            <div class="modal-bottom">
-                <form>
+            <div className="modal-bottom">
+                <form onSubmit={handleSignupSubmit}>
+                    
                     <label for="username">Username</label>
-                    <input class="input" type="text" id="username" name="username" />
+                    <input 
+                        className="input" 
+                        type="username" 
+                        id="username" 
+                        name="username"
+                        value={formState.username} 
+                        onChange={handleChange}
+                    />
+
                     <label for="email">Email Address</label>
-                    <input class="input" type="text" id="email" name="email" />
+                    <input 
+                        className="input" 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        value={formState.email} 
+                        onChange={handleChange}
+                    />
+
                     <label for="password">Password</label>
-                    <input class="input" type="password" id="password" name="password" />
-                    <button type="submit" id="submit-btn" class="submit-btn">Sign up</button>
-                    <p>Already have an account? <a href="">Log in!</a></p>
+                    <input 
+                        className="input" 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        value={formState.password} 
+                        onChange={handleChange}
+                        />
+
+                    <button type="submit" id="submit-btn" className="submit-btn">
+                        Sign up
+                    </button>
+                    {error && <div><p>Sign up failed. Please check your credentials.</p></div>}
+                    {/* <p>Already have an account? <a href="">Log in!</a></p> */}
                 </form>
             </div>
         </div>
