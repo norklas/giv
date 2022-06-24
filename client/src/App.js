@@ -2,9 +2,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from "./pages/Home"
-// import Login from "./pages/Login"
-// import Signup from "./pages/Signup"
-// import SingleCause from "./pages/SingleCause"
+import SingleCause from "./pages/SingleCause"
 // import UserProfile from "./pages/UserProfile"
 
 import Header from "./components/Header"
@@ -30,6 +28,7 @@ function App() {
           <main class="global-container">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/cause" element={<SingleCause />} />
             </Routes>
           </main>
           <Footer />
