@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare, faStar } from '@fortawesome/free-solid-svg-icons'
+
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from "../utils/queries";
 
@@ -16,8 +19,9 @@ const UserDashboard = () => {
 
             <div class="dashboard-top">
                 <div class="small-card">
-                    <div class="icon left">
-                        <img className="dashboard-icon" src={icon1} alt="avatar" />
+                    <div class="icon-outer left">
+                        {/* <img className="dashboard-icon" src={icon1} alt="avatar" /> */}
+                        <FontAwesomeIcon icon={faStar} className='icon'/>
                     </div>
 
                     <div class="right">
@@ -28,7 +32,7 @@ const UserDashboard = () => {
 
 
                 <div class="small-card">
-                    <div class="icon left">
+                    <div class="left">
                         <img className="dashboard-icon" src={icon2} alt="avatar" />
                     </div>
 
@@ -40,7 +44,7 @@ const UserDashboard = () => {
 
 
                 <div class="small-card">
-                    <div class="icon left">
+                    <div class="left">
                         <img className="dashboard-icon" src={icon3} alt="avatar" />
                     </div>
 
@@ -54,7 +58,9 @@ const UserDashboard = () => {
             <h3>Your causes</h3>
             <div class="card">
                 <div class="card-top">
-                <button class="create-btn edit">Edit</button>
+                <button class="create-btn edit">
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                </button>
                     <h3>Sample cause</h3>
                     <p class="date">June 16, 2022</p>
                     <p>Sample cause body</p>
