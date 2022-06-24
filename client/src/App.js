@@ -3,11 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from "./pages/Home"
 import SingleCause from "./pages/SingleCause"
-// import UserProfile from "./pages/UserProfile"
+import UserDashboard from "./pages/UserDashboard"
 
 import Header from "./components/Header"
 import Footer from "./components/Footer"
-
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql'
@@ -29,6 +28,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/cause" element={<SingleCause />} />
+              <Route path="/dashboard" element={<UserDashboard />} />
             </Routes>
           </main>
           <Footer />
