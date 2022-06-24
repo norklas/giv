@@ -24,10 +24,9 @@ const SignupModal = ({ onClose }) => {
             const { data } = await addUser ({
                 variables: { ...formState }
             })
-            console.log(data)
             Auth.login(data.addUser.token);
-        } catch (e) {
-            console.log(e)
+        } catch (error) {
+            console.log(error)
         }
     }
 
