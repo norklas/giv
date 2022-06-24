@@ -1,31 +1,21 @@
 const PointsModal = ({ onClose }) => {
   return (
-    <div id="log-in-modal" class="modal">
+    <div id="points-modal" class="modal">
       <div class="modal-content">
         <span class="close" onClick={onClose}>
           &times;
         </span>
         <div class="modal-top">
-          <h3>Log in</h3>
+          <h3>Buy Points</h3>
         </div>
         <div class="modal-bottom">
-          <form>
-            <label for="email">Email Address</label>
-            <input class="input" type="email" id="email" name="email" />
-            <label for="password">Password</label>
-            <input
-              class="input"
-              type="password"
-              id="password"
-              name="password"
-            />
-            <button type="submit" id="submit-btn" class="submit-btn">
-              Log in
-            </button>
-            <p>
-              Don't have an account? <a href="">Sign up!</a>
-            </p>
-          </form>
+          <div class="points-container">
+            <button>100 Points</button>
+            <button>200 Points</button>
+            <button>300 Points</button>
+            <button>400 Points</button>
+            <button>500 Points</button>
+          </div>
         </div>
       </div>
     </div>

@@ -55,7 +55,9 @@ const UserDashboard = () => {
           </div>
 
           <div class="right">
-            <button onClick={() => togglePointsModal()}>Buy Points</button>
+            <button class="submit-btn" onClick={() => togglePointsModal()}>
+              Buy Points
+            </button>
           </div>
         </div>
       </div>
