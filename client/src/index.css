@@ -280,20 +280,32 @@ textarea {
   background: #f1f3f5;
 }
 
-.search-button {
-  width: 40px;
+/* .search-button {
+  width: 50px;
   height: 38px;
   border: none;
-  background: #f1f3f5;
+  background: #ebebec;
   text-align: center;
   color: black;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
+} */
+
+
+.search-bar input {
+  background-image: url('../src/assets/magnifying-glass-solid.svg');
+  background-size: 17px;
+  background-position: 12px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  border-radius: 5px;
 }
 
-.search-icon {
-  color: gray;
-}
+/* 
+.search-bar input[type=text]:focus {
+  background-color: lightblue;
+  outline: none;
+} */
 
 /* DASHBOARD */
 .dashboard-icon {

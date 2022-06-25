@@ -35,10 +35,8 @@ const Header = () => {
                     </a>
 
                     <div class="search-bar">
-                        <input class="search" type="text" placeholder="Search.." />
-                        <button type="submit" class="search-button">
-                            <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon"/>
-                        </button>
+                        <input class="search" type="text" placeholder="Search giv." />
+
                     </div>
 
                     <nav>
