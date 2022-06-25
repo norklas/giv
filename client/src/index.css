@@ -21,6 +21,26 @@ button {
   font-family: 'proxima-nova', sans-serif;
 }
 
+h1 {
+  font-size: 42px;
+  padding-bottom: 30px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+p {
+  padding-bottom: 10px;
+}
+
+a {
+  font-weight: 600;
+  color: #FEA82F;
+  text-decoration: none;
+}
+
+
 /* HEADER/NAVIGATION */
 
 header {
@@ -73,48 +93,13 @@ a img {
   width: 60px;
 }
 
-h1 {
-  font-size: 42px;
-  padding-bottom: 30px;
-}
-
-h2 {
-  font-size: 28px;
-}
-
-p {
-  padding-bottom: 10px;
-}
-
-a {
-  font-weight: 600;
-  color: #FEA82F;
-  text-decoration: none;
-}
-
-/* HERO */
 .header-gradient {
   background: linear-gradient(90deg, #143642 0%, #2EC4B6 100%);
-  /* background-image: url(../../assets/hero2.jpg); */
   background-size: cover;
   background-position: center;
   height: 60px;
 }
 
-.hero-btn {
-  background-color: #2EC4B6;
-  border-radius: 25px;
-  border: none;
-  padding: 15px 25px;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.hero-btn:hover {
-  background-color: #ff9c11;
-  cursor: pointer;
-}
 
 /* HOME */
 .dashboard,
@@ -157,6 +142,7 @@ a {
   justify-content: flex-start;
   align-items: center;
   margin: 0px;
+  width: 100%;
 }
 
 .card-top,
@@ -175,6 +161,9 @@ a {
 .single-card-top {
   padding: 10px 30px 0px 30px;
   border-bottom: #dad9d9 solid 1px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .single-card-bottom,
@@ -200,17 +189,20 @@ a {
   border-radius: 25px;
   font-size: 14px;
   font-family: 'proxima-nova', sans-serif;
+  background-color: #ffe7c6;
+  border: solid 1px #e7941e;
+  
 }
 
-.disaster-relief {
-  background-color: #ccf7ff;
-  border: solid 1px #00d4ff;
+/* .disaster-relief {
+  background-color: #ffe7c6;
+  border: solid 1px #e7941e;
 }
 
 .cancer-research {
   background-color: rgb(201, 120, 120);
   border: solid 1px maroon;
-}
+} */
 
 .point-count,
 .comment-count {
@@ -241,11 +233,15 @@ a {
 }
 
 .submit-btn,
+.web-btn {
+  width: 150px;
+}
+
+.submit-btn,
 .web-btn,
 .create-btn {
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 150px;
   font-size: 15px;
   background-color: #2EC4B6;
   border-radius: 6px;
@@ -370,9 +366,9 @@ footer {
 .modal-content {
   background-color: white;
   border-radius: 6px;
-  margin: 13% auto; /* 15% from the top and centered */
+  margin: 13% auto;
   border: 1px solid #888;
-  width: 600px; /* Could be more or less, depending on screen size */
+  width: 600px;
 }
 
 .modal-top,
