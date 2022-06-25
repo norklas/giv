@@ -1,32 +1,108 @@
-const CauseModal = ({ onClose }) => {
+import { ADD_CAUSE } from '../../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { useState } from 'react';
 
+const CauseModal = ({ onClose }) => {
+    const [formState, setFormState] = useState({ title: '', description: '', url: '', location: '', category: '' })
+    const { title, description, url, location, category } = formState;
+    const [addCause, { error }] = useMutation(ADD_CAUSE);
+    const [errorMessage, setErrorMessage] = useState('All fields required');
+    const [displayError, setDisplayError] = useState(false);
+
+    const handleChange = (event) => {
+        if(!event.target.value.length) {
+            setErrorMessage(`${event.target.name} is required`)
+        } else {
+            setErrorMessage('');
+        }
+        
+        setFormState({...formState, [event.target.name]: event.target.value })
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (errorMessage) {
+            setDisplayError(true);
+        } else {
+            setDisplayError(false);
+            try {
+                const { data } = await addCause ({
+                    variables: { ...formState }
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+
+    
 
 
     return (
-        <div id="cause-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onClick={onClose}>&times;</span>
-            <div class="modal-top">
+        <div id="cause-modal" className="modal">
+        <div className="modal-content">
+            <span className="close" onClick={onClose}>&times;</span>
+            <div className="modal-top">
                 <h3>Create a Cause</h3>
             </div>
-            <div class="modal-bottom">
-                <form>
-                    <label for="title">Title</label>
-                    <input class="input" type="text" id="cause-title" name="cause-title" />
+            <div className="modal-bottom">
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="title">Title</label>
+                    <input 
+                        className="input" 
+                        type="text" 
+                        key="title" 
+                        name="title"
+                        value={formState.title}
+                        onChange={handleChange} 
+                    />
 
-                    <label for="website">Organization Website</label>
-                    <input class="input" type="link" id="charity-website" name="charity-website" />
+                    <label htmlFor="url">Organization Website</label>
+                    <input 
+                        className="input" 
+                        type="link" 
+                        key="url" 
+                        name="url"
+                        value={formState.url}
+                        onChange={handleChange}
+                    />
 
-                    <label for="category">Category</label>
-                    <select id="category" name="category">
-                      <option value="cancer-research">Cancer Research</option>
-                      <option value="disaster-relief">Disaster Relief</option>
+                    <label htmlFor="category">Category</label>
+                    <select 
+                        key="category" 
+                        name="category"
+                        value={formState.category}
+                        onChange={handleChange}
+                    >
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="Cancer Research">Cancer Research</option>
+                        <option value="Disaster Relief">Disaster Relief</option>
                     </select>
 
-                    <label for="title">Tell us more...</label>
-                    <textarea></textarea>
+                    <label htmlFor="location">Location</label>
+                    <input 
+                        className="input" 
+                        type="string" 
+                        key="location" 
+                        name="location"
+                        value={formState.location}
+                        onChange={handleChange}
+                    />
+
+                    <label 
+                        htmlFor="description">Tell us more...</label>
+                    <textarea
+                        key="description"
+                        name="description"
+                        value={formState.description}
+                        onChange={handleChange}
+                    />
+
+                    {errorMessage && displayError && (
+                        <p>{errorMessage}</p>
+                    )}
                 
-                    <button type="submit" id="submit-btn" class="submit-btn">Post</button>
+                    <button type="submit" id="submit-btn" className="submit-btn">Post</button>
                     <p>Don't have an account? <a href="">Sign up!</a></p>
                 </form>
             </div>
