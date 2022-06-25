@@ -45,7 +45,7 @@ nav ul {
   font-size: 15px;
   font-weight: 300;
   display: flex;
-  gap: 30px;
+  gap: 40px;
   align-items: center;
 }
 
@@ -56,7 +56,6 @@ nav ul li:hover {
 
 .nav-btn {
   font-size: 15px;
-  /* background: linear-gradient(90deg, #76B041 0%, #2EC4B6 100%); */
   background-color: #FEA82F;
   border-radius: 6px;
   text-decoration: none;
@@ -369,3 +368,35 @@ footer {
   cursor: pointer;
 }
 
+
+
+/* MOBILE STYLES */
+
+/* MEDIA QUERY FOR TABLETS AND SMALLER */
+
+@media screen and (max-width: 768px) { 
+
+  .header-flex {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .search-bar {
+    order: 1;
+    width: 100%;
+  }
+
+  a img {
+    width: 160px;
+  }
+
+}
+
+
+/* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
+
+@media screen and (max-width: 575px) {
+
+
+
+}
