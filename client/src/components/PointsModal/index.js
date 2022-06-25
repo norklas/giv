@@ -1,4 +1,12 @@
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_USER_POINTS } from "../../utils/mutations";
+import { QUERY_ME } from "../../utils/queries";
+
 const PointsModal = ({ onClose }) => {
+  const { data } = useQuery(QUERY_ME);
+
+  const [addUserPoints] = useMutation(ADD_USER_POINTS);
+
   return (
     <div id="points-modal" class="modal">
       <div class="modal-content">
@@ -10,11 +18,51 @@ const PointsModal = ({ onClose }) => {
         </div>
         <div class="modal-bottom">
           <div class="points-container">
-            <button>100 Points</button>
-            <button>200 Points</button>
-            <button>300 Points</button>
-            <button>400 Points</button>
-            <button>500 Points</button>
+            <button
+              onClick={(e) => {
+                addUserPoints({
+                  variables: { userId: data.me._id, purchaseNumber: 100 },
+                });
+              }}
+            >
+              100 Points
+            </button>
+            <button
+              onClick={(e) => {
+                addUserPoints({
+                  variables: { userId: data.me._id, purchaseNumber: 200 },
+                });
+              }}
+            >
+              200 Points
+            </button>
+            <button
+              onClick={(e) => {
+                addUserPoints({
+                  variables: { userId: data.me._id, purchaseNumber: 300 },
+                });
+              }}
+            >
+              300 Points
+            </button>
+            <button
+              onClick={(e) => {
+                addUserPoints({
+                  variables: { userId: data.me._id, purchaseNumber: 400 },
+                });
+              }}
+            >
+              400 Points
+            </button>
+            <button
+              onClick={(e) => {
+                addUserPoints({
+                  variables: { userId: data.me._id, purchaseNumber: 500 },
+                });
+              }}
+            >
+              500 Points
+            </button>
           </div>
         </div>
       </div>

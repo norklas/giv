@@ -44,7 +44,8 @@ const UserDashboard = () => {
           </div>
 
           <div class="right">
-            <h3>{userData.causes.length}</h3>
+            <h3>2</h3>{" "}
+            {/* this will be userData.causes.length once we get submission on causes done */}
             <p>Causes Posted</p>
           </div>
         </div>

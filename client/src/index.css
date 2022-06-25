@@ -297,6 +297,10 @@ textarea {
 }
 
 /* DASHBOARD */
+.icon {
+  font-size: 1.5rem;
+}
+
 .dashboard-icon {
   width: 90px;
 }
