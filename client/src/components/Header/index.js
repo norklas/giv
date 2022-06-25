@@ -1,10 +1,19 @@
 import logo from "../../assets/givlogo.svg"
+
 import { useState } from 'react'
+import Auth from '../../utils/auth'
+
 import LoginModal from "../LoginModal"
 import SignupModal from "../SignupModal"
 import CauseModal from "../CauseModal"
 
 const Header = () => {
+
+    const loggedIn = Auth.loggedIn()
+    const logout = event => {
+        event.preventDefault()
+        Auth.logout()
+      }
 
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
     const toggleLoginModal = () => {
@@ -39,9 +48,18 @@ const Header = () => {
 
                     <nav>
                         <ul>
-                            <li onClick={() => toggleSignupModal()}>Sign up</li>
-                            <li onClick={() => toggleLoginModal()}>Log in</li>
-                            <li onClick={() => toggleCauseModal()}><a class="nav-btn">Create a Cause</a></li>
+                        {Auth.loggedIn() ? (
+                            <>
+                                <li>Dashboard</li>
+                                <li onClick={logout}>Logout</li>
+                            </>
+                        ) : (
+                            <>
+                                <li onClick={() => toggleSignupModal()}>Sign up</li>
+                                <li onClick={() => toggleLoginModal()}>Log in</li>
+                            </>
+                        )}
+                                <li onClick={() => toggleCauseModal()}><a class="nav-btn">Create a Cause</a></li>
                         </ul>
                     </nav>
                 </div>
