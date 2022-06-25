@@ -1,6 +1,7 @@
 import { ADD_CAUSE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
+import { capitalizeFirst } from '../../utils/helpers';
 
 const CauseModal = ({ onClose }) => {
     const [formState, setFormState] = useState({ title: '', description: '', url: '', location: '', category: '' })
@@ -11,7 +12,11 @@ const CauseModal = ({ onClose }) => {
 
     const handleChange = (event) => {
         if(!event.target.value.length) {
-            setErrorMessage(`${event.target.name} is required`)
+            let missingField = event.target.name;
+            if(missingField==="url") {
+                missingField="Organization Website"
+            }
+            setErrorMessage(`${capitalizeFirst(missingField)} is required`)
         } else {
             setErrorMessage('');
         }
@@ -34,9 +39,6 @@ const CauseModal = ({ onClose }) => {
             }
         }
     }
-
-    
-
 
     return (
         <div id="cause-modal" className="modal">
