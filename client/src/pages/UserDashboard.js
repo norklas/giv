@@ -33,7 +33,7 @@ const UserDashboard = () => {
           </div>
 
           <div class="right">
-            <h3>2300</h3>
+            <h3>{userData.points}</h3>
             <p>Total Points</p>
           </div>
         </div>
@@ -44,7 +44,7 @@ const UserDashboard = () => {
           </div>
 
           <div class="right">
-            <h3>2</h3>
+            <h3>{userData.causes.length}</h3>
             <p>Causes Posted</p>
           </div>
         </div>
