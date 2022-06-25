@@ -3,8 +3,6 @@ import { useState } from 'react'
 import LoginModal from "../LoginModal"
 import SignupModal from "../SignupModal"
 import CauseModal from "../CauseModal"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
 

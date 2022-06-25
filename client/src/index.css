@@ -167,6 +167,9 @@ a {
 
 .card-bottom {
   padding: 10px 30px 20px 30px;
+  display: flex;
+  gap: 30px;
+  align-items: baseline;
 }
 
 .single-card-top {
@@ -208,6 +211,29 @@ a {
   background-color: rgb(201, 120, 120);
   border: solid 1px maroon;
 }
+
+.point-count,
+.comment-count {
+  display: flex;
+}
+
+.bottom-text {
+  font-size: 13px;
+  
+  font-weight: 700;
+}
+
+.icon {
+  color: #bebebe;
+  padding-right: 8px;
+  font-size: 18px;
+}
+
+.icon:hover {
+  color: #FEA82F;
+  cursor: pointer;
+}
+
 
 /* SINGLE CAUSE */
 .single-cause {
