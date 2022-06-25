@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'proxima-nova', sans-serif;
+  font-family: "proxima-nova", sans-serif;
   font-weight: 300;
   color: #333333;
   background-color: #f1f3f5;
@@ -14,11 +14,11 @@ body {
 .global-container {
   max-width: 66rem;
   margin: auto;
-  font-family: 'proxima-nova', sans-serif;
+  font-family: "proxima-nova", sans-serif;
 }
 
 button {
-  font-family: 'proxima-nova', sans-serif;
+  font-family: "proxima-nova", sans-serif;
 }
 
 h1 {
@@ -57,7 +57,7 @@ header {
 
 .search-bar {
   width: 50%;
-  margin: 0px
+  margin: 0px;
 }
 
 nav ul {
@@ -100,7 +100,6 @@ a img {
   height: 60px;
 }
 
-
 /* HOME */
 .dashboard,
 .home {
@@ -110,10 +109,10 @@ a img {
 
 .underline {
   font-style: italic;
-  font-family: 'maecenas', serif;
+  font-family: "maecenas", serif;
   font-weight: 600;
   font-size: 36px;
-  text-decoration: underline solid #A8C256 4px;
+  text-decoration: underline solid #a8c256 4px;
 }
 
 .card {
@@ -191,7 +190,7 @@ a img {
   font-family: 'proxima-nova', sans-serif;
   background-color: #ffe7c6;
   border: solid 1px #e7941e;
-  
+
 }
 
 /* .disaster-relief {
@@ -239,11 +238,12 @@ a img {
 
 .submit-btn,
 .web-btn,
-.create-btn {
+.create-btn,
+.buy-btn {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 15px;
-  background-color: #2EC4B6;
+  background-color: #2ec4b6;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
@@ -258,7 +258,8 @@ a img {
 
 .submit-btn:hover,
 .web-btn:hover,
-.edit:hover {
+.edit:hover,
+.buy-btn:hover {
   background-color: #21a89b;
   cursor: pointer;
 }
@@ -339,6 +340,31 @@ textarea {
   padding-right: 20px;
 }
 
+.points-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+.points-container > button {
+  width: 35%;
+  font-size: 15px;
+  background-color: #fea82f;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 15px;
+  color: white;
+  border: none;
+}
+
+.points-container > button:hover {
+  background-color: #e7941e;
+}
+
 /* FOOTER */
 footer {
   margin-top: 60px;
@@ -349,7 +375,6 @@ footer {
   padding: 30px;
 }
 
-
 /* MODAL */
 .modal {
   position: fixed;
@@ -359,8 +384,8 @@ footer {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -403,7 +428,6 @@ footer {
   text-decoration: none;
   cursor: pointer;
 }
-
 
 
 /* MOBILE STYLES */
@@ -459,4 +483,8 @@ footer {
     gap: 50px;
   }
 
+}
+
+#points-modal > .modal-content > .modal-top > h3 {
+  margin-left: 2rem;
 }
