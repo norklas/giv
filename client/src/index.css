@@ -245,6 +245,7 @@ a {
 .create-btn {
   margin-top: 20px;
   margin-bottom: 20px;
+  width: 150px;
   font-size: 15px;
   background-color: #2EC4B6;
   border-radius: 6px;
