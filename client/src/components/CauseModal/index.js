@@ -27,7 +27,6 @@ const CauseModal = ({ onClose }) => {
                     <textarea></textarea>
                 
                     <button type="submit" id="submit-btn" class="submit-btn">Post</button>
-                    <p>Don't have an account? <a href="">Sign up!</a></p>
                 </form>
             </div>
         </div>

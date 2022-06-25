@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMessage, faStar } from '@fortawesome/free-solid-svg-icons'
+
 import CommentList from "../components/CommentList";
 
 const SingleCause = () => {
@@ -8,7 +11,11 @@ const SingleCause = () => {
         <div class="card">
             <div class="single-card-top">
                 <button class="category-btn category-btn-single-cause disaster-relief">Disaster Relief</button>
-            </div>
+                <div class="point-count">
+                    <FontAwesomeIcon icon={faStar} className='icon'/>
+                    <div class="bottom-text">7391 Points</div>
+                    </div>
+                </div>
             <div class="single-card-bottom">
                 <h3>Support Example Charity</h3>
                 <p class="date">June 16, 2022</p>

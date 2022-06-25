@@ -1,12 +1,19 @@
 import logo from "../../assets/givlogo.svg"
+
 import { useState } from 'react'
+import Auth from '../../utils/auth'
+
 import LoginModal from "../LoginModal"
 import SignupModal from "../SignupModal"
 import CauseModal from "../CauseModal"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
+
+    const loggedIn = Auth.loggedIn()
+    const logout = event => {
+        event.preventDefault()
+        Auth.logout()
+      }
 
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
     const toggleLoginModal = () => {
@@ -35,17 +42,24 @@ const Header = () => {
                     </a>
 
                     <div class="search-bar">
-                        <input class="search" type="text" placeholder="Search.." />
-                        <button type="submit" class="search-button">
-                            <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon"/>
-                        </button>
+                        <input class="search" type="text" placeholder="Search giv." />
+
                     </div>
 
                     <nav>
                         <ul>
-                            <li onClick={() => toggleSignupModal()}>Sign up</li>
-                            <li onClick={() => toggleLoginModal()}>Log in</li>
-                            <li onClick={() => toggleCauseModal()}><a class="nav-btn">Create a Cause</a></li>
+                        {Auth.loggedIn() ? (
+                            <>
+                                <li>Dashboard</li>
+                                <li onClick={logout}>Logout</li>
+                            </>
+                        ) : (
+                            <>
+                                <li onClick={() => toggleSignupModal()}>Sign up</li>
+                                <li onClick={() => toggleLoginModal()}>Log in</li>
+                            </>
+                        )}
+                                <li onClick={() => toggleCauseModal()}><a class="nav-btn">Create a Cause</a></li>
                         </ul>
                     </nav>
                 </div>
