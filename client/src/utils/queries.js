@@ -76,7 +76,8 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_USERS = gql`
-  query users {
+  {
+    users {
     _id
     username
     email
@@ -102,6 +103,7 @@ export const QUERY_USERS = gql`
       points
     }
   }
+  }
 `;
 
 export const QUERY_USER_BASIC = gql`
@@ -116,9 +118,8 @@ export const QUERY_USER_BASIC = gql`
 `;
 
 export const QUERY_CAUSE = gql`
-  query cause($id: ID!) {
-    cause(_id: $id) {
-      cause {
+    query cause($id: ID!) {
+      cause(_id: $id) {
         _id
         title
         description
@@ -140,11 +141,11 @@ export const QUERY_CAUSE = gql`
         }
       }
     }
-  }
 `;
 
 export const QUERY_CAUSES = gql`
-  query causes {
+  {
+    causes {
     _id
     title
     description
@@ -164,5 +165,6 @@ export const QUERY_CAUSES = gql`
       username
       createdAt
     }
+  }
   }
 `;

@@ -1,26 +1,15 @@
 import SingleCause from '../SingleCause';
-import { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { QUERY_CAUSES } from '../../utils/queries';
 
-const CauseList = () => {
-    const [sampleCauses] = useState([
-        {
-            title: "Example Charity 1",
-            description: "Morbi eleifend nibh eu maximus gravida. Nulla eget porta erat. Sed arcu nibh, dapibus sit amet imperdiet a, sollicitudin ac risus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-            category: "Distaster Relief",
-            url: "www.charity1.org"
-        },
-        {
-            title: "Example Charity 2",
-            description: "Morbi eleifend nibh eu maximus gravida. Nulla eget porta erat. Sed arcu nibh, dapibus sit amet imperdiet a, sollicitudin ac risus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-            category: "Distaster Relief",
-            url: "www.charity2.org"
-        }
-    ]);
+const CauseList = () => {     
+    const { loading, data } = useQuery(QUERY_CAUSES);
+    const causeData = data?.causes || [];
 
     return (
         <div>
-            {sampleCauses.map((cause) => (
-                <SingleCause cause = {cause} />
+            {causeData.map((cause) => ( 
+                <SingleCause cause = {cause} key = {cause.title}/>
             ))}
         </div>
     )

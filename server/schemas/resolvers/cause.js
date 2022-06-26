@@ -148,22 +148,25 @@ module.exports = {
       throw new AuthenticationError("You need to be logged in!");
     },
     addComment: async (parent, { causeId, body }, context) => {
-      const cause = await Cause.findById(causeId);
-      const currentDate = dateFormat(Date.now())
-      console.log(cause);
+      if(context.user) {
+        const cause = await Cause.findById(causeId);
+        const currentDate = dateFormat(Date.now())
+        console.log(cause);
 
-      if (cause) {
-        cause.comments.unshift({
-          body,
-          createdAt: currentDate,
-        });
+        if (cause) {
+          cause.comments.unshift({
+            body,
+            username: context.user.username,
+            createdAt: currentDate,
+          });
 
-        await cause.save();
+          await cause.save();
 
-        return cause;
+          return cause;
+        }
+      
+        throw new UserInputError("Cause not found");
       }
-
-      throw new UserInputError("Cause not found");
     },
   },
 };
