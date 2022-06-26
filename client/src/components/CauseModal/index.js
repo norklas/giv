@@ -122,7 +122,6 @@ const CauseModal = ({ onClose }) => {
             </div>
         </div>
       </div>
-    </div>
   );
 };
 
