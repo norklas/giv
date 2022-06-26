@@ -28,6 +28,9 @@ const CauseModal = ({ onClose }) => {
         event.preventDefault();
         if (errorMessage) {
             setDisplayError(true);
+        } else if (formState.description.length > 280) {
+            setErrorMessage('Description cannot be over 280 characters');
+            setDisplayError(true);
         } else {
             setDisplayError(false);
             try {
@@ -77,8 +80,16 @@ const CauseModal = ({ onClose }) => {
                         onChange={handleChange}
                     >
                         <option value="" disabled selected>Select a category</option>
-                        <option value="Cancer Research">Cancer Research</option>
+                        <option value="Animal Welfare">Animal Welfare</option>
                         <option value="Disaster Relief">Disaster Relief</option>
+                        <option value="Education">Education</option>
+                        <option value="Environmental">Environmental</option>
+                        <option value="Housing">Housing</option>
+                        <option value="Hunger">Hunger</option>
+                        <option value="Medical Research">Medical Research</option>
+                        <option value="Medical Support">Medical Support</option>
+                        <option value="Veterans Support">Veterans Support</option>
+                        <option value="Other">Other</option>
                     </select>
 
                     <label htmlFor="location">Location</label>
@@ -92,12 +103,13 @@ const CauseModal = ({ onClose }) => {
                     />
 
                     <label 
-                        htmlFor="description">Tell us more...</label>
+                        htmlFor="description">Description</label>
                     <textarea
                         key="description"
                         name="description"
                         value={formState.description}
                         onChange={handleChange}
+                        placeholder="Tell us more..."
                     />
 
                     {errorMessage && displayError && (
