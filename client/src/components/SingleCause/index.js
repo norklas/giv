@@ -10,7 +10,9 @@ function SingleCause(props) {
       <div className="card-top">
           <h3>{cause.title}</h3>
           <p className="date">June 16, 2022</p>
-          <p>{cause.description}</p>
+          <p>{cause.description} <Link to={`/cause/${cause._id}`}>
+              Learn more.
+            </Link></p>
           <div className="author">{cause.location}</div>
       </div>
 
@@ -24,9 +26,6 @@ function SingleCause(props) {
             <FontAwesomeIcon icon={faMessage} className='icon' />
             <div className="bottom-text">{cause.comments.length} Comments</div>
             </div>
-            <Link to={`/cause/${cause._id}`}>
-              To learn more, click here!
-            </Link>
       </div>
     </div>
   )

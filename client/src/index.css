@@ -151,18 +151,19 @@ a img {
 }
 
 .card-bottom {
-  padding: 10px 30px 20px 30px;
+  padding: 20px 30px 20px 30px;
   display: flex;
   gap: 30px;
-  align-items: baseline;
+  align-items: center;
 }
 
 .single-card-top {
-  padding: 10px 30px 0px 30px;
+  padding: 10px 30px 20px 30px;
   border-bottom: #dad9d9 solid 1px;
   display: flex;
   gap: 20px;
   align-items: center;
+  margin-top: 10px;
 }
 
 .single-card-bottom,
@@ -183,7 +184,6 @@ a img {
 }
 
 .category-btn {
-  margin-top: 10px;
   padding: 5px 15px;
   border-radius: 25px;
   font-size: 14px;
@@ -206,11 +206,11 @@ a img {
 .point-count,
 .comment-count {
   display: flex;
+  align-items: center;
 }
 
 .bottom-text {
   font-size: 13px;
-  
   font-weight: 700;
 }
 
@@ -249,10 +249,6 @@ a img {
   padding: 10px 15px;
   color: white;
   border: none;
-}
-
-.category-btn-single-cause {
-  margin-bottom: 20px;
 }
 
 .submit-btn:hover,
