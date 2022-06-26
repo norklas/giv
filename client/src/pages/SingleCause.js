@@ -13,7 +13,7 @@ const SingleCause = () => {
     const { causeId: causeParam } = useParams();
     console.log("causeId: " + causeParam)
     // const { loading, data } = useQuery(QUERY_CAUSE, {
-    //     variables: { $id: causeParam }
+    //     variables: { id: causeParam }
     // });
     // const causeData = data?.cause || {};
     // console.log(causeData);

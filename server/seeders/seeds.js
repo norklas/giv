@@ -4,23 +4,72 @@ const {
   User,
   Cause,
 } = require("../models");
+// variables to control number of seeds generated
+const numUsers = 100;
+const numCauses = 100;
+const numComments = 100;
 
 db.once("open", async () => {
   await User.deleteMany({});
   await Cause.deleteMany({});
 
-  // create categories
+  const titleTypes = [
+    "Relief", 
+    "Research", 
+    "Support",
+    "Fundraiser",
+    "Charitable Organization",
+    "Federations",
+    "Services"
+  ]
+
+  const titleDetails = [
+    "Cancer", 
+    "ALS",
+    "Diabetes",
+    "Arthritis",
+    "Parkinson's",
+    "Leukemia",
+    "Alzheimer's",
+    "COVID-19",
+    "Affordable Housing",
+    "Environmental",
+    "Hunger",
+    "Disaster",
+    "Humanitarian",
+    "Autism",
+    "Education",
+    "Conservation",
+    "Wildlife",
+    "Peace and Human Rights",
+    "Veterans"
+  ]
+
+  const categories = [
+    "Animal Welfare",
+    "Disaster Relief",
+    "Education",
+    "Environmental",
+    "Housing",
+    "Hunger",
+    "Medical Research",
+    "Medical Support",
+    "Veterans Support",
+    "Other"
+  ]
 
   // create causes
   const causeData = [];
 
-  for (let i = 0; i < 100; i++) {
-    const title = faker.company.catchPhrase();
+  for (let i = 0; i < numCauses; i++) {
+    const titleDetail = titleDetails[Math.floor(Math.random() * titleDetails.length)];
+    const titleType = titleTypes[Math.floor(Math.random() * titleTypes.length)];
+    const title =  titleDetail.concat(" ", titleType);
     const description = faker.lorem.paragraph();
     const url = faker.internet.url();
-    const category =
-      createdCategories[Math.floor(Math.random() * createdCategories.length)];
+    const category = categories[Math.floor(Math.random() * categories.length)];
     const location = faker.address.cityName();
+    const points = Math.floor(Math.random() * 20000);
 
     causeData.push({
       title: title,
@@ -28,6 +77,7 @@ db.once("open", async () => {
       url: url,
       category: category,
       location: location,
+      points: points
     });
   }
 
@@ -37,31 +87,43 @@ db.once("open", async () => {
   // create users
   const userData = [];
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < numUsers; i++) {
     const username = faker.internet.userName();
     const email = faker.internet.email(username);
     const password = faker.internet.password();
-    const causeNum = Math.floor(Math.random) * createdCategories.length;
-    const causes = [];
-    for (let j = 0; j < causeNum; j++) {
-      const randomCauseIndex = Math.floor(Math.random() * createdCauses.length);
-      causes.push(createdCauses.ops[randomCauseIndex]);
-    }
-    const points = Math.floor(Math.random() * 100);
+    const points = Math.floor(Math.random() * 1000);
 
     userData.push({
       username: username,
       email: email,
       password: password,
-      causes: causes,
       points: points,
     });
   }
 
   const createdUsers = await User.collection.insertMany(userData);
+  // console.log(createdUsers);
 
-  console.log("Seed Users");
-  // need seeds for Comment, Medal, Point, and Share
+  console.log("Seeded Users");
+  // need seeds for comments, medal, and to associate causes to users
+
+  // associate causes to users
+  // for (let i = 0; i < numCauses; i++) {
+  //   //grab id of cause
+  //   const { _id: causeId } = createdCauses.ops[i];
+  //   console.log(causeId);
+  //   //select random user 
+  //   const randUserIndex = Math.floor(Math.random() * numUsers);
+  //   const { _id: userId } = createdUsers.ops[randomUserIndex];
+  //   //push cause id into user's causes array
+  //   await User.updateOne(
+  //     { _id: userId },
+  //     { $push: { causes: { causeId } } },
+  //     { runValidators: true }
+  //   );
+  // }
+  // console.log("Causes associated to users");
+
   console.log("Seeding complete");
   process.exit(0);
 });
