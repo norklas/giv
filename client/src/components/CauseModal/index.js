@@ -37,6 +37,7 @@ const CauseModal = ({ onClose }) => {
                 const { data } = await addCause ({
                     variables: { ...formState }
                 })
+                window.location.assign('/');
             } catch (error) {
                 console.log(error);
             }
