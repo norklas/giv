@@ -61,7 +61,7 @@ const UserDashboard = () => {
 
           <div class="right">
             <h3>{userData.causes.length}</h3>
-            <p>Causes Posted</p>
+            <p>Causes</p>
           </div>
         </div>
 

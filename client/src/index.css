@@ -40,7 +40,6 @@ a {
   text-decoration: none;
 }
 
-
 /* HEADER/NAVIGATION */
 
 header {
@@ -60,19 +59,23 @@ header {
   margin: 0px;
 }
 
-nav ul {
+nav ul,
+li a {
   list-style: none;
   font-size: 15px;
   font-weight: 300;
   display: flex;
   gap: 40px;
   align-items: center;
+  color: #333333;
 }
 
-nav ul li:hover {
+nav ul li:hover,
+li a:hover {
   color: black;
   cursor: pointer;
 }
+
 
 .nav-btn {
   font-size: 15px;
@@ -86,6 +89,7 @@ nav ul li:hover {
 
 .nav-btn:hover {
   background-color: #e7941e;
+  color: white;
 }
 
 a img {
