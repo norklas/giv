@@ -111,14 +111,6 @@ a img {
   text-align: center;
 }
 
-.underline {
-  font-style: italic;
-  font-family: "maecenas", serif;
-  font-weight: 600;
-  font-size: 36px;
-  text-decoration: underline solid #a8c256 4px;
-}
-
 .card {
   margin: 30px;
 }
@@ -152,6 +144,7 @@ a img {
 .comment-card-top {
   border-bottom: #dad9d9 solid 1px;
   padding: 30px;
+  position: relative;
 }
 
 .post-comment-card {
@@ -177,6 +170,13 @@ a img {
 .single-card-bottom,
 .comment-card-bottom {
   padding: 30px;
+}
+
+.medal {
+  width: 40px;
+  position: absolute;
+  top: 20px;
+  right: 25px;
 }
 
 .date {
