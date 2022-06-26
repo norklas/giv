@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMessage, faStar } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
-
 function SingleCause(props) {
   const { cause } = props;
 
@@ -14,6 +13,7 @@ function SingleCause(props) {
           <p>{cause.description}</p>
           <div className="author">{cause.location}</div>
       </div>
+
       <div className="card-bottom">
           <button className="category-btn disaster-relief">{cause.category}</button>
             <div className="point-count">

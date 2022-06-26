@@ -118,7 +118,6 @@ const CauseModal = ({ onClose }) => {
                     )}
                 
                     <button type="submit" id="submit-btn" className="submit-btn">Post</button>
-                    <p>Don't have an account? <a href="">Sign up!</a></p>
                 </form>
             </div>
         </div>
