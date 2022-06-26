@@ -22,19 +22,16 @@ const SingleCause = () => {
     // get username of logged in user for comment submit
     const { loading, data } = useQuery(QUERY_ME);
     const username = data?.me.username || '';
-    console.log("username: " + username);
 
     // handle comment change
     const handleComment = (event) => {
         setCommentState({ body: event.target.value });
-        console.log(commentState);
     }
 
     // submit comment
     const submitComment = async (event) => {
         event.preventDefault();
         if(commentState.body.length) {
-            console.log(commentState.body);
             try {
                 const { data } = await addComment ({
                     variables: {
