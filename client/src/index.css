@@ -150,6 +150,10 @@ a img {
   padding: 30px;
 }
 
+.post-comment-card {
+  padding: 30px;
+}
+
 .card-bottom {
   padding: 20px 30px 20px 30px;
   display: flex;
@@ -221,6 +225,7 @@ a img {
 }
 
 .submit-btn,
+.comment-btn,
 .web-btn {
   width: 150px;
 }
@@ -230,6 +235,7 @@ a img {
 }
 
 .submit-btn,
+.comment-btn,
 .web-btn,
 .create-btn,
 .edit-btn,
@@ -247,6 +253,7 @@ a img {
 }
 
 .submit-btn,
+.comment-btn,
 .web-btn,
 .edit-btn,
 .buy-btn {
@@ -271,7 +278,7 @@ a img {
 }
 
 .delete-btn:hover {
-  background-color: #0d2730;
+  background-color: #be1919;
   cursor: pointer;
 }
 

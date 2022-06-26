@@ -71,9 +71,11 @@ const SingleCause = () => {
         </div>
 
         <div class="card">
+        <div class="post-comment-card">
             {Auth.loggedIn() && (
                 <form id='comment-form'>
-                    <label htmlFor='add-comment'>Add Comment</label>
+                    <h3>Add a Comment</h3>
+                    <label htmlFor='add-comment'>giv this cause some love!</label>
                     <input
                         className='input'
                         type='text'
@@ -81,15 +83,20 @@ const SingleCause = () => {
                         value={commentState.body}
                         onChange={handleComment}
                     />
-                    <button
+                    <button className="comment-btn"
                         type='submit'
                         onClick={submitComment}
                     >
-                        Submit Comment
+                        Post Comment
                     </button>
                 </form>
             )}
-            <div class="comment-card-top">
+            </div>
+            </div>
+
+        <div class="card">
+        <div class="comment-card-top">
+    
                 <h3>5 Comments</h3>
             </div>
             <div class="comment-card-bottom">

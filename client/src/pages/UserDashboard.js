@@ -1,18 +1,16 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faHeart, faStar, faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faMessage, faPenToSquare, faHeart, faStar, faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 
 import PointsModal from "../components/PointsModal";
 
-
-import icon3 from "../assets/DashboardIcon-3.svg";
-
 const UserDashboard = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
+  console.log(userData)
 
   const [points, setPoints] = useState(0);
 
@@ -57,7 +55,7 @@ const UserDashboard = () => {
           </div>
 
           <div class="right">
-            <h3>2</h3>{" "}
+            <h3>{userData.causes.length}</h3>{" "}
             {/* this will be userData.causes.length once we get submission on causes done */}
             <p>Causes Posted</p>
           </div>
@@ -91,6 +89,14 @@ const UserDashboard = () => {
         </div>
         <div class="card-bottom">
           <button class="category-btn disaster-relief">category</button>
+          <div className="point-count">
+            <FontAwesomeIcon icon={faStar} className='icon'/>
+            <div className="bottom-text">Points</div>
+            </div>
+            <div className="comment-count">
+            <FontAwesomeIcon icon={faMessage} className='icon' />
+            <div className="bottom-text">Comments</div>
+            </div>
         </div>
       </div>
     </div>
