@@ -6,14 +6,22 @@ import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 
 import PointsModal from "../components/PointsModal";
+import UpdateCauseModal from "../components/UpdateCauseModal";
 
 const UserDashboard = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
   console.log(userData)
 
-  const [points, setPoints] = useState(0);
+  const userCauses = userData.causes
+  console.log(userCauses)
 
+  const [isUpdateCauseModalOpen, setIsUpdateCauseModalOpen] = useState(false)
+    const toggleUpdateCauseModal = () => {
+        setIsUpdateCauseModalOpen(!isUpdateCauseModalOpen)
+    }
+
+  const [points, setPoints] = useState(0);
   const [isPointsModalOpen, setIsPointsModalOpen] = useState(false);
   const togglePointsModal = () => {
     setIsPointsModalOpen(!isPointsModalOpen);
@@ -25,12 +33,9 @@ const UserDashboard = () => {
 
   return (
     <div class="dashboard">
-      {isPointsModalOpen && (
-        <PointsModal
-          pointsModalToUserDash={pointsModalToUserDash}
-          onClose={togglePointsModal}
-        />
-      )}
+      {isPointsModalOpen && (<PointsModal pointsModalToUserDash={pointsModalToUserDash} onClose={togglePointsModal} />)}
+      {isUpdateCauseModalOpen && (<UpdateCauseModal onClose={toggleUpdateCauseModal} />)}
+
       <h2>{userData.username}'s Dashboard</h2>
 
       <div class="dashboard-top">
@@ -55,8 +60,7 @@ const UserDashboard = () => {
           </div>
 
           <div class="right">
-            <h3>{userData.causes.length}</h3>{" "}
-            {/* this will be userData.causes.length once we get submission on causes done */}
+            <h3>{userData.causes.length}</h3>
             <p>Causes Posted</p>
           </div>
         </div>
@@ -75,31 +79,36 @@ const UserDashboard = () => {
       </div>
 
       <h3>Your causes</h3>
+      {userCauses.map((userCause) => (
       <div class="card">
         <div class="card-top">
         <button class="delete-btn edit">
             <FontAwesomeIcon icon={faTrash} />
           </button>
-          <button class="edit-btn edit">
+          <button class="edit-btn edit" onClick={() => toggleUpdateCauseModal()}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
-          <h3>Sample cause</h3>
+          <h3>{userCause.title}</h3>
           <p class="date">June 16, 2022</p>
-          <p>Sample cause body</p>
+          <p>{userCause.description}</p>
+          <div className="author">{userCause.location}</div>
+          <button class="web-btn">Visit website</button>
         </div>
         <div class="card-bottom">
-          <button class="category-btn disaster-relief">category</button>
+          <button class="category-btn disaster-relief">{userCause.category}</button>
           <div className="point-count">
             <FontAwesomeIcon icon={faStar} className='icon'/>
-            <div className="bottom-text">Points</div>
+            <div className="bottom-text">{userCause.points} Points</div>
             </div>
             <div className="comment-count">
             <FontAwesomeIcon icon={faMessage} className='icon' />
-            <div className="bottom-text">Comments</div>
+            <div className="bottom-text">{userCause.comments.length} Comments</div>
             </div>
         </div>
       </div>
-    </div>
+      ))}
+      </div>
+    
   );
 };
 

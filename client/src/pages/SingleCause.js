@@ -75,7 +75,7 @@ const SingleCause = () => {
             {Auth.loggedIn() && (
                 <form id='comment-form'>
                     <h3>Add a Comment</h3>
-                    <label htmlFor='add-comment'>giv this cause some love!</label>
+                    <label htmlFor='add-comment'><p>giv this cause some love!</p></label>
                     <input
                         className='input'
                         type='text'

@@ -252,6 +252,10 @@ a img {
   border: none;
 }
 
+.comment-btn {
+  margin-top: 10px;
+}
+
 .submit-btn,
 .comment-btn,
 .web-btn,
@@ -432,6 +436,7 @@ footer {
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
+  text-align: left;
 }
 
 .modal-content {
