@@ -37,7 +37,7 @@ function App() {
           <main class="global-container">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/cause" element={<SingleCause />} />
+              <Route path="/cause/:causeId" element={<SingleCause />} />
               <Route path="/dashboard" element={<UserDashboard />} />
             </Routes>
           </main>

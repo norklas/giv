@@ -225,7 +225,6 @@ a img {
   cursor: pointer;
 }
 
-
 /* SINGLE CAUSE */
 .single-cause {
   margin-top: 60px;
@@ -290,7 +289,7 @@ select {
 }
 
 textarea {
-  height: 200px;
+  height: 100px;
 }
 
 /* SEARCH BAR */
