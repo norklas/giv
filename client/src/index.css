@@ -40,7 +40,6 @@ a {
   text-decoration: none;
 }
 
-
 /* HEADER/NAVIGATION */
 
 header {
@@ -60,19 +59,23 @@ header {
   margin: 0px;
 }
 
-nav ul {
+nav ul,
+li a {
   list-style: none;
   font-size: 15px;
   font-weight: 300;
   display: flex;
   gap: 40px;
   align-items: center;
+  color: #333333;
 }
 
-nav ul li:hover {
+nav ul li:hover,
+li a:hover {
   color: black;
   cursor: pointer;
 }
+
 
 .nav-btn {
   font-size: 15px;
@@ -86,6 +89,7 @@ nav ul li:hover {
 
 .nav-btn:hover {
   background-color: #e7941e;
+  color: white;
 }
 
 a img {
@@ -105,14 +109,6 @@ a img {
 .home {
   padding-top: 50px;
   text-align: center;
-}
-
-.underline {
-  font-style: italic;
-  font-family: "maecenas", serif;
-  font-weight: 600;
-  font-size: 36px;
-  text-decoration: underline solid #a8c256 4px;
 }
 
 .card {
@@ -148,26 +144,39 @@ a img {
 .comment-card-top {
   border-bottom: #dad9d9 solid 1px;
   padding: 30px;
+  position: relative;
+}
+
+.post-comment-card {
+  padding: 30px;
 }
 
 .card-bottom {
-  padding: 10px 30px 20px 30px;
+  padding: 20px 30px 20px 30px;
   display: flex;
   gap: 30px;
-  align-items: baseline;
+  align-items: center;
 }
 
 .single-card-top {
-  padding: 10px 30px 0px 30px;
+  padding: 10px 30px 20px 30px;
   border-bottom: #dad9d9 solid 1px;
   display: flex;
   gap: 20px;
   align-items: center;
+  margin-top: 10px;
 }
 
 .single-card-bottom,
 .comment-card-bottom {
   padding: 30px;
+}
+
+.medal {
+  width: 30px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
 }
 
 .date {
@@ -183,34 +192,23 @@ a img {
 }
 
 .category-btn {
-  margin-top: 10px;
   padding: 5px 15px;
   border-radius: 25px;
   font-size: 14px;
   font-family: 'proxima-nova', sans-serif;
   background-color: #ffe7c6;
-  border: solid 1px #e7941e;
+  border: solid 1px #FEA82F;
 
 }
-
-/* .disaster-relief {
-  background-color: #ffe7c6;
-  border: solid 1px #e7941e;
-}
-
-.cancer-research {
-  background-color: rgb(201, 120, 120);
-  border: solid 1px maroon;
-} */
 
 .point-count,
 .comment-count {
   display: flex;
+  align-items: center;
 }
 
 .bottom-text {
   font-size: 13px;
-  
   font-weight: 700;
 }
 
@@ -231,18 +229,25 @@ a img {
 }
 
 .submit-btn,
+.comment-btn,
 .web-btn {
   width: 150px;
 }
 
+.buy-btn {
+  margin: 0px;
+}
+
 .submit-btn,
+.comment-btn,
 .web-btn,
 .create-btn,
-.buy-btn {
+.edit-btn,
+.buy-btn,
+.delete-btn {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 15px;
-  background-color: #2ec4b6;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
@@ -251,15 +256,37 @@ a img {
   border: none;
 }
 
-.category-btn-single-cause {
-  margin-bottom: 20px;
+.comment-btn {
+  margin-top: 10px;
+}
+
+.submit-btn,
+.comment-btn,
+.web-btn,
+.edit-btn,
+.buy-btn {
+  background-color: #2ec4b6;
+}
+
+.delete-btn {
+  background-color: #143642;
+}
+
+.edit {
+  float: right;
+  margin: 0px 0px 0px 10px;
 }
 
 .submit-btn:hover,
 .web-btn:hover,
-.edit:hover,
-.buy-btn:hover {
+.buy-btn:hover,
+.edit-btn:hover {
   background-color: #21a89b;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #be1919;
   cursor: pointer;
 }
 
@@ -335,8 +362,30 @@ textarea {
   font-size: 1.5rem;
 }
 
-.dashboard-icon {
-  width: 90px;
+.dashboard-icon-1,
+.dashboard-icon-2,
+.dashboard-icon-3 {
+	padding: 28px;
+	font-size: 20px;
+	border-radius: 50%;
+}
+
+.dashboard-icon-1 {
+	color: #FEA82F;
+	background-color: #ffe7c6;
+	border: solid #FEA82F 1px;
+}
+
+.dashboard-icon-2 {
+	color: #2ec4b6;
+	background-color: #c7f7f3;
+	border: solid #2ec4b6 1px;
+}
+
+.dashboard-icon-3 {
+	color: #143642;
+	background-color: #a9d0df;
+	border: solid #143642 1px;
 }
 
 .left {
@@ -348,8 +397,9 @@ textarea {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  row-gap: 10px;
-  column-gap: 10px;
+  row-gap: 20px;
+  column-gap: 20px;
+  padding: 10px;
 }
 
 .points-container > button {
@@ -362,6 +412,7 @@ textarea {
   padding: 10px 15px;
   color: white;
   border: none;
+  cursor: pointer;
 }
 
 .points-container > button:hover {
@@ -389,6 +440,7 @@ footer {
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
+  text-align: left;
 }
 
 .modal-content {
@@ -418,11 +470,6 @@ footer {
   padding-top: 10px;
   padding-right: 30px;
   font-weight: bold;
-}
-
-.edit {
-  float: right;
-  margin: 0px;
 }
 
 .close:hover,

@@ -50,7 +50,7 @@ const Header = () => {
                         <ul>
                         {Auth.loggedIn() ? (
                             <>
-                                <li>Dashboard</li>
+                                <li><a href="/dashboard">Dashboard</a></li>
                                 <li onClick={logout}>Logout</li>
                             </>
                         ) : (

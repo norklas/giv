@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import Auth from '../../utils/auth'
 
+import LoginModal from "../LoginModal"
+
 import { useMutation } from '@apollo/client'
 import { ADD_USER } from '../../utils/mutations'
 
 const SignupModal = ({ onClose }) => {
 
     const [formState, setFormState] = useState({ username: '', email: '', password: '' })
-
     const [addUser, { error }] = useMutation(ADD_USER)
 
     const handleChange = (event) => {
@@ -30,9 +31,15 @@ const SignupModal = ({ onClose }) => {
         }
     }
 
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+    const toggleLoginModal = () => {
+        setIsLoginModalOpen(!isLoginModalOpen)
+    }
+
 
     return (
         <div id="sign-up-modal" className="modal">
+        {isLoginModalOpen && (<LoginModal onClose={toggleLoginModal} />)}
         <div className="modal-content">
             <span className="close" onClick={onClose}>&times;</span>
             <div className="modal-top">
@@ -75,7 +82,7 @@ const SignupModal = ({ onClose }) => {
                         Sign up
                     </button>
                     {error && <div><p>Sign up failed.</p></div>}
-                    <p>Already have an account? <a href="">Log in!</a></p>
+                    <p>Already have an account? <a onClick={() => toggleLoginModal()}>Log in!</a></p>
                 </form>
             </div>
         </div>

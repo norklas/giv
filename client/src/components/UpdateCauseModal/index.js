@@ -1,14 +1,12 @@
-import { ADD_CAUSE } from '../../utils/mutations';
+import { UPDATE_CAUSE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
-
-import Auth from '../../utils/auth'
 import { capitalizeFirst } from '../../utils/helpers';
 
-const CauseModal = ({ onClose }) => {
+const UpdateCauseModal = ({ onClose }) => {
     const [formState, setFormState] = useState({ title: '', description: '', url: '', location: '', category: '' })
     const { title, description, url, location, category } = formState;
-    const [addCause, { error }] = useMutation(ADD_CAUSE);
+    const [updateCause, { error }] = useMutation(UPDATE_CAUSE);
     const [errorMessage, setErrorMessage] = useState('All fields required');
     const [displayError, setDisplayError] = useState(false);
 
@@ -36,7 +34,7 @@ const CauseModal = ({ onClose }) => {
         } else {
             setDisplayError(false);
             try {
-                const { data } = await addCause ({
+                const { data } = await updateCause ({
                     variables: { ...formState }
                 })
                 window.location.assign('/');
@@ -51,10 +49,9 @@ const CauseModal = ({ onClose }) => {
         <div className="modal-content">
             <span className="close" onClick={onClose}>&times;</span>
             <div className="modal-top">
-                <h3>Create a Cause</h3>
+                <h3>Update a Cause</h3>
             </div>
             <div className="modal-bottom">
-            {Auth.loggedIn() ? (
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="title">Title</label>
                     <input 
@@ -120,18 +117,12 @@ const CauseModal = ({ onClose }) => {
                         <p>{errorMessage}</p>
                     )}
                 
-                    <button type="submit" id="submit-btn" className="submit-btn">Post</button>
+                    <button type="submit" id="submit-btn" className="submit-btn">Update</button>
                 </form>
-                ) : (
-
-                 <div>
-                    You must be logged in to create a cause.
-                </div>
-            )}
             </div>
         </div>
       </div>
   );
 };
 
-export default CauseModal;
+export default UpdateCauseModal;

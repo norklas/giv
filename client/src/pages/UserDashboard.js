@@ -1,22 +1,27 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faMessage, faPenToSquare, faHeart, faStar, faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 
 import PointsModal from "../components/PointsModal";
-
-import icon1 from "../assets/DashboardIcon-1.svg";
-import icon2 from "../assets/DashboardIcon-2.svg";
-import icon3 from "../assets/DashboardIcon-3.svg";
+import UpdateCauseModal from "../components/UpdateCauseModal";
 
 const UserDashboard = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
+  console.log(userData)
+
+  const userCauses = userData.causes
+  console.log(userCauses)
+
+  const [isUpdateCauseModalOpen, setIsUpdateCauseModalOpen] = useState(false)
+    const toggleUpdateCauseModal = () => {
+        setIsUpdateCauseModalOpen(!isUpdateCauseModalOpen)
+    }
 
   const [points, setPoints] = useState(0);
-
   const [isPointsModalOpen, setIsPointsModalOpen] = useState(false);
   const togglePointsModal = () => {
     setIsPointsModalOpen(!isPointsModalOpen);
@@ -26,28 +31,28 @@ const UserDashboard = () => {
     setPoints(childData);
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div class="dashboard">
-      {isPointsModalOpen && (
-        <PointsModal
-          pointsModalToUserDash={pointsModalToUserDash}
-          onClose={togglePointsModal}
-        />
-      )}
+      {isPointsModalOpen && (<PointsModal pointsModalToUserDash={pointsModalToUserDash} onClose={togglePointsModal} />)}
+      {isUpdateCauseModalOpen && (<UpdateCauseModal onClose={toggleUpdateCauseModal} />)}
+
       <h2>{userData.username}'s Dashboard</h2>
 
       <div class="dashboard-top">
         <div class="small-card">
-          <div class="icon-outer left">
-            {/* <img className="dashboard-icon" src={icon1} alt="avatar" /> */}
-            <FontAwesomeIcon icon={faStar} className="icon" />
+          <div class="left">
+            <FontAwesomeIcon icon={faStar} className="dashboard-icon-1" />
           </div>
 
           <div class="right">
             {data ? (
               <h3>{userData.points + points}</h3>
             ) : (
-              <div>Loading....</div>
+              <h3>0</h3>
             )}
             <p>Total Points</p>
           </div>
@@ -55,19 +60,18 @@ const UserDashboard = () => {
 
         <div class="small-card">
           <div class="left">
-            <img className="dashboard-icon" src={icon2} alt="avatar" />
+            <FontAwesomeIcon icon={faHeart} className="dashboard-icon-2" />
           </div>
 
           <div class="right">
-            <h3>2</h3>{" "}
-            {/* this will be userData.causes.length once we get submission on causes done */}
-            <p>Causes Posted</p>
+            <h3>{userData.causes.length}</h3>
+            <p>Causes</p>
           </div>
         </div>
 
         <div class="small-card">
           <div class="left">
-            <img className="dashboard-icon" src={icon3} alt="avatar" />
+            <FontAwesomeIcon icon={faCartShopping} className="dashboard-icon-3" />
           </div>
 
           <div class="right">
@@ -79,29 +83,37 @@ const UserDashboard = () => {
       </div>
 
       <h3>Your causes</h3>
+      {userCauses.map((userCause) => (
       <div class="card">
         <div class="card-top">
-          <button class="create-btn edit">
+        <button class="delete-btn edit">
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+          <button class="edit-btn edit" onClick={() => toggleUpdateCauseModal()}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
-          <h3>Sample cause</h3>
+          <h3>{userCause.title}</h3>
           <p class="date">June 16, 2022</p>
-          <p>Sample cause body</p>
+          <p>{userCause.description}</p>
+          <div className="author">{userCause.location}</div>
+          <button class="web-btn">Visit website</button>
         </div>
         <div class="card-bottom">
-          <button class="category-btn disaster-relief">category</button>
+          <button class="category-btn disaster-relief">{userCause.category}</button>
+          <div className="point-count">
+            <FontAwesomeIcon icon={faStar} className='icon'/>
+            <div className="bottom-text">{userCause.points} Points</div>
+            </div>
+            <div className="comment-count">
+            <FontAwesomeIcon icon={faMessage} className='icon' />
+            <div className="bottom-text">{userCause.comments.length} Comments</div>
+            </div>
         </div>
       </div>
-    </div>
+      ))}
+      </div>
+    
   );
 };
 
 export default UserDashboard;
-
-// what is the difference between this and User Dashboard?
-
-// all causes associated with user
-// ability to edit cause
-// point totals
-// username
-// button for shop function/component
