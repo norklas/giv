@@ -31,6 +31,10 @@ const UserDashboard = () => {
     setPoints(childData);
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div class="dashboard">
       {isPointsModalOpen && (<PointsModal pointsModalToUserDash={pointsModalToUserDash} onClose={togglePointsModal} />)}

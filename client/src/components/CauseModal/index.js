@@ -1,6 +1,8 @@
 import { ADD_CAUSE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 import { useState } from 'react';
+
+import Auth from '../../utils/auth'
 import { capitalizeFirst } from '../../utils/helpers';
 
 const CauseModal = ({ onClose }) => {
@@ -52,6 +54,7 @@ const CauseModal = ({ onClose }) => {
                 <h3>Create a Cause</h3>
             </div>
             <div className="modal-bottom">
+            {Auth.loggedIn() ? (
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="title">Title</label>
                     <input 
@@ -119,6 +122,12 @@ const CauseModal = ({ onClose }) => {
                 
                     <button type="submit" id="submit-btn" className="submit-btn">Post</button>
                 </form>
+                ) : (
+
+                 <div>
+                    You must be logged in to create a cause.
+                </div>
+            )}
             </div>
         </div>
       </div>
