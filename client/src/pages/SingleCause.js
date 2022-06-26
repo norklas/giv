@@ -1,16 +1,54 @@
 import CommentList from "../components/CommentList";
 import { useParams } from 'react-router-dom';
-import { QUERY_CAUSE } from "../utils/queries";
-import { useQuery } from '@apollo/client';
+import { QUERY_CAUSE, QUERY_ME } from "../utils/queries";
+import { ADD_COMMENT } from "../utils/mutations";
+import { useQuery, useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
+import { useState } from 'react';
 
 const SingleCause = () => {
     const { causeId: causeParam } = useParams();
     console.log("causeId: " + causeParam)
-    const { loading, data } = useQuery(QUERY_CAUSE, {
-        variables: { _id: causeParam }
-    });
-    const causeData = data?.cause || {};
-    console.log(causeData);
+    // const { loading, data } = useQuery(QUERY_CAUSE, {
+    //     variables: { $id: causeParam }
+    // });
+    // const causeData = data?.cause || {};
+    // console.log(causeData);
+
+    // useState for new comment
+    const[commentState, setCommentState] = useState({ body: '' })
+    const [addComment, { error } ] = useMutation(ADD_COMMENT);
+
+    // get username of logged in user for comment submit
+    const { loading, data } = useQuery(QUERY_ME);
+    const username = data?.me.username || '';
+    console.log("username: " + username);
+
+    // handle comment change
+    const handleComment = (event) => {
+        setCommentState({ body: event.target.value });
+        console.log(commentState);
+    }
+
+    // submit comment
+    const submitComment = async (event) => {
+        event.preventDefault();
+        if(commentState.body.length) {
+            console.log(commentState.body);
+            try {
+                const { data } = await addComment ({
+                    variables: {
+                        body: commentState.body,
+                        username: username,
+                        causeId: causeParam
+                    } 
+                })
+            } catch (error) {
+                console.log(error);
+            }
+            setCommentState({ body: '' })
+        }
+    }
 
     return (
         <div class="single-cause">
@@ -29,6 +67,24 @@ const SingleCause = () => {
         </div>
 
         <div class="card">
+            {Auth.loggedIn() && (
+                <form id='comment-form'>
+                    <label htmlFor='add-comment'>Add Comment</label>
+                    <input
+                        className='input'
+                        type='text'
+                        name='add-comment'
+                        value={commentState.body}
+                        onChange={handleComment}
+                    />
+                    <button
+                        type='submit'
+                        onClick={submitComment}
+                    >
+                        Submit Comment
+                    </button>
+                </form>
+            )}
             <div class="comment-card-top">
                 <h3>5 Comments</h3>
             </div>
