@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMessage, faStar } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 
 function SingleCause(props) {
@@ -11,18 +12,21 @@ function SingleCause(props) {
           <h3>{cause.title}</h3>
           <p className="date">June 16, 2022</p>
           <p>{cause.description}</p>
-          <div className="author">Erica Trenholm</div>
+          <div className="author">{cause.location}</div>
       </div>
       <div className="card-bottom">
           <button className="category-btn disaster-relief">{cause.category}</button>
             <div className="point-count">
             <FontAwesomeIcon icon={faStar} className='icon'/>
-            <div className="bottom-text">7391 Points</div>
+            <div className="bottom-text">{cause.points} Points</div>
             </div>
             <div className="comment-count">
             <FontAwesomeIcon icon={faMessage} className='icon' />
-            <div className="bottom-text">10 Comments</div>
+            <div className="bottom-text">{cause.comments.length} Comments</div>
             </div>
+            <Link to={`/cause/${cause._id}`}>
+              To learn more, click here!
+            </Link>
       </div>
     </div>
   )

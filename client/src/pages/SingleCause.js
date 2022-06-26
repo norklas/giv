@@ -1,7 +1,16 @@
 import CommentList from "../components/CommentList";
+import { useParams } from 'react-router-dom';
+import { QUERY_CAUSE } from "../utils/queries";
+import { useQuery } from '@apollo/client';
 
 const SingleCause = () => {
-
+    const { causeId: causeParam } = useParams();
+    console.log("causeId: " + causeParam)
+    const { loading, data } = useQuery(QUERY_CAUSE, {
+        variables: { _id: causeParam }
+    });
+    const causeData = data?.cause || {};
+    console.log(causeData);
 
     return (
         <div class="single-cause">

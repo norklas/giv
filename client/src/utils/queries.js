@@ -118,9 +118,8 @@ export const QUERY_USER_BASIC = gql`
 `;
 
 export const QUERY_CAUSE = gql`
-  query cause($id: ID!) {
-    cause(_id: $id) {
-      cause {
+    query cause($id: ID!) {
+      cause(_id: $id) {
         _id
         title
         description
@@ -142,7 +141,6 @@ export const QUERY_CAUSE = gql`
         }
       }
     }
-  }
 `;
 
 export const QUERY_CAUSES = gql`
