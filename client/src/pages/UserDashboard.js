@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faHeart, faStar, faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 
 import PointsModal from "../components/PointsModal";
 
-import icon1 from "../assets/DashboardIcon-1.svg";
-import icon2 from "../assets/DashboardIcon-2.svg";
+
 import icon3 from "../assets/DashboardIcon-3.svg";
 
 const UserDashboard = () => {
@@ -38,16 +37,15 @@ const UserDashboard = () => {
 
       <div class="dashboard-top">
         <div class="small-card">
-          <div class="icon-outer left">
-            {/* <img className="dashboard-icon" src={icon1} alt="avatar" /> */}
-            <FontAwesomeIcon icon={faStar} className="icon" />
+          <div class="left">
+            <FontAwesomeIcon icon={faStar} className="dashboard-icon-1" />
           </div>
 
           <div class="right">
             {data ? (
               <h3>{userData.points + points}</h3>
             ) : (
-              <div>Loading....</div>
+              <h3>0</h3>
             )}
             <p>Total Points</p>
           </div>
@@ -55,7 +53,7 @@ const UserDashboard = () => {
 
         <div class="small-card">
           <div class="left">
-            <img className="dashboard-icon" src={icon2} alt="avatar" />
+            <FontAwesomeIcon icon={faHeart} className="dashboard-icon-2" />
           </div>
 
           <div class="right">
@@ -67,7 +65,7 @@ const UserDashboard = () => {
 
         <div class="small-card">
           <div class="left">
-            <img className="dashboard-icon" src={icon3} alt="avatar" />
+            <FontAwesomeIcon icon={faCartShopping} className="dashboard-icon-3" />
           </div>
 
           <div class="right">
@@ -81,7 +79,10 @@ const UserDashboard = () => {
       <h3>Your causes</h3>
       <div class="card">
         <div class="card-top">
-          <button class="create-btn edit">
+        <button class="delete-btn edit">
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+          <button class="edit-btn edit">
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
           <h3>Sample cause</h3>
@@ -97,11 +98,3 @@ const UserDashboard = () => {
 };
 
 export default UserDashboard;
-
-// what is the difference between this and User Dashboard?
-
-// all causes associated with user
-// ability to edit cause
-// point totals
-// username
-// button for shop function/component

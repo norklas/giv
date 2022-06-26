@@ -189,19 +189,9 @@ a img {
   font-size: 14px;
   font-family: 'proxima-nova', sans-serif;
   background-color: #ffe7c6;
-  border: solid 1px #e7941e;
+  border: solid 1px #FEA82F;
 
 }
-
-/* .disaster-relief {
-  background-color: #ffe7c6;
-  border: solid 1px #e7941e;
-}
-
-.cancer-research {
-  background-color: rgb(201, 120, 120);
-  border: solid 1px maroon;
-} */
 
 .point-count,
 .comment-count {
@@ -235,14 +225,19 @@ a img {
   width: 150px;
 }
 
+.buy-btn {
+  margin: 0px;
+}
+
 .submit-btn,
 .web-btn,
 .create-btn,
-.buy-btn {
+.edit-btn,
+.buy-btn,
+.delete-btn {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 15px;
-  background-color: #2ec4b6;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
@@ -251,11 +246,32 @@ a img {
   border: none;
 }
 
+.submit-btn,
+.web-btn,
+.edit-btn,
+.buy-btn {
+  background-color: #2ec4b6;
+}
+
+.delete-btn {
+  background-color: #143642;
+}
+
+.edit {
+  float: right;
+  margin: 0px 0px 0px 10px;
+}
+
 .submit-btn:hover,
 .web-btn:hover,
-.edit:hover,
-.buy-btn:hover {
+.buy-btn:hover,
+.edit-btn:hover {
   background-color: #21a89b;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #0d2730;
   cursor: pointer;
 }
 
@@ -331,8 +347,30 @@ textarea {
   font-size: 1.5rem;
 }
 
-.dashboard-icon {
-  width: 90px;
+.dashboard-icon-1,
+.dashboard-icon-2,
+.dashboard-icon-3 {
+	padding: 28px;
+	font-size: 20px;
+	border-radius: 50%;
+}
+
+.dashboard-icon-1 {
+	color: #FEA82F;
+	background-color: #ffe7c6;
+	border: solid #FEA82F 1px;
+}
+
+.dashboard-icon-2 {
+	color: #2ec4b6;
+	background-color: #c7f7f3;
+	border: solid #2ec4b6 1px;
+}
+
+.dashboard-icon-3 {
+	color: #143642;
+	background-color: #a9d0df;
+	border: solid #143642 1px;
 }
 
 .left {
@@ -344,8 +382,9 @@ textarea {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  row-gap: 10px;
-  column-gap: 10px;
+  row-gap: 20px;
+  column-gap: 20px;
+  padding: 10px;
 }
 
 .points-container > button {
@@ -358,6 +397,7 @@ textarea {
   padding: 10px 15px;
   color: white;
   border: none;
+  cursor: pointer;
 }
 
 .points-container > button:hover {
@@ -414,11 +454,6 @@ footer {
   padding-top: 10px;
   padding-right: 30px;
   font-weight: bold;
-}
-
-.edit {
-  float: right;
-  margin: 0px;
 }
 
 .close:hover,
