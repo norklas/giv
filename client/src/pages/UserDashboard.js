@@ -15,14 +15,25 @@ const UserDashboard = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
 
+  const [points, setPoints] = useState(0);
+
   const [isPointsModalOpen, setIsPointsModalOpen] = useState(false);
   const togglePointsModal = () => {
     setIsPointsModalOpen(!isPointsModalOpen);
   };
 
+  const pointsModalToUserDash = (childData) => {
+    setPoints(childData);
+  };
+
   return (
     <div class="dashboard">
-      {isPointsModalOpen && <PointsModal onClose={togglePointsModal} />}
+      {isPointsModalOpen && (
+        <PointsModal
+          pointsModalToUserDash={pointsModalToUserDash}
+          onClose={togglePointsModal}
+        />
+      )}
       <h2>{userData.username}'s Dashboard</h2>
 
       <div class="dashboard-top">
@@ -33,7 +44,11 @@ const UserDashboard = () => {
           </div>
 
           <div class="right">
-            <h3>{userData.points}</h3>
+            {data ? (
+              <h3>{userData.points + points}</h3>
+            ) : (
+              <div>Loading....</div>
+            )}
             <p>Total Points</p>
           </div>
         </div>
