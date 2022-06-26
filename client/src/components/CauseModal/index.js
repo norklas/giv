@@ -121,8 +121,9 @@ const CauseModal = ({ onClose }) => {
                 </form>
             </div>
         </div>
+      </div>
     </div>
-    )
-}
+  );
+};
 
 export default CauseModal;
