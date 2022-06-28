@@ -1,5 +1,4 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { useState, useRef, useEffect } from "react";
 import { ADD_USER_POINTS } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
 
