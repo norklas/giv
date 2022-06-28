@@ -172,11 +172,32 @@ a img {
   padding: 30px;
 }
 
-.medal {
+.platmedal {
   width: 30px;
   position: absolute;
   top: 30px;
   right: 30px;
+}
+
+.goldmedal {
+  width: 30px;
+  position: absolute;
+  top: 30px;
+  right: 70px;
+}
+
+.silvermedal {
+  width: 30px;
+  position: absolute;
+  top: 30px;
+  right: 110px;
+}
+
+.bronzemedal {
+  width: 30px;
+  position: absolute;
+  top: 30px;
+  right: 150px;
 }
 
 .date {

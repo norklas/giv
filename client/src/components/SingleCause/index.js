@@ -10,6 +10,22 @@ import bronzemedal from "../../assets/medal-03.svg";
 
 const SingleCause = (props) => {
   const { cause } = props;
+  let bronzes = 0
+  let silvers = 0
+  let golds = 0
+  let platinums = 0
+  const medalArr = cause.medals
+  for(let i = 0; i < medalArr.length; i ++){
+    if(medalArr[i].body === 'Bronze'){
+      bronzes ++
+    }if(medalArr[i].body === 'Silver'){
+      silvers ++
+    }if(medalArr[i].body === 'Gold'){
+      golds ++
+    }else{platinums++}
+  }
+  console.log(bronzes, silvers, golds, platinums)
+
 
   const [donateModalOpen, setDonateModalOpen] = useState(false);
   const [donationNumber, setDonationNumber] = useState(0);
@@ -34,7 +50,43 @@ const SingleCause = (props) => {
         />
       )}
       <div className="card-top">
-        <img src={goldmedal} className="medal" alt="Gold Medal" />
+        
+        {(() => {
+        if(bronzes){
+          return(
+            <div>
+         <img src={bronzemedal} className="bronzemedal" alt="Gold Medal" />
+        <p>Bronze: {bronzes}</p>
+        </div>)
+          }  
+        })()}
+        {(() => {
+        if(silvers){
+          return(
+            <div>
+         <img src={silvermedal} className="silvermedal" alt="Silver Medal" />
+        <p>Silver: {silvers}</p>
+        </div>)
+          }  
+        })()}
+        {(() => {
+        if(golds){
+          return(
+            <div>
+         <img src={goldmedal} className="goldmedal" alt="Gold Medal" />
+        <p>Gold: {golds}</p>
+        </div>)
+          }  
+        })()}
+        {(() => {
+        if(platinums){
+          return(
+            <div>
+         <img src={silvermedal} className="platmedal" alt="Platinum Medal" />
+        <p>Platinum: {platinums}</p>
+        </div>)
+          }  
+        })()}
         <h3>{cause.title}</h3>
         <p className="date">June 16, 2022</p>
         <p>
