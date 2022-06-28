@@ -21,6 +21,7 @@ const UserDashboard = () => {
         setIsUpdateCauseModalOpen(!isUpdateCauseModalOpen)
     }
 
+  const [currentCauseId, setCurrentCauseId] = useState("")
   const [points, setPoints] = useState(0);
   const [isPointsModalOpen, setIsPointsModalOpen] = useState(false);
   const togglePointsModal = () => {
@@ -38,7 +39,7 @@ const UserDashboard = () => {
   return (
     <div class="dashboard">
       {isPointsModalOpen && (<PointsModal pointsModalToUserDash={pointsModalToUserDash} onClose={togglePointsModal} />)}
-      {isUpdateCauseModalOpen && (<UpdateCauseModal onClose={toggleUpdateCauseModal} />)}
+      {isUpdateCauseModalOpen && (<UpdateCauseModal onClose={toggleUpdateCauseModal} causeId={currentCauseId}/>)}
 
       <h2>{userData.username}'s Dashboard</h2>
 
@@ -89,7 +90,7 @@ const UserDashboard = () => {
         <button class="delete-btn edit">
             <FontAwesomeIcon icon={faTrash} />
           </button>
-          <button class="edit-btn edit" onClick={() => toggleUpdateCauseModal()}>
+          <button class="edit-btn edit" onClick={() => {setCurrentCauseId(userCause._id); toggleUpdateCauseModal();}}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
           <h3>{userCause.title}</h3>
