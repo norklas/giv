@@ -11,6 +11,7 @@ import bronzemedal from "../../assets/medal-03.svg";
 
 const SingleCause = (props) => {
   const { cause, loading } = props;
+  console.log(cause)
   let bronzes = 0;
   let silvers = 0;
   let golds = 0;
@@ -57,6 +58,7 @@ const SingleCause = (props) => {
         />
       )}
       <div className="card-top">
+        <div className="medals">
         {(() => {
           if (bronzes) {
             return (
@@ -109,8 +111,10 @@ const SingleCause = (props) => {
             );
           }
         })()}
+        </div>
+
         <h3>{cause.title}</h3>
-        <p className="date">June 16, 2022</p>
+        <p className="date">Posted June 16, 2022</p>
         <p>
           {cause.description}{" "}
           <Link to={`/cause/${cause._id}`}>Learn more.</Link>
@@ -131,11 +135,12 @@ const SingleCause = (props) => {
           <div className="bottom-text">{cause.points} Points</div>
         </div>
         <div className="comment-count">
-          <FontAwesomeIcon
-            icon={faMessage}
-            className="icon"
-            onClick={() => toggleCommentList()}
-          />
+          <Link to={`/cause/${cause._id}`}>
+            <FontAwesomeIcon
+              icon={faMessage}
+              className="icon"
+            />
+            </Link>
           <div className="bottom-text">{cause.comments.length} Comments</div>
         </div>
       </div>
