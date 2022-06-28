@@ -1,23 +1,5 @@
 
 const CommentList = ({ comments }) => {
-    const sampleComments = [
-        {
-            username: "testuser",
-            body: "Morbi eleifend nibh eu.",
-            createdAt: "June 23, 2022",
-        },
-        {
-            username: "testuser2",
-            body: "Nulla eget porta erat.",
-            createdAt: "June 23, 2022",
-        },
-        {
-            username: "testuser3",
-            body: "Sed arcu nibh, dapibus sit amet imperdiet a, sollicitudin ac risus.",
-            createdAt: "June 23, 2022",
-        }
-    ]
-
     return (
         <div>
             {comments.map((comment) => (
