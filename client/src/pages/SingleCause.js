@@ -8,6 +8,7 @@ import { ADD_COMMENT } from "../utils/mutations";
 import { useQuery, useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { useState } from 'react';
+import { pluralize } from '../utils/helpers'
 
 const SingleCause = () => {
     const { causeId: causeParam } = useParams();
@@ -51,6 +52,10 @@ const SingleCause = () => {
         }
     }
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div class="single-cause">
         <div class="card">
@@ -90,10 +95,10 @@ const SingleCause = () => {
                 </form>
             )}
             <div class="comment-card-top">
-                <h3>5 Comments</h3>
+                <h3>{causeData.comments.length} {pluralize('Comment', causeData.comments.length)}</h3>
             </div>
             <div class="comment-card-bottom">
-                <CommentList />
+                <CommentList comments = {causeData.comments}/>
             </div>
         </div>
     </div>
