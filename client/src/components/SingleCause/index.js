@@ -25,7 +25,8 @@ const SingleCause = (props) => {
     }
     if (medalArr[i].body === "Gold") {
       golds++;
-    } else {
+    }
+    if (medalArr[i].body === "Platinum") {
       platinums++;
     }
   }

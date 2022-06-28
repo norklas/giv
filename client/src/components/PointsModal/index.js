@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { ADD_USER_POINTS } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
 
-const PointsModal = ({ onClose, pointsModalToUserDash }) => {
+const PointsModal = ({ onClose }) => {
   const { data } = useQuery(QUERY_ME);
 
   const [addUserPoints, { error }] = useMutation(ADD_USER_POINTS);
