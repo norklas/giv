@@ -3,10 +3,13 @@ import { useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { capitalizeFirst } from '../../utils/helpers';
 
-const UpdateCauseModal = ({ onClose }) => {
+const UpdateCauseModal = (props) => {
+    const onClose = props.onClose
+    const causeId = props.causeId
+    console.log(causeId)
     const [formState, setFormState] = useState({ title: '', description: '', url: '', location: '', category: '' })
     const { title, description, url, location, category } = formState;
-    const [updateCause, { error }] = useMutation(UPDATE_CAUSE);
+    const [updateCause, { loading, error }] = useMutation(UPDATE_CAUSE);
     const [errorMessage, setErrorMessage] = useState('All fields required');
     const [displayError, setDisplayError] = useState(false);
 
@@ -34,10 +37,11 @@ const UpdateCauseModal = ({ onClose }) => {
         } else {
             setDisplayError(false);
             try {
-                const { data } = await updateCause ({
-                    variables: { ...formState }
+                console.log(formState)
+                updateCause ({
+                    variables: { causeId: causeId, ...formState }
                 })
-                window.location.assign('/');
+                onClose()
             } catch (error) {
                 console.log(error);
             }

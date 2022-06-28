@@ -2,14 +2,15 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMessage, faPenToSquare, faHeart, faStar, faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+import { DELETE_CAUSE } from "../utils/mutations";
 import { QUERY_ME } from "../utils/queries";
 
 import PointsModal from "../components/PointsModal";
 import UpdateCauseModal from "../components/UpdateCauseModal";
 
 const UserDashboard = () => {
-  const { loading, data } = useQuery(QUERY_ME);
+  const { loading, data, refetch } = useQuery(QUERY_ME);
   const userData = data?.me || {};
   console.log(userData)
 
@@ -21,6 +22,8 @@ const UserDashboard = () => {
         setIsUpdateCauseModalOpen(!isUpdateCauseModalOpen)
     }
 
+  const [deleteCause, { error }] = useMutation(DELETE_CAUSE);
+  const [currentCauseId, setCurrentCauseId] = useState("")
   const [points, setPoints] = useState(0);
   const [isPointsModalOpen, setIsPointsModalOpen] = useState(false);
   const togglePointsModal = () => {
@@ -38,7 +41,7 @@ const UserDashboard = () => {
   return (
     <div class="dashboard">
       {isPointsModalOpen && (<PointsModal pointsModalToUserDash={pointsModalToUserDash} onClose={togglePointsModal} />)}
-      {isUpdateCauseModalOpen && (<UpdateCauseModal onClose={toggleUpdateCauseModal} />)}
+      {isUpdateCauseModalOpen && (<UpdateCauseModal onClose={toggleUpdateCauseModal} causeId={currentCauseId}/>)}
 
       <h2>{userData.username}'s Dashboard</h2>
 
@@ -86,10 +89,10 @@ const UserDashboard = () => {
       {userCauses.map((userCause) => (
       <div class="card">
         <div class="card-top">
-        <button class="delete-btn edit">
+        <button class="delete-btn edit" onClick={() => {deleteCause({variables: {causeId: userCause._id}}); refetch();}}>
             <FontAwesomeIcon icon={faTrash} />
           </button>
-          <button class="edit-btn edit" onClick={() => toggleUpdateCauseModal()}>
+          <button class="edit-btn edit" onClick={() => {setCurrentCauseId(userCause._id); toggleUpdateCauseModal();}}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
           <h3>{userCause.title}</h3>
