@@ -1,5 +1,5 @@
 
-const CommentList = () => {
+const CommentList = ({ comments }) => {
     const sampleComments = [
         {
             username: "testuser",
@@ -20,7 +20,7 @@ const CommentList = () => {
 
     return (
         <div>
-            {sampleComments.map((comment) => (
+            {comments.map((comment) => (
                 <div class="single-comment">
                     <h4>{comment.username}</h4>
                     <p class="date">{comment.createdAt}</p>
