@@ -91,7 +91,7 @@ const SingleCause = () => {
               value={commentState.body}
               onChange={handleComment}
             />
-            <button type="submit" onClick={submitComment}>
+            <button type="submit" className="comment-btn" onClick={submitComment}>
               Submit Comment
             </button>
           </form>

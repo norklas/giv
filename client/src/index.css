@@ -21,6 +21,10 @@ button {
   font-family: "proxima-nova", sans-serif;
 }
 
+button a {
+  color: white;
+}
+
 h1 {
   font-size: 42px;
   padding-bottom: 30px;
