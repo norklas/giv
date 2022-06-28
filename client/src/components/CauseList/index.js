@@ -1,7 +1,6 @@
 import SingleCause from "../SingleCause";
 import { useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
-import { QUERY_CAUSES, QUERY_CAUSE } from "../../utils/queries";
+import { QUERY_CAUSES } from "../../utils/queries";
 
 const CauseList = () => {
   const { data: causesData, loading: causesLoading } = useQuery(QUERY_CAUSES);
@@ -12,8 +11,11 @@ const CauseList = () => {
     <div>
       {causesDataObj.map((cause) => (
         <div>
-          <SingleCause cause={cause} key={cause.title} loading={causesLoading}/>
-          <button></button>
+          <SingleCause
+            cause={cause}
+            key={cause.title}
+            loading={causesLoading}
+          />
         </div>
       ))}
     </div>
