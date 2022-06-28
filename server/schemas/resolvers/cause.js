@@ -169,6 +169,13 @@ module.exports = {
       }
     },
     deleteCause: async (parent, args, context) => {
+      const cause = await Cause.findById(args.causeId)
+      const count = cause.points
+      await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $inc: { points: count } },
+          { new: true }
+        );
       const deletedCause = await Cause.findByIdAndDelete(args.causeId);
       return deletedCause;
     },
