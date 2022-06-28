@@ -6,26 +6,7 @@ import { QUERY_ME } from "../../utils/queries";
 const PointsModal = ({ onClose, pointsModalToUserDash }) => {
   const { data } = useQuery(QUERY_ME);
 
-  const [purchaseNumber, setPurchaseNumber] = useState(0);
-
-  const [addUserPoints, { error }] = useMutation(ADD_USER_POINTS, {
-    update(cache, { data: { addUserPoints } }) {
-      // could potentially not exist yet, so wrap in a try/catch
-      try {
-        // update me array's cache
-        const { me } = cache.readQuery({ query: QUERY_ME });
-        console.log(me);
-        cache.writeQuery({
-          query: QUERY_ME,
-          data: {
-            me: { points: [...me, addUserPoints] },
-          },
-        });
-      } catch (e) {
-        console.warn("First point insertion by user!");
-      }
-    },
-  });
+  const [addUserPoints, { error }] = useMutation(ADD_USER_POINTS);
 
   return (
     <div id="points-modal" class="modal">
@@ -40,90 +21,65 @@ const PointsModal = ({ onClose, pointsModalToUserDash }) => {
           <div class="points-container">
             <button
               onClick={() => {
-                setPurchaseNumber(
-                  (prevPurchaseNumber) => prevPurchaseNumber + 100
-                );
                 addUserPoints({
                   variables: {
                     userId: data.me._id,
                     purchaseNumber: 100,
                   },
+                  refetchQueries: [{ query: QUERY_ME }, "me"],
                 });
-                pointsModalToUserDash(
-                  (prevPurchaseNumber) => prevPurchaseNumber + 100
-                );
               }}
             >
               100 Points
             </button>
             <button
               onClick={() => {
-                setPurchaseNumber(
-                  (prevPurchaseNumber) => prevPurchaseNumber + 200
-                );
                 addUserPoints({
                   variables: {
                     userId: data.me._id,
                     purchaseNumber: 200,
                   },
+                  refetchQueries: [{ query: QUERY_ME }, "me"],
                 });
-                pointsModalToUserDash(
-                  (prevPurchaseNumber) => prevPurchaseNumber + 200
-                );
               }}
             >
               200 Points
             </button>
             <button
               onClick={() => {
-                setPurchaseNumber(
-                  (prevPurchaseNumber) => prevPurchaseNumber + 300
-                );
                 addUserPoints({
                   variables: {
                     userId: data.me._id,
                     purchaseNumber: 300,
                   },
+                  refetchQueries: [{ query: QUERY_ME }, "me"],
                 });
-                pointsModalToUserDash(
-                  (prevPurchaseNumber) => prevPurchaseNumber + 300
-                );
               }}
             >
               300 Points
             </button>
             <button
               onClick={() => {
-                setPurchaseNumber(
-                  (prevPurchaseNumber) => prevPurchaseNumber + 400
-                );
                 addUserPoints({
                   variables: {
                     userId: data.me._id,
                     purchaseNumber: 400,
                   },
+                  refetchQueries: [{ query: QUERY_ME }, "me"],
                 });
-                pointsModalToUserDash(
-                  (prevPurchaseNumber) => prevPurchaseNumber + 400
-                );
               }}
             >
               400 Points
             </button>
             <button
               onClick={() => {
-                setPurchaseNumber(
-                  (prevPurchaseNumber) => prevPurchaseNumber + 500
-                );
                 addUserPoints({
                   variables: {
                     userId: data.me._id,
                     purchaseNumber: 500,
                   },
+                  refetchQueries: [{ query: QUERY_ME }, "me"],
                 });
-                pointsModalToUserDash(
-                  (prevPurchaseNumber) => prevPurchaseNumber + 500
-                );
               }}
             >
               500 Points
