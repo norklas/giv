@@ -8,18 +8,11 @@ const CauseList = () => {
   const causesDataObj = causesData?.causes || [];
   console.log(causesDataObj);
 
-  const { loading, data } = useQuery(QUERY_CAUSE, {
-    variables: { id: "62b8aadaf6f0f4b2212cdab8" },
-  });
-  const causeData = data?.cause || {};
-  console.log(causeData);
-  console.log(causeData.title);
-
   return (
     <div>
       {causesDataObj.map((cause) => (
         <div>
-          <SingleCause cause={cause} key={cause.title} />
+          <SingleCause cause={cause} key={cause.title} loading={causesLoading}/>
           <button></button>
         </div>
       ))}
