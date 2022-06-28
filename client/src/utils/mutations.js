@@ -93,30 +93,17 @@ export const UPDATE_USER = gql`
 `;
 
 export const UPDATE_CAUSE = gql`
-  mutation Mutation(
-    $causeId: ID!
-    $title: String
-    $description: String
-    $url: String
-    $location: String
-    $category: String
-  ) {
-    updateCause(
-      causeId: $causeId
-      title: $title
-      description: $description
-      url: $url
-      location: $location
-      category: $category
-    ) {
-      _id
-      title
-      description
-      url
-      location
-      category
-    }
+mutation UpdateCause($causeId: ID!, $title: String, $description: String, $url: String, $location: String, $category: String) {
+  updateCause(causeId: $causeId, title: $title, description: $description, url: $url, location: $location, category: $category) {
+    title
+    _id
+    description
+    url
+    location
+    category
+    createdAt
   }
+}
 `;
 
 export const UPDATE_COMMENT = gql`
