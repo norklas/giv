@@ -168,5 +168,88 @@ module.exports = {
         throw new UserInputError("Cause not found");
       }
     },
+    deleteCause: async (parent, args, context) => {
+      const deletedCause = await Cause.findByIdAndDelete(args.causeId);
+      return deletedCause;
+    },
+    deleteComment: async (parent, { causeId, commentId }, context) => {
+      const cause = await Cause.findById(causeId);
+      if (cause) {
+        const commentIndex = cause.comments.findIndex(
+          (i) => i.id === commentId
+        );
+        if (commentIndex === -1) {
+          throw new UserInputError("No comment found with this ID!");
+        } else {
+          console.log(commentId, commentIndex);
+          cause.comments.splice(commentIndex, 1);
+          await cause.save();
+        }
+        return cause;
+      }
+    },
+    updateCause: async (parent, args, context) => {
+      if (context.user) {
+        if (args.causeId) {
+          if (args.title) {
+            console.log(args);
+            return await Cause.findByIdAndUpdate(
+              { _id: args.causeId },
+              { title: args.title },
+              { new: true }
+            );
+          }
+          if (args.description) {
+            console.log(args);
+            return await Cause.findByIdAndUpdate(
+              { _id: args.causeId },
+              { description: args.description },
+              { new: true }
+            );
+          }
+          if (args.url) {
+            console.log(args);
+            return await Cause.findByIdAndUpdate(
+              { _id: args.causeId },
+              { url: args.url },
+              { new: true }
+            );
+          }
+          if (args.location) {
+            console.log(args);
+            return await Cause.findByIdAndUpdate(
+              { _id: args.causeId },
+              { location: args.location },
+              { new: true }
+            );
+          }
+          if (args.category) {
+            console.log(args);
+            return await Cause.findByIdAndUpdate(
+              { _id: args.causeId },
+              { category: args.category },
+              { new: true }
+            );
+          }
+        }
+        throw new UserInputError("No cause found with this ID!");
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    updateComment: async (parent, args, context) => {
+      const cause = await Cause.findById(args.causeId);
+      if (cause) {
+        const commentIndex = cause.comments.findIndex(
+          (i) => i.id === args.commentId
+        );
+        if (commentIndex === -1) {
+          throw new UserInputError("No comment found with this ID!");
+        } else {
+          cause.comments[commentIndex].body = args.body;
+          await cause.save();
+        }
+        return cause;
+      }
+    },
   },
 };

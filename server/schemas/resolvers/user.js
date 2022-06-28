@@ -1,6 +1,7 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User } = require("../../models");
 const { signToken } = require("../../utils/auth");
+const bcrypt = require("bcrypt");
 
 module.exports = {
   Query: {
@@ -61,6 +62,41 @@ module.exports = {
         return count;
       }
       
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    deleteUser: async (parent, args, context) => {
+      const deletedUser = await User.findByIdAndDelete(args.userId);
+      return deletedUser;
+    },
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        if (args.username) {
+          console.log(args);
+          return await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { username: args.username },
+            { new: true }
+          );
+        }
+        if (args.password) {
+          const saltRounds = 12;
+          const hash = await bcrypt.hash(args.password, saltRounds);
+          console.log(args);
+          return await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { password: hash },
+            { new: true }
+          );
+        }
+        if (args.email) {
+          console.log(args);
+          return await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { email: args.email },
+            { new: true }
+          );
+        }
+      }
       throw new AuthenticationError("You need to be logged in!");
     },
   },
