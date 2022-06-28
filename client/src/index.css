@@ -21,6 +21,10 @@ button {
   font-family: "proxima-nova", sans-serif;
 }
 
+button a {
+  color: white;
+}
+
 h1 {
   font-size: 42px;
   padding-bottom: 30px;
@@ -172,36 +176,44 @@ a img {
   padding: 30px;
 }
 
+/* MEDALS */
+
+.medals {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .platmedal {
   width: 30px;
-  position: absolute;
+  /* position: absolute; */
   top: 30px;
   right: 30px;
 }
 
 .goldmedal {
   width: 30px;
-  position: absolute;
+  /* position: absolute; */
   top: 30px;
   right: 70px;
 }
 
 .silvermedal {
   width: 30px;
-  position: absolute;
+  /* position: absolute; */
   top: 30px;
   right: 110px;
 }
 
 .bronzemedal {
   width: 30px;
-  position: absolute;
+  /* position: absolute; */
   top: 30px;
   right: 150px;
 }
 
 .date {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
   color: gray;
   padding-top: 10px;
 }
@@ -299,6 +311,7 @@ a img {
 }
 
 .submit-btn:hover,
+.comment-btn:hover,
 .web-btn:hover,
 .buy-btn:hover,
 .edit-btn:hover {
