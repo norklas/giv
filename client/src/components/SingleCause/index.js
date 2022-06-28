@@ -3,12 +3,14 @@ import { faMessage, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonateModal from "../DonateModal";
+import CommentList from '../CommentList';
 
 import goldmedal from "../../assets/medal-01.svg";
 import silvermedal from "../../assets/medal-02.svg";
 import bronzemedal from "../../assets/medal-03.svg";
 
 const SingleCause = (props) => {
+
   const { cause } = props;
   let bronzes = 0
   let silvers = 0
@@ -38,6 +40,15 @@ const SingleCause = (props) => {
     console.log(childData);
     setDonationNumber(childData);
   };
+
+  const [commentListOpen, setCommentListOpen] = useState(false);
+  const toggleCommentList = () => {
+    setCommentListOpen(!commentListOpen);
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="card">
@@ -111,10 +122,18 @@ const SingleCause = (props) => {
           </div>
         </div>
         <div className="comment-count">
-          <FontAwesomeIcon icon={faMessage} className="icon" />
+          <FontAwesomeIcon 
+            icon={faMessage}
+            className="icon"
+            onClick={() => toggleCommentList()}
+          />
           <div className="bottom-text">{cause.comments.length} Comments</div>
+          
         </div>
+        
       </div>
+      {commentListOpen && (
+            <CommentList comments = {cause.comments} />)}
     </div>
   );
 };
