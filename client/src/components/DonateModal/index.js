@@ -1,16 +1,13 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
 import { ADD_CAUSE_POINTS } from "../../utils/mutations";
 import { QUERY_ME, QUERY_CAUSE } from "../../utils/queries";
 
-const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
+const DonateModal = ({ onClose, causeId, title }) => {
   const { data } = useQuery(QUERY_CAUSE, {
     variables: {
       id: causeId,
     },
   });
-
-  const [donationNumber, setDonationNumber] = useState(0);
 
   console.log(data);
   console.log(causeId);
@@ -34,8 +31,6 @@ const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
           <div class="points-container">
             <button
               onClick={() => {
-                setDonationNumber(100);
-                donateModalToSingleCause(100);
                 addCausePoints({
                   variables: {
                     causeId: causeId,
@@ -49,8 +44,6 @@ const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
             </button>
             <button
               onClick={() => {
-                setDonationNumber(200);
-                donateModalToSingleCause(200);
                 addCausePoints({
                   variables: {
                     causeId: causeId,
@@ -64,8 +57,6 @@ const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
             </button>
             <button
               onClick={() => {
-                setDonationNumber(300);
-                donateModalToSingleCause(300);
                 addCausePoints({
                   variables: {
                     causeId: causeId,
@@ -79,8 +70,6 @@ const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
             </button>
             <button
               onClick={() => {
-                setDonationNumber(400);
-                donateModalToSingleCause(400);
                 addCausePoints({
                   variables: {
                     causeId: causeId,
@@ -94,8 +83,6 @@ const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
             </button>
             <button
               onClick={() => {
-                setDonationNumber(500);
-                donateModalToSingleCause(500);
                 addCausePoints({
                   variables: {
                     causeId: causeId,
