@@ -33,6 +33,7 @@ const typeDefs = gql`
     medals: [Medal]
     category: String
     points: Int
+    createdAt: String
   }
 
   type Query {
@@ -65,7 +66,14 @@ const typeDefs = gql`
     deleteCause(causeId: ID!): Cause
     deleteComment(causeId: ID!, commentId: ID!): Cause
     updateUser(username: String, email: String, password: String): User
-    updateCause(causeId: ID!, title: String, description: String, url: String, location: String, category: String): Cause
+    updateCause(
+      causeId: ID!
+      title: String
+      description: String
+      url: String
+      location: String
+      category: String
+    ): Cause
     updateComment(causeId: ID!, commentId: ID!, body: String!): Cause
   }
 `;

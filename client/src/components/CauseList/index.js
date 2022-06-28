@@ -1,18 +1,30 @@
-import SingleCause from '../SingleCause';
-import { useQuery } from '@apollo/client';
-import { QUERY_CAUSES } from '../../utils/queries';
+import SingleCause from "../SingleCause";
+import { useQuery } from "@apollo/client";
+import { useParams } from "react-router-dom";
+import { QUERY_CAUSES, QUERY_CAUSE } from "../../utils/queries";
 
-const CauseList = () => {     
-    const { loading, data } = useQuery(QUERY_CAUSES);
-    const causeData = data?.causes || [];
+const CauseList = () => {
+  const { data: causesData, loading: causesLoading } = useQuery(QUERY_CAUSES);
+  const causesDataObj = causesData?.causes || [];
+  console.log(causesDataObj);
 
-    return (
+  const { loading, data } = useQuery(QUERY_CAUSE, {
+    variables: { id: "62b8aadaf6f0f4b2212cdab8" },
+  });
+  const causeData = data?.cause || {};
+  console.log(causeData);
+  console.log(causeData.title);
+
+  return (
+    <div>
+      {causesDataObj.map((cause) => (
         <div>
-            {causeData.map((cause) => ( 
-                <SingleCause cause = {cause} key = {cause.title}/>
-            ))}
+          <SingleCause cause={cause} key={cause.title} />
+          <button></button>
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
 
 export default CauseList;

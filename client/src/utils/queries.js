@@ -78,31 +78,31 @@ export const QUERY_USER = gql`
 export const QUERY_USERS = gql`
   {
     users {
-    _id
-    username
-    email
-    causes {
       _id
-      title
-      description
-      url
-      location
-      comments {
+      username
+      email
+      causes {
         _id
-        body
-        username
-        createdAt
+        title
+        description
+        url
+        location
+        comments {
+          _id
+          body
+          username
+          createdAt
+        }
+        medals {
+          _id
+          body
+          username
+          createdAt
+        }
+        category
+        points
       }
-      medals {
-        _id
-        body
-        username
-        createdAt
-      }
-      category
-      points
     }
-  }
   }
 `;
 
@@ -118,53 +118,55 @@ export const QUERY_USER_BASIC = gql`
 `;
 
 export const QUERY_CAUSE = gql`
-    query cause($id: ID!) {
-      cause(_id: $id) {
+  query cause($id: ID!) {
+    cause(_id: $id) {
+      _id
+      title
+      description
+      url
+      location
+      category
+      points
+      createdAt
+      comments {
         _id
-        title
-        description
-        url
-        location
-        category
-        points
-        comments {
-          _id
-          body
-          createdAt
-          username
-        }
-        medals {
-          _id
-          body
-          username
-          createdAt
-        }
+        body
+        createdAt
+        username
+      }
+      medals {
+        _id
+        body
+        username
+        createdAt
       }
     }
+  }
 `;
 
 export const QUERY_CAUSES = gql`
   {
     causes {
-    _id
-    title
-    description
-    url
-    location
-    category
-    points
-    comments {
       _id
-      body
+      title
+      description
+      url
+      location
+      category
+      points
       createdAt
-      username
+      comments {
+        _id
+        body
+        createdAt
+        username
+      }
+      medals {
+        _id
+        body
+        username
+        createdAt
+      }
     }
-    medals {
-      _id
-      body
-      username
-      createdAt
-    }
-  }
   }
 `;
