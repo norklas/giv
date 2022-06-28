@@ -12,9 +12,15 @@ const SingleCause = (props) => {
   const { cause } = props;
 
   const [donateModalOpen, setDonateModalOpen] = useState(false);
+  const [donationNumber, setDonationNumber] = useState(0);
 
   const toggleDonateModal = () => {
     setDonateModalOpen(!donateModalOpen);
+  };
+
+  const donateModalToSingleCause = (childData) => {
+    console.log(childData);
+    setDonationNumber(childData);
   };
 
   return (
@@ -22,6 +28,7 @@ const SingleCause = (props) => {
       {donateModalOpen && (
         <DonateModal
           onClose={toggleDonateModal}
+          donateModalToSingleCause={donateModalToSingleCause}
           causeId={cause._id}
           title={cause.title}
         />
@@ -47,7 +54,9 @@ const SingleCause = (props) => {
             className="icon"
             onClick={() => toggleDonateModal()}
           />
-          <div className="bottom-text">{cause.points} Points</div>
+          <div className="bottom-text">
+            {cause.points + donationNumber} Points
+          </div>
         </div>
         <div className="comment-count">
           <FontAwesomeIcon icon={faMessage} className="icon" />

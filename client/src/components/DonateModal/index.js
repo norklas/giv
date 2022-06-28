@@ -3,12 +3,14 @@ import { useState } from "react";
 import { ADD_CAUSE_POINTS } from "../../utils/mutations";
 import { QUERY_ME, QUERY_CAUSE } from "../../utils/queries";
 
-const DonateModal = ({ onClose, causeId, title }) => {
+const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
   const { data } = useQuery(QUERY_CAUSE, {
     variables: {
       id: causeId,
     },
   });
+
+  const [donationNumber, setDonationNumber] = useState(0);
 
   console.log(data);
   console.log(causeId);
@@ -18,34 +20,6 @@ const DonateModal = ({ onClose, causeId, title }) => {
   console.log(meData);
 
   const [addCausePoints, { loading, error }] = useMutation(ADD_CAUSE_POINTS);
-
-  // const [addCausePoints, { error, loading }] = useMutation(ADD_CAUSE_POINTS, {
-  //   update(cache, { data: { addCausePoints } }) {
-  //     if (loading) return "Submitting...";
-  //     // could potentially not exist yet, so wrap in a try/catch
-  //     try {
-  //       // update me array's cache
-  //       const me = cache.readQuery({ query: QUERY_ME });
-  //       console.log(me);
-  //       cache.writeQuery({
-  //         query: QUERY_ME,
-  //         data: { me: { ...me, points: [addCausePoints] } },
-  //       });
-  //     } catch (e) {
-  //       console.warn("Blah");
-  //     }
-
-  //     // update thought array's cache
-  //     const { causes } = cache.readQuery({ query: QUERY_CAUSE });
-  //     cache.writeQuery({
-  //       query: QUERY_CAUSE,
-  //       variables: {
-  //         id: causeId,
-  //       },
-  //       data: { causes: [addCausePoints, ...causes] },
-  //     });
-  //   },
-  // });
 
   return (
     <div id="donate-modal" class="modal">
@@ -60,6 +34,8 @@ const DonateModal = ({ onClose, causeId, title }) => {
           <div class="points-container">
             <button
               onClick={() => {
+                setDonationNumber(100);
+                donateModalToSingleCause(100);
                 addCausePoints({
                   variables: {
                     causeId: causeId,
@@ -70,19 +46,63 @@ const DonateModal = ({ onClose, causeId, title }) => {
             >
               100
             </button>
-            <button>200</button>
-            <button>300</button>
-            <button>400</button>
-            <button>500</button>
+            <button
+              onClick={() => {
+                setDonationNumber(200);
+                donateModalToSingleCause(200);
+                addCausePoints({
+                  variables: {
+                    causeId: causeId,
+                    donationNumber: 200,
+                  },
+                });
+              }}
+            >
+              200
+            </button>
+            <button
+              onClick={() => {
+                setDonationNumber(300);
+                donateModalToSingleCause(300);
+                addCausePoints({
+                  variables: {
+                    causeId: causeId,
+                    donationNumber: 300,
+                  },
+                });
+              }}
+            >
+              300
+            </button>
+            <button
+              onClick={() => {
+                setDonationNumber(400);
+                donateModalToSingleCause(400);
+                addCausePoints({
+                  variables: {
+                    causeId: causeId,
+                    donationNumber: 400,
+                  },
+                });
+              }}
+            >
+              400
+            </button>
+            <button
+              onClick={() => {
+                setDonationNumber(500);
+                donateModalToSingleCause(500);
+                addCausePoints({
+                  variables: {
+                    causeId: causeId,
+                    donationNumber: 500,
+                  },
+                });
+              }}
+            >
+              500
+            </button>
           </div>
-          <button
-            type="submit"
-            onClick={() => {
-              onClose();
-            }}
-          >
-            Submit
-          </button>
         </div>
       </div>
     </div>
