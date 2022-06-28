@@ -41,6 +41,7 @@ const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
                     causeId: causeId,
                     donationNumber: 100,
                   },
+                  refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
                 });
               }}
             >
@@ -55,6 +56,7 @@ const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
                     causeId: causeId,
                     donationNumber: 200,
                   },
+                  refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
                 });
               }}
             >
@@ -69,6 +71,7 @@ const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
                     causeId: causeId,
                     donationNumber: 300,
                   },
+                  refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
                 });
               }}
             >
@@ -83,6 +86,7 @@ const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
                     causeId: causeId,
                     donationNumber: 400,
                   },
+                  refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
                 });
               }}
             >
@@ -97,6 +101,7 @@ const DonateModal = ({ onClose, causeId, title, donateModalToSingleCause }) => {
                     causeId: causeId,
                     donationNumber: 500,
                   },
+                  refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
                 });
               }}
             >
