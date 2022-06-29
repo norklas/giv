@@ -513,6 +513,10 @@ footer {
   cursor: pointer;
 }
 
+.center-checkbox-text{
+  text-align: center;
+}
+
 
 /* MOBILE STYLES */
 
