@@ -183,7 +183,7 @@ module.exports = {
       const cause = await Cause.findById(causeId);
       if (cause) {
         const commentIndex = cause.comments.findIndex(
-          (i) => i.id === commentId
+          (i) => i.id === commentId 
         );
         if (commentIndex === -1) {
           throw new UserInputError("No comment found with this ID!");

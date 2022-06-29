@@ -112,7 +112,7 @@ const SingleCause = () => {
           </h3>
         </div>
         <div className="comment-card-bottom">
-          <CommentList comments={causeData.comments} />
+          <CommentList causeData={causeData} contextUser={username} />
         </div>
       </div>
     </div>
