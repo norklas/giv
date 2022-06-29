@@ -44,6 +44,10 @@ a {
   text-decoration: none;
 }
 
+.icon {
+  font-size: 1.5rem;
+}
+
 /* HEADER/NAVIGATION */
 
 header {
@@ -127,11 +131,8 @@ a img {
   border: #dad9d9 solid 1px;
 }
 
-.dashboard-top {
-  display: flex;
-  justify-content: space-between;
-  margin: 30px;
-  gap: 30px;
+a svg {
+  padding-top: 5px;
 }
 
 .small-card {
@@ -153,6 +154,13 @@ a img {
 
 .post-comment-card {
   padding: 30px;
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .card-bottom {
@@ -239,7 +247,7 @@ a img {
 .icon {
   color: #bebebe;
   padding-right: 8px;
-  font-size: 18px;
+  font-size: 1.5rem;
 }
 
 .icon:hover {
@@ -344,40 +352,21 @@ textarea {
   height: 100px;
 }
 
-/* SEARCH BAR */
-
-.search-bar {
-  display: flex;
-}
-
-.search {
-  border: 0px;
-  background: #f1f3f5;
-}
-
-
-.search-bar input {
-  background-image: url('../src/assets/magnifying-glass-solid.svg');
-  background-size: 17px;
-  background-position: 12px 10px; 
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  border-radius: 5px;
-}
-
-/* 
-.search-bar input[type=text]:focus {
-  background-color: lightblue;
-  outline: none;
-} */
 
 /* DASHBOARD */
-.icon {
-  font-size: 1.5rem;
+
+.dashboard-flex {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 30px;
+  align-items: center;
 }
 
-a svg {
-  padding-top: 5px;
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+  gap: 30px;
 }
 
 .dashboard-icon-1,
@@ -439,7 +428,7 @@ a svg {
 
 /* FOOTER */
 footer {
-  margin-top: 60px;
+  margin-top: 300px;
   border-top: #dad9d9 solid 1px;
   font-size: 14px;
   font-weight: 500;
