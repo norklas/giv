@@ -21,7 +21,7 @@ const SingleCause = () => {
   // useState for new comment
   const [commentState, setCommentState] = useState({ body: "" });
   const [addComment, { error }] = useMutation(ADD_COMMENT);
-  console.log(error)
+  console.log(error);
 
   // get username of logged in user for comment submit
   const { data: userData } = useQuery(QUERY_ME);
@@ -84,7 +84,9 @@ const SingleCause = () => {
           {Auth.loggedIn() && (
             <form id="comment-form">
               <h3>Add a Comment</h3>
-              <label htmlFor="add-comment"><p>giv this Cause some love!</p></label>
+              <label htmlFor="add-comment">
+                <p>giv this Cause some love!</p>
+              </label>
               <input
                 className="input"
                 type="text"
@@ -95,10 +97,15 @@ const SingleCause = () => {
               <button
                 type="submit"
                 className="comment-btn"
-                onClick={submitComment}>
+                onClick={submitComment}
+              >
                 Post Comment
               </button>
-              {error && <div><p>Please enter a comment.</p></div>}
+              {error && (
+                <div>
+                  <p>Please enter a comment.</p>
+                </div>
+              )}
             </form>
           )}
         </div>
