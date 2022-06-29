@@ -17,11 +17,11 @@ const SingleCause = () => {
     variables: { id: causeParam },
   });
   const causeData = data?.cause || {};
+  console.log(data)
 
   // useState for new comment
   const [commentState, setCommentState] = useState({ body: "" });
   const [addComment, { error }] = useMutation(ADD_COMMENT);
-  console.log(error);
 
   // get username of logged in user for comment submit
   const { data: userData } = useQuery(QUERY_ME);
@@ -72,7 +72,7 @@ const SingleCause = () => {
           <h3>{causeData.title}</h3>
           <p className="date">{causeData.createdAt}</p>
           <p>{causeData.description}</p>
-          <div className="location">Located in {causeData.location}</div>
+          <div className="location">Location: {causeData.location}</div>
           <button className="web-btn">
             <a href={causeData.url} target="_blank">Website</a>
           </button>
