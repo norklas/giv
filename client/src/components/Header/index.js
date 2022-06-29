@@ -35,7 +35,7 @@ const Header = () => {
       {isSignupModalOpen && <SignupModal onClose={toggleSignupModal} />}
       {isCauseModalOpen && <CauseModal onClose={toggleCauseModal} />}
       <header>
-        <div class="header-flex global-container">
+        <div className="header-flex global-container">
           <a href="/">
             <img src={logo} alt="giv logo" />
           </a>
@@ -56,13 +56,13 @@ const Header = () => {
                 </>
               )}
               <li onClick={() => toggleCauseModal()}>
-                <a class="nav-btn">Create a Cause</a>
+                <a className="nav-btn">Create a Cause</a>
               </li>
             </ul>
           </nav>
         </div>
       </header>
-      <section class="header-gradient"></section>
+      <section className="header-gradient"></section>
     </div>
   );
 };

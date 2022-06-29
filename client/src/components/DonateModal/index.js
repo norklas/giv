@@ -8,23 +8,22 @@ const DonateModal = ({ onClose, causeId, title }) => {
       id: causeId,
     },
   });
-
   const { data: meQuery, loading: meQueryLoading } = useQuery(QUERY_ME);
   const meData = meQuery?.me || [];
 
   const [addCausePoints, { loading, error }] = useMutation(ADD_CAUSE_POINTS);
 
   return (
-    <div id="donate-modal" class="modal">
-      <div class="modal-content">
-        <span class="close" onClick={onClose}>
+    <div id="donate-modal" className="modal">
+      <div className="modal-content">
+        <span className="close" onClick={onClose}>
           &times;
         </span>
-        <div class="modal-top">
+        <div className="modal-top">
           <h3>Donate to {title}</h3>
         </div>
-        <div class="modal-bottom">
-          <div class="points-container">
+        <div className="modal-bottom">
+          <div className="points-container">
             <button
               onClick={() => {
                 addCausePoints({

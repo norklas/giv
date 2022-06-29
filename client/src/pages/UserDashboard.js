@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link, Router } from "react-router-dom";
-import Auth from '../utils/auth'
+import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMessage,
@@ -9,7 +9,7 @@ import {
   faStar,
   faCartShopping,
   faTrash,
-  faGear
+  faGear,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useQuery, useMutation } from "@apollo/client";
@@ -20,42 +20,52 @@ import PointsModal from "../components/PointsModal";
 import UpdateCauseModal from "../components/UpdateCauseModal";
 
 const UserDashboard = () => {
+  const [updateProfile, setUpdateProfile] = useState(false);
+  const [deleteProfile, setDeleteProfile] = useState(false);
+  const [settings, setSettings] = useState(false);
+  const [currentCauseId, setCurrentCauseId] = useState("");
+  const [isPointsModalOpen, setIsPointsModalOpen] = useState(false);
+  const [isUpdateCauseModalOpen, setIsUpdateCauseModalOpen] = useState(false);
+
   const { loading, data, refetch } = useQuery(QUERY_ME);
-  const [updateUser, {updateUserError}] = useMutation(UPDATE_USER)
-  const [deleteUser, {deleteUserError}] = useMutation(DELETE_USER)
+
+  const [updateUser, { updateUserError }] = useMutation(UPDATE_USER);
+  const [deleteUser, { deleteUserError }] = useMutation(DELETE_USER);
+  const [deleteCause, { error }] = useMutation(DELETE_CAUSE);
+
   const userData = data?.me || {};
   const userCauses = userData.causes;
   const logout = () => {
-    Auth.logout()
-  }
-  const [isUpdateCauseModalOpen, setIsUpdateCauseModalOpen] = useState(false);
+    Auth.logout();
+  };
+
   const toggleUpdateCauseModal = () => {
     setIsUpdateCauseModalOpen(!isUpdateCauseModalOpen);
   };
 
-  const [formState, setFormState] = useState({ username: '', email: '', password: '', passwordConfirm: '' })
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  });
   const { username, email, password, pwConfirm } = formState;
-  const [updateProfile, setUpdateProfile] = useState(false)
-  const [deleteProfile, setDeleteProfile] = useState(false)
-  const [settings, setSettings] = useState(false)
-  const [deleteCause, { error }] = useMutation(DELETE_CAUSE);
-  const [currentCauseId, setCurrentCauseId] = useState("");
-  const [isPointsModalOpen, setIsPointsModalOpen] = useState(false);
+
   const togglePointsModal = () => {
     setIsPointsModalOpen(!isPointsModalOpen);
   };
   const handleSettings = () => {
-    setSettings(!settings)
-  }
+    setSettings(!settings);
+  };
   const handleUpdateProfile = () => {
-    setUpdateProfile(!updateProfile)
-  }
+    setUpdateProfile(!updateProfile);
+  };
   const handleDeleteProfile = () => {
-    setDeleteProfile(!deleteProfile)
-  }
+    setDeleteProfile(!deleteProfile);
+  };
   const handleChange = (event) => {
-    setFormState({...formState, [event.target.name]: event.target.value })
-};
+    setFormState({ ...formState, [event.target.name]: event.target.value });
+  };
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -72,80 +82,119 @@ const UserDashboard = () => {
 
       <h2>{userData.username}'s Dashboard </h2>
       <FontAwesomeIcon
-            icon={faGear}
-            className="icon"
-            onClick={handleSettings}
-          />
-      
+        icon={faGear}
+        className="icon"
+        onClick={handleSettings}
+      />
+
       {(() => {
-          if(settings){
-            return(
-              <div className="card">
-        <div className="post-comment-card">
-      
-              <button
-              onClick={handleUpdateProfile}>Edit Profile</button>
-              <button
-              onClick={handleDeleteProfile}>Delete Account</button>
+        if (settings) {
+          return (
+            <div className="card">
+              <div className="post-comment-card">
+                <button onClick={handleUpdateProfile}>Edit Profile</button>
+                <button onClick={handleDeleteProfile}>Delete Account</button>
 
-          {(() => {
-            console.log(formState)
-            if(updateProfile){
-              return(
-                <div>
-                  <h3>Update your profile:</h3>
-                  <p>Fill out all fields you would like to change (you may leave them empty).</p>
-                  <label htmlFor="Username">New Username</label>
-                  <input onChange={handleChange} name='username' placeholder={userData.username}></input>
-                  <label htmlFor="Email">New Email</label>
-                  <input onChange={handleChange} name='email' placeholder={userData.email}></input>
-                  <label htmlFor="Password">New Password</label>
-                  <input onChange={handleChange} name= 'password' placeholder="*******" type="password"></input>
-                  <label htmlFor="pwConfirm">Confirm New Password</label>
-                  <input onChange={handleChange} name= 'pwConfirm' placeholder="*******" type="password"></input>
-                  
-                  {(() => {
-                    console.log(formState.password, formState.pwConfirm)
-                    if(formState.pwConfirm && formState.password != formState.pwConfirm){
-                      return(
-                        <div>
-                          <p>Passwords don't match</p>
-                        </div>
-                      )
-                    }else{return(<button onClick={() => {handleSettings(); updateUser({
-                      variables: {username: formState.username, email: formState.email, password: formState.password}
-                    }) 
-                    }
+                {(() => {
+                  console.log(formState);
+                  if (updateProfile) {
+                    return (
+                      <div>
+                        <h3>Update your profile:</h3>
+                        <p>
+                          Fill out all fields you would like to change (you may
+                          leave them empty).
+                        </p>
+                        <label htmlFor="Username">New Username</label>
+                        <input
+                          onChange={handleChange}
+                          name="username"
+                          placeholder={userData.username}
+                        ></input>
+                        <label htmlFor="Email">New Email</label>
+                        <input
+                          onChange={handleChange}
+                          name="email"
+                          placeholder={userData.email}
+                        ></input>
+                        <label htmlFor="Password">New Password</label>
+                        <input
+                          onChange={handleChange}
+                          name="password"
+                          placeholder="*******"
+                          type="password"
+                        ></input>
+                        <label htmlFor="pwConfirm">Confirm New Password</label>
+                        <input
+                          onChange={handleChange}
+                          name="pwConfirm"
+                          placeholder="*******"
+                          type="password"
+                        ></input>
 
-                    }>Submit</button>)}
-                    
-                    })()}
-                  
-                </div>
-              )
-            }if(deleteProfile){
-              return(
-                <div>
-                  <h2>Account Deletion</h2>
-                  <h3>Are you sure you want to permanently delete your account?</h3>
-            
-                  <Link to="/">
-                  <button onClick={()=>{deleteUser({variables: {userId: userData._id}}); logout();}}
-                  >Yes</button>
-                  </Link>
-                
-                </div>
-              )
-            }
+                        {(() => {
+                          console.log(formState.password, formState.pwConfirm);
+                          if (
+                            formState.pwConfirm &&
+                            formState.password != formState.pwConfirm
+                          ) {
+                            return (
+                              <div>
+                                <p>Passwords don't match</p>
+                              </div>
+                            );
+                          } else {
+                            return (
+                              <button
+                                onClick={() => {
+                                  handleSettings();
+                                  updateUser({
+                                    variables: {
+                                      username: formState.username,
+                                      email: formState.email,
+                                      password: formState.password,
+                                    },
+                                  });
+                                }}
+                              >
+                                Submit
+                              </button>
+                            );
+                          }
+                        })()}
+                      </div>
+                    );
+                  }
+                  if (deleteProfile) {
+                    return (
+                      <div>
+                        <h2>Account Deletion</h2>
+                        <h3>
+                          Are you sure you want to permanently delete your
+                          account?
+                        </h3>
 
-            })()}
-            
-        </div>
-      </div>
-            )
-          }
+                        <Link to="/">
+                          <button
+                            onClick={() => {
+                              deleteUser({
+                                variables: { userId: userData._id },
+                              });
+                              logout();
+                            }}
+                          >
+                            Yes
+                          </button>
+                        </Link>
+                      </div>
+                    );
+                  }
+                })()}
+              </div>
+            </div>
+          );
+        }
       })()}
-             
 
       <div className="dashboard-top">
         <div className="small-card">
@@ -186,8 +235,6 @@ const UserDashboard = () => {
         </div>
       </div>
 
-      
-
       <h3>Your causes</h3>
       {userCauses.map((userCause) => (
         <div className="card">
@@ -226,10 +273,7 @@ const UserDashboard = () => {
             </div>
             <div className="comment-count">
               <Link to={`/cause/${userCause._id}`}>
-                <FontAwesomeIcon
-                  icon={faMessage}
-                  className="icon"
-                />
+                <FontAwesomeIcon icon={faMessage} className="icon" />
               </Link>
               <div className="bottom-text">
                 {userCause.comments.length} Comments

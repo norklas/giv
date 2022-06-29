@@ -8,16 +8,16 @@ const PointsModal = ({ onClose }) => {
   const [addUserPoints, { error }] = useMutation(ADD_USER_POINTS);
 
   return (
-    <div id="points-modal" class="modal">
-      <div class="modal-content">
-        <span class="close" onClick={onClose}>
+    <div id="points-modal" className="modal">
+      <div className="modal-content">
+        <span className="close" onClick={onClose}>
           &times;
         </span>
-        <div class="modal-top">
+        <div className="modal-top">
           <h3>Buy Points</h3>
         </div>
-        <div class="modal-bottom">
-          <div class="points-container">
+        <div className="modal-bottom">
+          <div className="points-container">
             <button
               onClick={() => {
                 addUserPoints({

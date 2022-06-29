@@ -5,7 +5,6 @@ import { QUERY_CAUSES } from "../../utils/queries";
 const CauseList = () => {
   const { data: causesData, loading: causesLoading } = useQuery(QUERY_CAUSES);
   const causesDataObj = causesData?.causes || [];
-  console.log(causesDataObj);
 
   return (
     <div>
