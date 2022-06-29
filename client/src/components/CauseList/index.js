@@ -4,7 +4,11 @@ import { QUERY_CAUSES } from "../../utils/queries";
 
 const CauseList = () => {
   const { data: causesData, loading: causesLoading } = useQuery(QUERY_CAUSES);
-  const causesDataObj = causesData?.causes || [];
+  const causesDataObject = causesData?.causes || [];
+
+
+  const causesDataObj = [...causesDataObject]
+  causesDataObj.sort((a, b) => Number(b.points) - Number(a.points));
 
   return (
     <div>
