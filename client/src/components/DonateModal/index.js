@@ -30,83 +30,83 @@ const DonateModal = ({ onClose, causeId, title }) => {
 
           {Auth.loggedIn() ? (
             <>
-          <div className="points-container">
-            <button
-              onClick={() => {
-                addCausePoints({
-                  variables: {
-                    causeId: causeId,
-                    donationNumber: 100,
-                  },
-                  refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
-                });
-              }}
-            >
-              100
-            </button>
-            <button
-              onClick={() => {
-                addCausePoints({
-                  variables: {
-                    causeId: causeId,
-                    donationNumber: 200,
-                  },
-                  refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
-                });
-              }}
-            >
-              200
-            </button>
-            <button
-              onClick={() => {
-                addCausePoints({
-                  variables: {
-                    causeId: causeId,
-                    donationNumber: 300,
-                  },
-                  refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
-                });
-              }}
-            >
-              300
-            </button>
-            <button
-              onClick={() => {
-                addCausePoints({
-                  variables: {
-                    causeId: causeId,
-                    donationNumber: 400,
-                  },
-                  refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
-                });
-              }}
-            >
-              400
-            </button>
-            <button
-              onClick={() => {
-                addCausePoints({
-                  variables: {
-                    causeId: causeId,
-                    donationNumber: 500,
-                  },
-                  refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
-                });
-              }}
-            >
-              500
-            </button>
-          </div>
+              <div className="points-container">
+                <button
+                  onClick={() => {
+                    addCausePoints({
+                      variables: {
+                        causeId: causeId,
+                        donationNumber: 100,
+                      },
+                      refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
+                    });
+                  }}
+                >
+                  100
+                </button>
+                <button
+                  onClick={() => {
+                    addCausePoints({
+                      variables: {
+                        causeId: causeId,
+                        donationNumber: 200,
+                      },
+                      refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
+                    });
+                  }}
+                >
+                  200
+                </button>
+                <button
+                  onClick={() => {
+                    addCausePoints({
+                      variables: {
+                        causeId: causeId,
+                        donationNumber: 300,
+                      },
+                      refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
+                    });
+                  }}
+                >
+                  300
+                </button>
+                <button
+                  onClick={() => {
+                    addCausePoints({
+                      variables: {
+                        causeId: causeId,
+                        donationNumber: 400,
+                      },
+                      refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
+                    });
+                  }}
+                >
+                  400
+                </button>
+                <button
+                  onClick={() => {
+                    addCausePoints({
+                      variables: {
+                        causeId: causeId,
+                        donationNumber: 500,
+                      },
+                      refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
+                    });
+                  }}
+                >
+                  500
+                </button>
+              </div>
 
-              </>
-              ) : (
-                <>
-                <div>
-        <p>You must be logged in to donate.</p>
-                </div>
-              </>
-              )}
-          </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <p>You must be logged in to donate.</p>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
