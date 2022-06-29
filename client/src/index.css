@@ -178,38 +178,23 @@ a img {
 
 /* MEDALS */
 
-.medals {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.platmedal {
-  width: 30px;
-  /* position: absolute; */
-  top: 30px;
-  right: 30px;
-}
-
-.goldmedal {
-  width: 30px;
-  /* position: absolute; */
-  top: 30px;
-  right: 70px;
-}
-
-.silvermedal {
-  width: 30px;
-  /* position: absolute; */
-  top: 30px;
-  right: 110px;
-}
-
+.platmedal,
+.goldmedal,
+.silvermedal,
 .bronzemedal {
   width: 30px;
-  /* position: absolute; */
-  top: 30px;
-  right: 150px;
+  float: right;
+  margin: 0px 0px 0px 10px;
+  display: block;
 }
+
+.medal-amount {
+  font-size: small;
+  font-weight: 600;
+  position: absolute;
+}
+
+/* OTHER */
 
 .date {
   font-size: 13px;

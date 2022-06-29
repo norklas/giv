@@ -8,6 +8,7 @@ import CommentList from "../CommentList";
 import goldmedal from "../../assets/medal-01.svg";
 import silvermedal from "../../assets/medal-02.svg";
 import bronzemedal from "../../assets/medal-03.svg";
+import platmedal from "../../assets/medal-04.svg";
 
 const SingleCause = (props) => {
   const { cause, loading } = props;
@@ -60,29 +61,14 @@ const SingleCause = (props) => {
       <div className="card-top">
         <div className="medals">
         {(() => {
-          if (bronzes) {
+          if (platinums) {
             return (
-              <div>
+              <div className="platmedal">
                 <img
-                  src={bronzemedal}
-                  className="bronzemedal"
-                  alt="Gold Medal"
+                  src={platmedal}
+                  alt="Platinum Medal"
                 />
-                <p>Bronze: {bronzes}</p>
-              </div>
-            );
-          }
-        })()}
-        {(() => {
-          if (silvers) {
-            return (
-              <div>
-                <img
-                  src={silvermedal}
-                  className="silvermedal"
-                  alt="Silver Medal"
-                />
-                <p>Silver: {silvers}</p>
+                <span class="medal-amount">{platinums}</span>
               </div>
             );
           }
@@ -90,23 +76,37 @@ const SingleCause = (props) => {
         {(() => {
           if (golds) {
             return (
-              <div>
-                <img src={goldmedal} className="goldmedal" alt="Gold Medal" />
-                <p>Gold: {golds}</p>
+              <div className="goldmedal" >
+                <img 
+                src={goldmedal} 
+                alt="Gold Medal" />
+                <span class="medal-amount">{golds}</span>
               </div>
             );
           }
         })()}
         {(() => {
-          if (platinums) {
+          if (silvers) {
             return (
-              <div>
+              <div className="silvermedal">
                 <img
                   src={silvermedal}
-                  className="platmedal"
-                  alt="Platinum Medal"
+                  alt="Silver Medal"
                 />
-                <p>Platinum: {platinums}</p>
+                <span class="medal-amount">{silvers}</span>
+              </div>
+            );
+          }
+        })()}
+        {(() => {
+          if (bronzes) {
+            return (
+              <div className="bronzemedal">
+                <img
+                  src={bronzemedal}
+                  alt="Gold Medal"
+                />
+                <span class="medal-amount">{bronzes}</span>
               </div>
             );
           }
