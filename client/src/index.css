@@ -178,38 +178,29 @@ a img {
 
 /* MEDALS */
 
-.medals {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.platmedal {
-  width: 30px;
-  /* position: absolute; */
-  top: 30px;
-  right: 30px;
-}
-
-.goldmedal {
-  width: 30px;
-  /* position: absolute; */
-  top: 30px;
-  right: 70px;
-}
-
-.silvermedal {
-  width: 30px;
-  /* position: absolute; */
-  top: 30px;
-  right: 110px;
-}
-
+.platmedal,
+.goldmedal,
+.silvermedal,
 .bronzemedal {
   width: 30px;
-  /* position: absolute; */
-  top: 30px;
-  right: 150px;
+  float: right;
+  margin: 0px 20px 0px 10px;
+  position: relative;
 }
+
+.plat-amount,
+.gold-amount,
+.silver-amount,
+.bronze-amount {
+  font-size: 12px;
+  font-weight: 600;
+  float: right;
+  position: absolute;
+  top: 10px;
+  left: 35px;
+}
+
+/* OTHER */
 
 .date {
   font-size: 13px;
@@ -364,17 +355,6 @@ textarea {
   background: #f1f3f5;
 }
 
-/* .search-button {
-  width: 50px;
-  height: 38px;
-  border: none;
-  background: #ebebec;
-  text-align: center;
-  color: black;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-} */
-
 
 .search-bar input {
   background-image: url('../src/assets/magnifying-glass-solid.svg');
@@ -394,6 +374,10 @@ textarea {
 /* DASHBOARD */
 .icon {
   font-size: 1.5rem;
+}
+
+a svg {
+  padding-top: 5px;
 }
 
 .dashboard-icon-1,

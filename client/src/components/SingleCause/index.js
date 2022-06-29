@@ -3,20 +3,22 @@ import { faMessage, faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import DonateModal from "../DonateModal";
-import CommentList from "../CommentList";
 
 import goldmedal from "../../assets/medal-01.svg";
 import silvermedal from "../../assets/medal-02.svg";
 import bronzemedal from "../../assets/medal-03.svg";
+import platmedal from "../../assets/medal-04.svg";
 
 const SingleCause = (props) => {
   const { cause, loading } = props;
-  console.log(cause)
+
   let bronzes = 0;
   let silvers = 0;
   let golds = 0;
   let platinums = 0;
+
   const medalArr = cause.medals;
+
   for (let i = 0; i < medalArr.length; i++) {
     if (medalArr[i].body === "Bronze") {
       bronzes++;
@@ -31,17 +33,11 @@ const SingleCause = (props) => {
       platinums++;
     }
   }
-  console.log(bronzes, silvers, golds, platinums);
 
   const [donateModalOpen, setDonateModalOpen] = useState(false);
 
   const toggleDonateModal = () => {
     setDonateModalOpen(!donateModalOpen);
-  };
-
-  const [commentListOpen, setCommentListOpen] = useState(false);
-  const toggleCommentList = () => {
-    setCommentListOpen(!commentListOpen);
   };
 
   if (loading) {
@@ -59,64 +55,63 @@ const SingleCause = (props) => {
       )}
       <div className="card-top">
         <div className="medals">
-        {(() => {
-          if (bronzes) {
-            return (
-              <div>
-                <img
-                  src={bronzemedal}
-                  className="bronzemedal"
-                  alt="Gold Medal"
-                />
-                <p>Bronze: {bronzes}</p>
-              </div>
-            );
-          }
-        })()}
-        {(() => {
-          if (silvers) {
-            return (
-              <div>
-                <img
-                  src={silvermedal}
-                  className="silvermedal"
-                  alt="Silver Medal"
-                />
-                <p>Silver: {silvers}</p>
-              </div>
-            );
-          }
-        })()}
-        {(() => {
-          if (golds) {
-            return (
-              <div>
-                <img src={goldmedal} className="goldmedal" alt="Gold Medal" />
-                <p>Gold: {golds}</p>
-              </div>
-            );
-          }
-        })()}
-        {(() => {
-          if (platinums) {
-            return (
-              <div>
-                <img
-                  src={silvermedal}
-                  className="platmedal"
-                  alt="Platinum Medal"
-                />
-                <p>Platinum: {platinums}</p>
-              </div>
-            );
-          }
-        })()}
+          {(() => {
+            if (platinums) {
+              return (
+                <div className="platmedal">
+                  <img
+                    src={platmedal}
+                    alt="Platinum Medal"
+                  />
+                  <span class="plat-amount">{platinums}</span>
+                </div>
+              );
+            }
+          })()}
+          {(() => {
+            if (golds) {
+              return (
+                <div className="goldmedal" >
+                  <img
+                    src={goldmedal}
+                    alt="Gold Medal" />
+                  <span class="gold-amount">{golds}</span>
+                </div>
+              );
+            }
+          })()}
+          {(() => {
+            if (silvers) {
+              return (
+                <div className="silvermedal">
+                  <img
+                    src={silvermedal}
+                    alt="Silver Medal"
+                  />
+                  <span class="silver-amount">{silvers}</span>
+                </div>
+              );
+            }
+          })()}
+          {(() => {
+            if (bronzes) {
+              return (
+                <div className="bronzemedal">
+                  <img
+                    src={bronzemedal}
+                    alt="Gold Medal"
+                  />
+                  <span class="bronze-amount">{bronzes}</span>
+                </div>
+              );
+            }
+          })()}
         </div>
 
         <h3>{cause.title}</h3>
-        <p className="date">Posted June 16, 2022</p>
+        <p className="date">Posted {cause.createdAt}</p>
         <p>
-          {cause.description}{" "}
+          {cause.description}{"  "}
           <Link to={`/cause/${cause._id}`}>Learn more.</Link>
         </p>
         <div className="author">{cause.location}</div>
@@ -136,15 +131,11 @@ const SingleCause = (props) => {
         </div>
         <div className="comment-count">
           <Link to={`/cause/${cause._id}`}>
-            <FontAwesomeIcon
-              icon={faMessage}
-              className="icon"
-            />
-            </Link>
+            <FontAwesomeIcon icon={faMessage} className="icon" />
+          </Link>
           <div className="bottom-text">{cause.comments.length} Comments</div>
         </div>
       </div>
-      {commentListOpen && <CommentList comments={cause.comments} />}
     </div>
   );
 };
