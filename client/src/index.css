@@ -376,6 +376,10 @@ textarea {
   font-size: 1.5rem;
 }
 
+a svg {
+  padding-top: 5px;
+}
+
 .dashboard-icon-1,
 .dashboard-icon-2,
 .dashboard-icon-3 {
