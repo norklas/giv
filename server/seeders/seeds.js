@@ -1,62 +1,19 @@
 const faker = require("faker");
 const db = require("../config/connection");
-const {
-  User,
-  Cause,
-} = require("../models");
+const { User, Cause } = require("../models");
 // variables to control number of seeds generated
 const numUsers = 100;
 const numCauses = 100;
-const numComments = 100;
 
 db.once("open", async () => {
   await User.deleteMany({});
   await Cause.deleteMany({});
 
-  const titleTypes = [
-    "Relief", 
-    "Research", 
-    "Support",
-    "Fundraiser",
-    "Charitable Organization",
-    "Federations",
-    "Services"
-  ]
+  const titleTypes = ["Relief", "Research", "Support", "Fundraiser", "Charitable Organization", "Federations", "Services"]
 
-  const titleDetails = [
-    "Cancer", 
-    "ALS",
-    "Diabetes",
-    "Arthritis",
-    "Parkinson's",
-    "Leukemia",
-    "Alzheimer's",
-    "COVID-19",
-    "Affordable Housing",
-    "Environmental",
-    "Hunger",
-    "Disaster",
-    "Humanitarian",
-    "Autism",
-    "Education",
-    "Conservation",
-    "Wildlife",
-    "Peace and Human Rights",
-    "Veterans"
-  ]
+  const titleDetails = ["Cancer", "ALS", "Diabetes", "Arthritis", "Parkinson's", "Leukemia", "Alzheimer's", "COVID-19", "Affordable Housing", "Environmental", "Hunger", "Disaster", "Humanitarian", "Autism", "Education", "Conservation", "Wildlife", "Peace and Human Rights", "Veterans"]
 
-  const categories = [
-    "Animal Welfare",
-    "Disaster Relief",
-    "Education",
-    "Environmental",
-    "Housing",
-    "Hunger",
-    "Medical Research",
-    "Medical Support",
-    "Veterans Support",
-    "Other"
-  ]
+  const categories = ["Animal Welfare", "Disaster Relief", "Education", "Environmental", "Housing", "Hunger", "Medical Research", "Medical Support", "Veterans Support", "Other"]
 
   // create causes
   const causeData = [];
@@ -105,24 +62,6 @@ db.once("open", async () => {
   // console.log(createdUsers);
 
   console.log("Seeded Users");
-  // need seeds for comments, medal, and to associate causes to users
-
-  // associate causes to users
-  // for (let i = 0; i < numCauses; i++) {
-  //   //grab id of cause
-  //   const { _id: causeId } = createdCauses.ops[i];
-  //   console.log(causeId);
-  //   //select random user 
-  //   const randUserIndex = Math.floor(Math.random() * numUsers);
-  //   const { _id: userId } = createdUsers.ops[randomUserIndex];
-  //   //push cause id into user's causes array
-  //   await User.updateOne(
-  //     { _id: userId },
-  //     { $push: { causes: { causeId } } },
-  //     { runValidators: true }
-  //   );
-  // }
-  // console.log("Causes associated to users");
 
   console.log("Seeding complete");
   process.exit(0);
