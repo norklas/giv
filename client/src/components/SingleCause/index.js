@@ -11,12 +11,14 @@ import platmedal from "../../assets/medal-04.svg";
 
 const SingleCause = (props) => {
   const { cause, loading } = props;
-  console.log(cause)
+
   let bronzes = 0;
   let silvers = 0;
   let golds = 0;
   let platinums = 0;
+
   const medalArr = cause.medals;
+
   for (let i = 0; i < medalArr.length; i++) {
     if (medalArr[i].body === "Bronze") {
       bronzes++;
@@ -31,7 +33,6 @@ const SingleCause = (props) => {
       platinums++;
     }
   }
-  console.log(bronzes, silvers, golds, platinums);
 
   const [donateModalOpen, setDonateModalOpen] = useState(false);
 
@@ -110,7 +111,7 @@ const SingleCause = (props) => {
         <h3>{cause.title}</h3>
         <p className="date">Posted {cause.createdAt}</p>
         <p>
-          {cause.description}{" "}
+          {cause.description}{"  "}
           <Link to={`/cause/${cause._id}`}>Learn more.</Link>
         </p>
         <div className="author">{cause.location}</div>
