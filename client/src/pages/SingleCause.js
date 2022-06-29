@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 import CommentList from "../components/CommentList";
-import Auth from "../utils/auth";
+import AuthService from "../utils/auth";
 import { pluralize } from "../utils/helpers";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -79,9 +79,13 @@ const SingleCause = () => {
         </div>
       </div>
 
+
+      {(() => {
+        if(AuthService.loggedIn()){
+          return(
       <div className="card">
         <div className="post-comment-card">
-          {Auth.loggedIn() && (
+      
             <form id="comment-form">
               <h3>Add a Comment</h3>
               <label htmlFor="add-comment">
@@ -107,10 +111,20 @@ const SingleCause = () => {
                 </div>
               )}
             </form>
-          )}
         </div>
       </div>
-
+      )}else{
+        return(
+          <div className="card">
+        <div className="post-comment-card">
+      
+              <h3>Log in to comment!</h3>
+        </div>
+      </div>
+        )
+      }
+      
+      })()}
       <div className="card">
         <div className="comment-card-top">
           <h3>
@@ -119,7 +133,7 @@ const SingleCause = () => {
           </h3>
         </div>
         <div className="comment-card-bottom">
-          <CommentList comments={causeData.comments} />
+          <CommentList causeData={causeData} contextUser={username} />
         </div>
       </div>
     </div>

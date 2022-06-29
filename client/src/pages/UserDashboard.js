@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, Router } from "react-router-dom";
+import Auth from '../utils/auth'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMessage,
@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useQuery, useMutation } from "@apollo/client";
-import { DELETE_CAUSE } from "../utils/mutations";
+import { DELETE_CAUSE, UPDATE_USER, DELETE_USER } from "../utils/mutations";
 import { QUERY_ME } from "../utils/queries";
 
 import PointsModal from "../components/PointsModal";
@@ -21,22 +21,41 @@ import UpdateCauseModal from "../components/UpdateCauseModal";
 
 const UserDashboard = () => {
   const { loading, data, refetch } = useQuery(QUERY_ME);
-  
+  const [updateUser, {updateUserError}] = useMutation(UPDATE_USER)
+  const [deleteUser, {deleteUserError}] = useMutation(DELETE_USER)
   const userData = data?.me || {};
   const userCauses = userData.causes;
-
+  const logout = () => {
+    Auth.logout()
+  }
   const [isUpdateCauseModalOpen, setIsUpdateCauseModalOpen] = useState(false);
   const toggleUpdateCauseModal = () => {
     setIsUpdateCauseModalOpen(!isUpdateCauseModalOpen);
   };
 
+  const [formState, setFormState] = useState({ username: '', email: '', password: '', passwordConfirm: '' })
+  const { username, email, password, pwConfirm } = formState;
+  const [updateProfile, setUpdateProfile] = useState(false)
+  const [deleteProfile, setDeleteProfile] = useState(false)
+  const [settings, setSettings] = useState(false)
   const [deleteCause, { error }] = useMutation(DELETE_CAUSE);
   const [currentCauseId, setCurrentCauseId] = useState("");
   const [isPointsModalOpen, setIsPointsModalOpen] = useState(false);
   const togglePointsModal = () => {
     setIsPointsModalOpen(!isPointsModalOpen);
   };
-
+  const handleSettings = () => {
+    setSettings(!settings)
+  }
+  const handleUpdateProfile = () => {
+    setUpdateProfile(!updateProfile)
+  }
+  const handleDeleteProfile = () => {
+    setDeleteProfile(!deleteProfile)
+  }
+  const handleChange = (event) => {
+    setFormState({...formState, [event.target.name]: event.target.value })
+};
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -55,7 +74,78 @@ const UserDashboard = () => {
       <FontAwesomeIcon
             icon={faGear}
             className="icon"
+            onClick={handleSettings}
           />
+      
+      {(() => {
+          if(settings){
+            return(
+              <div className="card">
+        <div className="post-comment-card">
+      
+              <button
+              onClick={handleUpdateProfile}>Edit Profile</button>
+              <button
+              onClick={handleDeleteProfile}>Delete Account</button>
+
+          {(() => {
+            console.log(formState)
+            if(updateProfile){
+              return(
+                <div>
+                  <h3>Update your profile:</h3>
+                  <p>Fill out all fields you would like to change (you may leave them empty).</p>
+                  <label htmlFor="Username">New Username</label>
+                  <input onChange={handleChange} name='username' placeholder={userData.username}></input>
+                  <label htmlFor="Email">New Email</label>
+                  <input onChange={handleChange} name='email' placeholder={userData.email}></input>
+                  <label htmlFor="Password">New Password</label>
+                  <input onChange={handleChange} name= 'password' placeholder="*******" type="password"></input>
+                  <label htmlFor="pwConfirm">Confirm New Password</label>
+                  <input onChange={handleChange} name= 'pwConfirm' placeholder="*******" type="password"></input>
+                  
+                  {(() => {
+                    console.log(formState.password, formState.pwConfirm)
+                    if(formState.pwConfirm && formState.password != formState.pwConfirm){
+                      return(
+                        <div>
+                          <p>Passwords don't match</p>
+                        </div>
+                      )
+                    }else{return(<button onClick={() => {handleSettings(); updateUser({
+                      variables: {username: formState.username, email: formState.email, password: formState.password}
+                    }) 
+                    }
+
+                    }>Submit</button>)}
+                    
+                    })()}
+                  
+                </div>
+              )
+            }if(deleteProfile){
+              return(
+                <div>
+                  <h2>Account Deletion</h2>
+                  <h3>Are you sure you want to permanently delete your account?</h3>
+            
+                  <Link to="/">
+                  <button onClick={()=>{deleteUser({variables: {userId: userData._id}}); logout();}}
+                  >Yes</button>
+                  </Link>
+                
+                </div>
+              )
+            }
+
+            })()}
+            
+        </div>
+      </div>
+            )
+          }
+      })()}
+             
 
       <div className="dashboard-top">
         <div className="small-card">
