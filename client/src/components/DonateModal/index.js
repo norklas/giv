@@ -9,12 +9,8 @@ const DonateModal = ({ onClose, causeId, title }) => {
     },
   });
 
-  console.log(data);
-  console.log(causeId);
-
   const { data: meQuery, loading: meQueryLoading } = useQuery(QUERY_ME);
   const meData = meQuery?.me || [];
-  console.log(meData);
 
   const [addCausePoints, { loading, error }] = useMutation(ADD_CAUSE_POINTS);
 
