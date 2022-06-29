@@ -114,7 +114,7 @@ const SingleCause = (props) => {
           {cause.description}{"  "}
           <Link to={`/cause/${cause._id}`}>Learn more.</Link>
         </p>
-        <div className="author">{cause.location}</div>
+        <div className="location">{cause.location}</div>
       </div>
 
       <div className="card-bottom">

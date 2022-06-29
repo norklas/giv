@@ -72,9 +72,9 @@ const SingleCause = () => {
           <h3>{causeData.title}</h3>
           <p className="date">{causeData.createdAt}</p>
           <p>{causeData.description}</p>
-          <div className="location">{causeData.location}</div>
+          <div className="location">Located in {causeData.location}</div>
           <button className="web-btn">
-            <a href={causeData.url} target="_blank">Visit website</a>
+            <a href={causeData.url} target="_blank">Website</a>
           </button>
         </div>
       </div>

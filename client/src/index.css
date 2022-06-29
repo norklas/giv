@@ -48,6 +48,7 @@ a {
   font-size: 1.5rem;
 }
 
+
 /* HEADER/NAVIGATION */
 
 header {
@@ -112,7 +113,9 @@ a img {
   height: 60px;
 }
 
+
 /* HOME */
+
 .dashboard,
 .home {
   padding-top: 50px;
@@ -184,32 +187,6 @@ a svg {
   padding: 30px;
 }
 
-/* MEDALS */
-
-.platmedal,
-.goldmedal,
-.silvermedal,
-.bronzemedal {
-  width: 30px;
-  float: right;
-  margin: 0px 20px 0px 10px;
-  position: relative;
-}
-
-.plat-amount,
-.gold-amount,
-.silver-amount,
-.bronze-amount {
-  font-size: 12px;
-  font-weight: 600;
-  float: right;
-  position: absolute;
-  top: 10px;
-  left: 35px;
-}
-
-/* OTHER */
-
 .date {
   font-size: 13px;
   font-weight: 500;
@@ -219,7 +196,7 @@ a svg {
 
 .location {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   padding-top: 10px;
 }
 
@@ -255,7 +232,35 @@ a svg {
   cursor: pointer;
 }
 
+
+/* MEDALS */
+
+.platmedal,
+.goldmedal,
+.silvermedal,
+.bronzemedal {
+  width: 30px;
+  float: right;
+  margin: 0px 20px 0px 10px;
+  position: relative;
+}
+
+.plat-amount,
+.gold-amount,
+.silver-amount,
+.bronze-amount {
+  font-size: 12px;
+  font-weight: 600;
+  float: right;
+  position: absolute;
+  top: 10px;
+  left: 35px;
+}
+
+
+
 /* SINGLE CAUSE */
+
 .single-cause {
   margin-top: 60px;
 }
@@ -323,7 +328,9 @@ a svg {
   cursor: pointer;
 }
 
+
 /* COMMENTS */
+
 .single-comment {
   padding-bottom: 20px;
 }
@@ -332,7 +339,9 @@ a svg {
   padding: 30px;
 }
 
+
 /* FORMS */
+
 .input,
 textarea,
 select {
@@ -426,7 +435,9 @@ textarea {
   background-color: #e7941e;
 }
 
+
 /* FOOTER */
+
 footer {
   margin-top: 300px;
   border-top: #dad9d9 solid 1px;
@@ -436,7 +447,9 @@ footer {
   padding: 30px;
 }
 
-/* MODAL */
+
+/* MODALS */
+
 .modal {
   position: fixed;
   z-index: 1;
