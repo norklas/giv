@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, Router } from "react-router-dom";
+import Auth from '../utils/auth'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMessage,
@@ -22,9 +22,12 @@ import UpdateCauseModal from "../components/UpdateCauseModal";
 const UserDashboard = () => {
   const { loading, data, refetch } = useQuery(QUERY_ME);
   const [updateUser, {updateUserError}] = useMutation(UPDATE_USER)
+  const [deleteUser, {deleteUserError}] = useMutation(DELETE_USER)
   const userData = data?.me || {};
   const userCauses = userData.causes;
-
+  const logout = () => {
+    Auth.logout()
+  }
   const [isUpdateCauseModalOpen, setIsUpdateCauseModalOpen] = useState(false);
   const toggleUpdateCauseModal = () => {
     setIsUpdateCauseModalOpen(!isUpdateCauseModalOpen);
@@ -121,7 +124,18 @@ const UserDashboard = () => {
                 </div>
               )
             }if(deleteProfile){
-              
+              return(
+                <div>
+                  <h2>Account Deletion</h2>
+                  <h3>Are you sure you want to permanently delete your account?</h3>
+            
+                  <Link to="/">
+                  <button onClick={()=>{deleteUser({variables: {userId: userData._id}}); logout();}}
+                  >Yes</button>
+                  </Link>
+                
+                </div>
+              )
             }
 
             })()}
