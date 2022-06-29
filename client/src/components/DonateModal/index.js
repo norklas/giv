@@ -1,3 +1,5 @@
+import Auth from "../../utils/auth";
+
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_CAUSE_POINTS } from "../../utils/mutations";
 import { QUERY_ME, QUERY_CAUSE } from "../../utils/queries";
@@ -13,6 +15,8 @@ const DonateModal = ({ onClose, causeId, title }) => {
 
   const [addCausePoints, { loading, error }] = useMutation(ADD_CAUSE_POINTS);
 
+  const loggedIn = Auth.loggedIn();
+
   return (
     <div id="donate-modal" className="modal">
       <div className="modal-content">
@@ -23,6 +27,9 @@ const DonateModal = ({ onClose, causeId, title }) => {
           <h3>Donate to {title}</h3>
         </div>
         <div className="modal-bottom">
+
+          {Auth.loggedIn() ? (
+            <>
           <div className="points-container">
             <button
               onClick={() => {
@@ -90,7 +97,16 @@ const DonateModal = ({ onClose, causeId, title }) => {
               500
             </button>
           </div>
-        </div>
+
+              </>
+              ) : (
+                <>
+                <div>
+        <p>You must be logged in to donate.</p>
+                </div>
+              </>
+              )}
+          </div>
       </div>
     </div>
   );
