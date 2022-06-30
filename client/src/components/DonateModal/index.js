@@ -2,7 +2,7 @@ import Auth from "../../utils/auth";
 
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_CAUSE_POINTS } from "../../utils/mutations";
-import { QUERY_ME, QUERY_CAUSE } from "../../utils/queries";
+import { QUERY_ME, QUERY_CAUSE, QUERY_CAUSES } from "../../utils/queries";
 import { useState } from "react";
 
 const DonateModal = ({ onClose, causeId, title }) => {
@@ -46,7 +46,7 @@ const DonateModal = ({ onClose, causeId, title }) => {
     
                 <button
                   onClick={() => {
-                    console.log(meData.points)
+  
                     if(meData.points < 100){return(
                       setInsufficientFunds(true)
                     )}
@@ -57,7 +57,7 @@ const DonateModal = ({ onClose, causeId, title }) => {
                         causeId: causeId,
                         donationNumber: 100,
                       },
-                      refetchQueries: [{ query: QUERY_CAUSE }, {query: QUERY_ME}],
+                      refetchQueries: [{ query: QUERY_CAUSES }, {query: QUERY_ME}],
                     });
                     onClose()
                   }
@@ -67,7 +67,7 @@ const DonateModal = ({ onClose, causeId, title }) => {
                 </button>
                 <button
                   onClick={() => {
-                    console.log(meData.points)
+
                     if(meData.points < 200){return(
                       setInsufficientFunds(true)
                     )}
@@ -78,7 +78,7 @@ const DonateModal = ({ onClose, causeId, title }) => {
                         causeId: causeId,
                         donationNumber: 200,
                       },
-                      refetchQueries: [{ query: QUERY_CAUSE }, {query: QUERY_ME}],
+                      refetchQueries: [{ query: QUERY_CAUSES }, {query: QUERY_ME}],
                     });
                     onClose()
                   }
@@ -99,7 +99,7 @@ const DonateModal = ({ onClose, causeId, title }) => {
                         causeId: causeId,
                         donationNumber: 300,
                       },
-                      refetchQueries: [{ query: QUERY_CAUSE }, {query: QUERY_ME}],
+                      refetchQueries: [{ query: QUERY_CAUSES }, {query: QUERY_ME}],
                     });
                     onClose()
                   }
@@ -109,7 +109,7 @@ const DonateModal = ({ onClose, causeId, title }) => {
                 </button>
                 <button
                   onClick={() => {
-                    console.log(meData.points)
+
                     if(meData.points < 400){return(
                       setInsufficientFunds(true)
                     )}
@@ -120,7 +120,7 @@ const DonateModal = ({ onClose, causeId, title }) => {
                         causeId: causeId,
                         donationNumber: 400,
                       },
-                      refetchQueries: [{ query: QUERY_CAUSE }, {query: QUERY_ME}],
+                      refetchQueries: [{ query: QUERY_CAUSES }, {query: QUERY_ME}],
                     });
                     onClose()
                   }
@@ -130,7 +130,7 @@ const DonateModal = ({ onClose, causeId, title }) => {
                 </button>
                 <button
                   onClick={() => {
-                    console.log(meData.points)
+
                     if(meData.points < 500){return(
                       setInsufficientFunds(true)
                     )}
@@ -141,7 +141,7 @@ const DonateModal = ({ onClose, causeId, title }) => {
                         causeId: causeId,
                         donationNumber: 500,
                       },
-                      refetchQueries: [{ query: QUERY_CAUSE }, {query: QUERY_ME}],
+                      refetchQueries: [{ query: QUERY_CAUSES }, {query: QUERY_ME}],
                     });
                     onClose()
                   }

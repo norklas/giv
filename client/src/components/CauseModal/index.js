@@ -1,5 +1,5 @@
 import { ADD_CAUSE } from "../../utils/mutations";
-import { QUERY_CAUSES } from "../../utils/queries";
+import { QUERY_CAUSES, QUERY_ME } from "../../utils/queries";
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 
@@ -111,14 +111,15 @@ const CauseModal = ({ onClose }) => {
     } else {
       setDisplayError(false);
       try {
-        const { data } = await addCause({
+        await addCause({
           variables: { ...formState },
-          refetchQueries: [{ query: QUERY_CAUSES }, "causes"],
+          refetchQueries: [{query: QUERY_ME}, { query: QUERY_CAUSES }],
         });
       } catch (error) {
         console.log(error);
       }
     }
+    onClose();
   };
 
   return (

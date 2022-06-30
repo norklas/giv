@@ -91,7 +91,7 @@ const CauseList = () => {
                   ))}
                   </select>
         {(() => {
-          console.log(filterswicth)
+
         if(filterswicth){return(
         <button
         onClick={() => {
