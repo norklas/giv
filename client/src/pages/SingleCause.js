@@ -73,19 +73,18 @@ const SingleCause = () => {
           <p className="date">{causeData.createdAt}</p>
           <p>{causeData.description}</p>
           <div className="location">Location: {causeData.location}</div>
+          <div className="location">Posted by: {causeData.username}</div>
           <button className="web-btn">
-            <a href={causeData.url} target="_blank">Website</a>
+            <a href={causeData.url} target="_blank" rel="noreferrer">Website</a>
           </button>
         </div>
       </div>
-
 
       {(() => {
         if (AuthService.loggedIn()) {
           return (
             <div className="card">
               <div className="post-comment-card">
-
                 <form id="comment-form">
                   <h3>Add a Comment</h3>
                   <label htmlFor="add-comment">
@@ -123,7 +122,6 @@ const SingleCause = () => {
             </div>
           )
         }
-
       })()}
       <div className="card">
         <div className="comment-card-top">

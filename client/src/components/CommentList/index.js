@@ -25,7 +25,7 @@ const CommentList = (props) => {
   return (
     <div>
       {comments.map((comment) => (
-        <div className="single-comment">
+        <div className="single-comment" key={comment._id}>
           {(() => {
             if (props.contextUser === comment.username) {
               return (

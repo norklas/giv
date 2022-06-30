@@ -15,33 +15,7 @@ db.once("open", async () => {
 
   const categories = ["Animal Welfare", "Disaster Relief", "Education", "Environmental", "Housing", "Hunger", "Medical Research", "Medical Support", "Veterans Support", "Other"]
 
-  // create causes
-  const causeData = [];
-
-  for (let i = 0; i < numCauses; i++) {
-    const titleDetail = titleDetails[Math.floor(Math.random() * titleDetails.length)];
-    const titleType = titleTypes[Math.floor(Math.random() * titleTypes.length)];
-    const title =  titleDetail.concat(" ", titleType);
-    const description = faker.lorem.paragraph();
-    const url = faker.internet.url();
-    const category = categories[Math.floor(Math.random() * categories.length)];
-    const location = faker.address.cityName();
-    const points = Math.floor(Math.random() * 20000);
-
-    causeData.push({
-      title: title,
-      description: description,
-      url: url,
-      category: category,
-      location: location,
-      points: points
-    });
-  }
-
-  const createdCauses = await Cause.collection.insertMany(causeData);
-  console.log("Seeded Causes");
-
-  // create users
+    // create users
   const userData = [];
 
   for (let i = 0; i < numUsers; i++) {
@@ -62,6 +36,34 @@ db.once("open", async () => {
   // console.log(createdUsers);
 
   console.log("Seeded Users");
+
+  // create causes
+  const causeData = [];
+
+  for (let i = 0; i < numCauses; i++) {
+    const titleDetail = titleDetails[Math.floor(Math.random() * titleDetails.length)];
+    const titleType = titleTypes[Math.floor(Math.random() * titleTypes.length)];
+    const title =  titleDetail.concat(" ", titleType);
+    const description = faker.lorem.paragraph();
+    const url = faker.internet.url();
+    const category = categories[Math.floor(Math.random() * categories.length)];
+    const location = faker.address.cityName();
+    const points = Math.floor(Math.random() * 20000);
+    const username = userData[Math.floor(Math.random() * userData.length)].username
+
+    causeData.push({
+      title: title,
+      description: description,
+      url: url,
+      category: category,
+      location: location,
+      points: points,
+      username: username
+    });
+  }
+
+  const createdCauses = await Cause.collection.insertMany(causeData);
+  console.log("Seeded Causes");
 
   console.log("Seeding complete");
   process.exit(0);

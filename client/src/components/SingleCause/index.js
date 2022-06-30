@@ -35,6 +35,7 @@ const SingleCause = (props) => {
   }
 
   const [donateModalOpen, setDonateModalOpen] = useState(false);
+  console.log(cause.username)
 
   const toggleDonateModal = () => {
     setDonateModalOpen(!donateModalOpen);
@@ -116,10 +117,12 @@ const SingleCause = (props) => {
         <h3>{cause.title}</h3>
         <p className="date">Posted {cause.createdAt}</p>
         <p>
-          {cause.description}{"  "}
+          {cause.description}
+          {"  "}
           <Link to={`/cause/${cause._id}`}>Learn more.</Link>
         </p>
         <div className="location">Location: {cause.location}</div>
+        <div className="location">Posted by {cause.username}</div>
       </div>
 
       <div className="card-bottom">

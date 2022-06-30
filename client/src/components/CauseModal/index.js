@@ -160,11 +160,13 @@ const CauseModal = ({ onClose }) => {
                 value={formState.category}
                 onChange={handleChange}
               >
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Select a category
                 </option>
                 {categories.map((category) => (
-                  <option key={category} value={category}>{category}</option>
+                  <option value={category} key={category}>
+                    {category}
+                  </option>
                 ))}
               </select>
 
@@ -175,11 +177,17 @@ const CauseModal = ({ onClose }) => {
                 value={formState.location}
                 onChange={handleChange}
               >
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Select a location
                 </option>
                 {states.map((state) => (
+<<<<<<< HEAD
                   <option key={state} value={state}>{state}</option>
+=======
+                  <option value={state} key={state}>
+                    {state}
+                  </option>
+>>>>>>> 228077135890e43b5dd1fd970051944bb333465f
                 ))}
               </select>
               <label htmlFor="description">Description</label>
