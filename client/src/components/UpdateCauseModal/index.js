@@ -10,13 +10,14 @@ const UpdateCauseModal = (props) => {
   const [displayError, setDisplayError] = useState(false);
 
   const onClose = props.onClose;
-  const causeId = props.causeId;
+  const causeId = props.cause._id;
+  const cause = props.cause;
   const [formState, setFormState] = useState({
-    title: "",
-    description: "",
-    url: "",
-    location: "",
-    category: "",
+    title: cause.title,
+    description: cause.description,
+    url: cause.url,
+    location: cause.location,
+    category: cause.category,
   });
   const { title, description, url, location, category } = formState;
 
@@ -109,13 +110,12 @@ const UpdateCauseModal = (props) => {
     } else {
       setDisplayError(false);
       try {
-        console.log(formState);
         updateCause({
           variables: { causeId: causeId, ...formState },
         });
         onClose();
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
   };

@@ -35,7 +35,6 @@ const SingleCause = (props) => {
   }
 
   const [donateModalOpen, setDonateModalOpen] = useState(false);
-  console.log(cause.username)
 
   const toggleDonateModal = () => {
     setDonateModalOpen(!donateModalOpen);

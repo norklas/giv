@@ -14,9 +14,7 @@ const CommentList = (props) => {
 
   const comments = props.causeData.comments;
   const handleEditComment = () => {
-    console.log(editComment);
     setEditComment(!editComment);
-    console.log(editComment);
   };
   const handleChange = (event) => {
     setFormState({ body: event.target.value });
@@ -38,7 +36,7 @@ const CommentList = (props) => {
                           causeId: props.causeData._id,
                           commentId: comment._id,
                         },
-                        refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
+                        refetchQueries: [{ query: QUERY_CAUSE }],
                       });
                     }}
                   >

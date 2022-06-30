@@ -122,6 +122,14 @@ a img {
   text-align: center;
 }
 
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 30px 0px 30px;
+  flex-wrap: wrap;
+}
+
 .card {
   margin: 30px;
 }
@@ -353,8 +361,15 @@ input,
 textarea,
 select {
   width: 100%;
-  border: 1px solid gray;
+  border: 1px solid #dad9d9;
   padding: 10px;
+}
+
+.filter-select {
+  width: 70%;
+  margin-top: 20px;
+  border: #dad9d9 1px solid;
+  border-radius: 6px;
 }
 
 textarea {
@@ -506,9 +521,22 @@ footer {
 
 /* MOBILE STYLES */
 
+@media screen and (max-width: 950px) { 
+
+  .filter-select {
+    width: 65%;
+  }
+
+}
+
+
 /* MEDIA QUERY FOR TABLETS AND SMALLER */
 
 @media screen and (max-width: 768px) { 
+
+  .filter-select {
+    width: 50%;
+  }
 
   .header-flex {
     flex-direction: column;
@@ -528,6 +556,17 @@ footer {
     width: 500px; 
   }
 
+  .filter {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-select {
+    width: 100%;
+    margin-bottom: 0px;
+  }
+
+
 }
 
 
@@ -536,7 +575,7 @@ footer {
 @media screen and (max-width: 575px) {
 
   .modal-content {
-    width: 400px; 
+    width: 90%; 
   }
 
   .submit-btn {
@@ -554,7 +593,22 @@ footer {
 
   nav ul {
     font-size: 17px;
-    gap: 50px;
+    gap: 25px;
+  }
+
+  .card-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .edit {
+    float: none;
+    margin: 0px 10px 10px 0px;
+  }
+
+  .medals {
+    display: flex;
   }
 
 }
