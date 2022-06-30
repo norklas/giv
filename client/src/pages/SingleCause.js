@@ -73,9 +73,9 @@ const SingleCause = () => {
           <p className="date">{causeData.createdAt}</p>
           <p>{causeData.description}</p>
           <div className="location">Location: {causeData.location}</div>
-          <div className="location">Username: {causeData.username}</div>
+          <div className="location">Posted by: {causeData.username}</div>
           <button className="web-btn">
-            <a href={causeData.url} target="_blank">Website</a>
+            <a href={causeData.url} target="_blank" rel="noreferrer">Website</a>
           </button>
         </div>
       </div>

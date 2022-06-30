@@ -88,7 +88,6 @@ const SignupModal = ({ onClose }) => {
             </div>
         </div>
       </div>
-    </div>
   );
 };
 
