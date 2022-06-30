@@ -128,6 +128,7 @@ export const QUERY_CAUSE = gql`
       category
       points
       createdAt
+      username
       comments {
         _id
         body
@@ -155,6 +156,7 @@ export const QUERY_CAUSES = gql`
       category
       points
       createdAt
+      username
       comments {
         _id
         body
