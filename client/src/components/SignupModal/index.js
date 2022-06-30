@@ -80,20 +80,12 @@ const SignupModal = ({ onClose }) => {
               value={formState.password}
               onChange={handleChange}
             />
-
-            <button type="submit" id="submit-btn" className="submit-btn">
-              Sign up
-            </button>
-            {error && (
-              <div>
-                <p>Sign up failed.</p>
-              </div>
-            )}
-            <p>
-              Already have an account?{" "}
-              <a onClick={() => toggleLoginModal()}>Log in!</a>
-            </p>
-          </form>
+                    <button type="submit" id="submit-btn" className="submit-btn">
+                        Sign up
+                    </button>
+                    {error && <div><p>Sign up failed.</p></div>}
+                </form>
+            </div>
         </div>
       </div>
     </div>

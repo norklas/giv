@@ -62,17 +62,11 @@ const LoginModal = ({ onClose }) => {
               value={formState.password}
               onChange={handleChange}
             />
-
-            <button type="submit" id="submit-btn" className="submit-btn">
-              Log in
-            </button>
-            {error && (
-              <div>
-                <p>Login failed. Please check your credentials.</p>
-              </div>
-            )}
-            {/* <p>Don't have an account? <a href="">Sign up!</a></p> */}
-          </form>
+                        <button type="submit" id="submit-btn" className="submit-btn">Log in</button>
+                        {error && <div><p>Login failed. Please check your credentials.</p></div>}
+                    </form>
+                </div>
+            </div>
         </div>
       </div>
     </div>

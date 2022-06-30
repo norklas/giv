@@ -17,6 +17,7 @@ const SingleCause = () => {
     variables: { id: causeParam },
   });
   const causeData = data?.cause || {};
+  console.log(data)
 
   // useState for new comment
   const [commentState, setCommentState] = useState({ body: "" });
@@ -71,9 +72,10 @@ const SingleCause = () => {
           <h3>{causeData.title}</h3>
           <p className="date">{causeData.createdAt}</p>
           <p>{causeData.description}</p>
-          <div className="author">{causeData.location}</div>
+          <div className="location">Location: {causeData.location}</div>
+          <div className="location">Username: {causeData.username}</div>
           <button className="web-btn">
-            <a href={causeData.url}>Visit website</a>
+            <a href={causeData.url} target="_blank">Website</a>
           </button>
         </div>
       </div>
@@ -110,15 +112,15 @@ const SingleCause = () => {
                 </form>
               </div>
             </div>
-          );
+          )
         } else {
           return (
             <div className="card">
               <div className="post-comment-card">
-                <h3>Log in to comment!</h3>
+                <h3>You must be logged in to comment!</h3>
               </div>
             </div>
-          );
+          )
         }
       })()}
       <div className="card">

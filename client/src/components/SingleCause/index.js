@@ -35,6 +35,7 @@ const SingleCause = (props) => {
   }
 
   const [donateModalOpen, setDonateModalOpen] = useState(false);
+  console.log(cause.username)
 
   const toggleDonateModal = () => {
     setDonateModalOpen(!donateModalOpen);
@@ -59,7 +60,11 @@ const SingleCause = (props) => {
             if (platinums) {
               return (
                 <div className="platmedal">
-                  <img src={platmedal} alt="Platinum Medal" />
+                  <img
+                    src={platmedal}
+                    alt="Platinum Medal"
+                    title="Platinum Medal"
+                  />
                   <span className="plat-amount">{platinums}</span>
                 </div>
               );
@@ -68,8 +73,12 @@ const SingleCause = (props) => {
           {(() => {
             if (golds) {
               return (
-                <div className="goldmedal">
-                  <img src={goldmedal} alt="Gold Medal" />
+                <div className="goldmedal" >
+                  <img
+                    src={goldmedal}
+                    alt="Gold Medal" 
+                    title="Gold Medal"
+                    />
                   <span className="gold-amount">{golds}</span>
                 </div>
               );
@@ -79,7 +88,11 @@ const SingleCause = (props) => {
             if (silvers) {
               return (
                 <div className="silvermedal">
-                  <img src={silvermedal} alt="Silver Medal" />
+                  <img
+                    src={silvermedal}
+                    alt="Silver Medal"
+                    title="Silver Medal"
+                  />
                   <span className="silver-amount">{silvers}</span>
                 </div>
               );
@@ -89,7 +102,11 @@ const SingleCause = (props) => {
             if (bronzes) {
               return (
                 <div className="bronzemedal">
-                  <img src={bronzemedal} alt="Gold Medal" />
+                  <img
+                    src={bronzemedal}
+                    alt="Bronze Medal"
+                    title="Bronze Medal"
+                  />
                   <span className="bronze-amount">{bronzes}</span>
                 </div>
               );
@@ -104,7 +121,8 @@ const SingleCause = (props) => {
           {"  "}
           <Link to={`/cause/${cause._id}`}>Learn more.</Link>
         </p>
-        <div className="author">{cause.location}</div>
+        <div className="location">Location: {cause.location}</div>
+        <div className="location">Username: {cause.username}</div>
       </div>
 
       <div className="card-bottom">

@@ -37,7 +37,11 @@ const Header = () => {
       <header>
         <div className="header-flex global-container">
           <a href="/">
-            <img src={logo} alt="giv logo" />
+            <img 
+              src={logo} 
+              alt="giv logo"
+              title="home" 
+            />
           </a>
 
           <nav>
