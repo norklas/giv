@@ -64,7 +64,6 @@ const LoginModal = ({ onClose }) => {
 
                         <button type="submit" id="submit-btn" className="submit-btn">Log in</button>
                         {error && <div><p>Login failed. Please check your credentials.</p></div>}
-                        {/* <p>Don't have an account? <a href="">Sign up!</a></p> */}
                     </form>
                 </div>
             </div>

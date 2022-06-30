@@ -82,7 +82,6 @@ const SignupModal = ({ onClose }) => {
                         Sign up
                     </button>
                     {error && <div><p>Sign up failed.</p></div>}
-                    <p>Already have an account? <a onClick={() => toggleLoginModal()}>Log in!</a></p>
                 </form>
             </div>
         </div>

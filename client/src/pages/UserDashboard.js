@@ -80,20 +80,36 @@ const UserDashboard = () => {
         />
       )}
 
-      <h2>{userData.username}'s Dashboard </h2>
-      <FontAwesomeIcon
-        icon={faGear}
-        className="icon"
-        onClick={handleSettings}
-      />
+      
+
+      <div className="dashboard-flex">
+        <h2>{userData.username}'s Dashboard</h2>
+
+        <FontAwesomeIcon
+          icon={faGear}
+          className="icon"
+          onClick={handleSettings}
+        />
+      </div>
 
       {(() => {
         if (settings) {
           return (
             <div className="card">
               <div className="post-comment-card">
-                <button onClick={handleUpdateProfile}>Edit Profile</button>
-                <button onClick={handleDeleteProfile}>Delete Account</button>
+      
+                <h3><center>What would you like to do?</center></h3>
+
+                <div className="settings">
+                <button 
+                  className="edit-btn"
+                  onClick={handleUpdateProfile}>Edit Profile
+                </button>
+                <button 
+                  className="delete-btn"
+                  onClick={handleDeleteProfile}>Delete Account
+                </button>
+                </div>
 
                 {(() => {
                   console.log(formState);
@@ -107,18 +123,21 @@ const UserDashboard = () => {
                         </p>
                         <label htmlFor="Username">New Username</label>
                         <input
+                          className="input"
                           onChange={handleChange}
                           name="username"
                           placeholder={userData.username}
                         ></input>
                         <label htmlFor="Email">New Email</label>
                         <input
+                          className="input"
                           onChange={handleChange}
                           name="email"
                           placeholder={userData.email}
                         ></input>
                         <label htmlFor="Password">New Password</label>
                         <input
+                          className="input"
                           onChange={handleChange}
                           name="password"
                           placeholder="*******"
@@ -146,6 +165,7 @@ const UserDashboard = () => {
                           } else {
                             return (
                               <button
+                                className="submit-btn"
                                 onClick={() => {
                                   handleSettings();
                                   updateUser({
@@ -167,15 +187,15 @@ const UserDashboard = () => {
                   }
                   if (deleteProfile) {
                     return (
-                      <div>
-                        <h2>Account Deletion</h2>
-                        <h3>
+                      <div><center>
+                        <h4>
                           Are you sure you want to permanently delete your
                           account?
-                        </h3>
+                        </h4>
 
                         <Link to="/">
                           <button
+                            className="delete-btn"
                             onClick={() => {
                               deleteUser({
                                 variables: { userId: userData._id },
@@ -186,6 +206,7 @@ const UserDashboard = () => {
                             Yes
                           </button>
                         </Link>
+                        </center>
                       </div>
                     );
                   }
