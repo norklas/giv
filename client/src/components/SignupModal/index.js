@@ -30,7 +30,7 @@ const SignupModal = ({ onClose }) => {
       });
       Auth.login(data.addUser.token);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -80,14 +80,18 @@ const SignupModal = ({ onClose }) => {
               value={formState.password}
               onChange={handleChange}
             />
-                    <button type="submit" id="submit-btn" className="submit-btn">
-                        Sign up
-                    </button>
-                    {error && <div><p>Sign up failed.</p></div>}
-                </form>
-            </div>
+            <button type="submit" id="submit-btn" className="submit-btn">
+              Sign up
+            </button>
+            {error && (
+              <div>
+                <p>Sign up failed.</p>
+              </div>
+            )}
+          </form>
         </div>
       </div>
+    </div>
   );
 };
 

@@ -15,7 +15,7 @@ const DonateModal = ({ onClose, causeId, title }) => {
   const meData = meQuery?.me || [];
 
   const [addCausePoints, { loading, error }] = useMutation(ADD_CAUSE_POINTS);
-  const [insufficientFunds, setInsufficientFunds] = useState(false)
+  const [insufficientFunds, setInsufficientFunds] = useState(false);
 
   const loggedIn = Auth.loggedIn();
 
@@ -29,129 +29,130 @@ const DonateModal = ({ onClose, causeId, title }) => {
           <h3>Donate to {title}</h3>
           <p>You have {meData.points} points.</p>
           {(() => {
-                if(insufficientFunds){
-                  return(
-                    <div>
-                      <p>Not enough points!</p>
-                    </div>
-                  )
-                }
-                })()}
+            if (insufficientFunds) {
+              return (
+                <div>
+                  <p>Not enough points!</p>
+                </div>
+              );
+            }
+          })()}
         </div>
         <div className="modal-bottom">
-
           {Auth.loggedIn() ? (
             <>
               <div className="points-container">
-    
                 <button
                   onClick={() => {
-  
-                    if(meData.points < 100){return(
-                      setInsufficientFunds(true)
-                    )}
-                    else{
-                      setInsufficientFunds(false)
-                    addCausePoints({
-                      variables: {
-                        causeId: causeId,
-                        donationNumber: 100,
-                      },
-                      refetchQueries: [{ query: QUERY_CAUSES }, {query: QUERY_ME}],
-                    });
-                    onClose()
-                  }
+                    if (meData.points < 100) {
+                      return setInsufficientFunds(true);
+                    } else {
+                      setInsufficientFunds(false);
+                      addCausePoints({
+                        variables: {
+                          causeId: causeId,
+                          donationNumber: 100,
+                        },
+                        refetchQueries: [
+                          { query: QUERY_CAUSES },
+                          { query: QUERY_ME },
+                        ],
+                      });
+                      onClose();
+                    }
                   }}
                 >
                   100
                 </button>
                 <button
                   onClick={() => {
-
-                    if(meData.points < 200){return(
-                      setInsufficientFunds(true)
-                    )}
-                    else{
-                      setInsufficientFunds(false)
-                    addCausePoints({
-                      variables: {
-                        causeId: causeId,
-                        donationNumber: 200,
-                      },
-                      refetchQueries: [{ query: QUERY_CAUSES }, {query: QUERY_ME}],
-                    });
-                    onClose()
-                  }
+                    if (meData.points < 200) {
+                      return setInsufficientFunds(true);
+                    } else {
+                      setInsufficientFunds(false);
+                      addCausePoints({
+                        variables: {
+                          causeId: causeId,
+                          donationNumber: 200,
+                        },
+                        refetchQueries: [
+                          { query: QUERY_CAUSES },
+                          { query: QUERY_ME },
+                        ],
+                      });
+                      onClose();
+                    }
                   }}
                 >
                   200
                 </button>
                 <button
                   onClick={() => {
-                    console.log(meData.points)
-                    if(meData.points < 300){return(
-                      setInsufficientFunds(true)
-                    )}
-                    else{
-                      setInsufficientFunds(false)
-                    addCausePoints({
-                      variables: {
-                        causeId: causeId,
-                        donationNumber: 300,
-                      },
-                      refetchQueries: [{ query: QUERY_CAUSES }, {query: QUERY_ME}],
-                    });
-                    onClose()
-                  }
+                    if (meData.points < 300) {
+                      return setInsufficientFunds(true);
+                    } else {
+                      setInsufficientFunds(false);
+                      addCausePoints({
+                        variables: {
+                          causeId: causeId,
+                          donationNumber: 300,
+                        },
+                        refetchQueries: [
+                          { query: QUERY_CAUSES },
+                          { query: QUERY_ME },
+                        ],
+                      });
+                      onClose();
+                    }
                   }}
                 >
                   300
                 </button>
                 <button
                   onClick={() => {
-
-                    if(meData.points < 400){return(
-                      setInsufficientFunds(true)
-                    )}
-                    else{
-                      setInsufficientFunds(false)
-                    addCausePoints({
-                      variables: {
-                        causeId: causeId,
-                        donationNumber: 400,
-                      },
-                      refetchQueries: [{ query: QUERY_CAUSES }, {query: QUERY_ME}],
-                    });
-                    onClose()
-                  }
+                    if (meData.points < 400) {
+                      return setInsufficientFunds(true);
+                    } else {
+                      setInsufficientFunds(false);
+                      addCausePoints({
+                        variables: {
+                          causeId: causeId,
+                          donationNumber: 400,
+                        },
+                        refetchQueries: [
+                          { query: QUERY_CAUSES },
+                          { query: QUERY_ME },
+                        ],
+                      });
+                      onClose();
+                    }
                   }}
                 >
                   400
                 </button>
                 <button
                   onClick={() => {
-
-                    if(meData.points < 500){return(
-                      setInsufficientFunds(true)
-                    )}
-                    else{
-                      setInsufficientFunds(false)
-                    addCausePoints({
-                      variables: {
-                        causeId: causeId,
-                        donationNumber: 500,
-                      },
-                      refetchQueries: [{ query: QUERY_CAUSES }, {query: QUERY_ME}],
-                    });
-                    onClose()
-                  }
+                    if (meData.points < 500) {
+                      return setInsufficientFunds(true);
+                    } else {
+                      setInsufficientFunds(false);
+                      addCausePoints({
+                        variables: {
+                          causeId: causeId,
+                          donationNumber: 500,
+                        },
+                        refetchQueries: [
+                          { query: QUERY_CAUSES },
+                          { query: QUERY_ME },
+                        ],
+                      });
+                      onClose();
+                    }
                   }}
                 >
                   500
                 </button>
               </div>
-
-
             </>
           ) : (
             <>

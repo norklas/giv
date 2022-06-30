@@ -115,7 +115,7 @@ const UpdateCauseModal = (props) => {
         });
         onClose();
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
   };
@@ -159,7 +159,7 @@ const UpdateCauseModal = (props) => {
               onChange={handleChange}
             >
               <option value="" disabled>
-                  Select a category
+                Select a category
               </option>
               {categories.map((category) => (
                 <option value={category} key={category}>

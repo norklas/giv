@@ -7,7 +7,7 @@ import { pluralize } from "../utils/helpers";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { QUERY_CAUSE, QUERY_ME } from "../utils/queries";
+import { QUERY_CAUSE, QUERY_ME, QUERY_CAUSES } from "../utils/queries";
 import { ADD_COMMENT } from "../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 
@@ -17,7 +17,6 @@ const SingleCause = () => {
     variables: { id: causeParam },
   });
   const causeData = data?.cause || {};
-  console.log(data)
 
   // useState for new comment
   const [commentState, setCommentState] = useState({ body: "" });
@@ -43,10 +42,10 @@ const SingleCause = () => {
             username: username,
             causeId: causeParam,
           },
-          refetchQueries: [{ query: QUERY_CAUSE }, "cause"],
+          refetchQueries: [{ query: QUERY_CAUSES }],
         });
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
       setCommentState({ body: "" });
     }
@@ -75,7 +74,9 @@ const SingleCause = () => {
           <div className="location">Location: {causeData.location}</div>
           <div className="location">Posted by: {causeData.username}</div>
           <button className="web-btn">
-            <a href={causeData.url} target="_blank" rel="noreferrer">Website</a>
+            <a href={causeData.url} target="_blank" rel="noreferrer">
+              Website
+            </a>
           </button>
         </div>
       </div>
@@ -112,7 +113,7 @@ const SingleCause = () => {
                 </form>
               </div>
             </div>
-          )
+          );
         } else {
           return (
             <div className="card">
@@ -120,7 +121,7 @@ const SingleCause = () => {
                 <h3>You must be logged in to comment!</h3>
               </div>
             </div>
-          )
+          );
         }
       })()}
       <div className="card">

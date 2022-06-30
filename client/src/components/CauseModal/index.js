@@ -23,9 +23,69 @@ const CauseModal = ({ onClose }) => {
   const { title, description, url, location, category } = formState;
 
   const [categories] = useState([
-    "Animal Welfare", "Disaster Relief", "Education", "Environmental", "Housing", "Hunger", "Medical Research", "Medical Support", "Veterans Support", "Other"]);
-  const [states] = useState(["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
-  "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]);
+    "Animal Welfare",
+    "Disaster Relief",
+    "Education",
+    "Environmental",
+    "Housing",
+    "Hunger",
+    "Medical Research",
+    "Medical Support",
+    "Veterans Support",
+    "Other",
+  ]);
+  const [states] = useState([
+    "Alabama",
+    "Alaska",
+    "Arizona",
+    "Arkansas",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "Delaware",
+    "Florida",
+    "Georgia",
+    "Hawaii",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Iowa",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Maine",
+    "Maryland",
+    "Massachusetts",
+    "Michigan",
+    "Minnesota",
+    "Mississippi",
+    "Missouri",
+    "Montana",
+    "Nebraska",
+    "Nevada",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "New York",
+    "North Carolina",
+    "North Dakota",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Pennsylvania",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Vermont",
+    "Virginia",
+    "Washington",
+    "West Virginia",
+    "Wisconsin",
+    "Wyoming",
+  ]);
 
   const handleChange = (event) => {
     if (!event.target.value.length) {
@@ -53,10 +113,10 @@ const CauseModal = ({ onClose }) => {
       try {
         await addCause({
           variables: { ...formState },
-          refetchQueries: [{query: QUERY_ME}, { query: QUERY_CAUSES }],
+          refetchQueries: [{ query: QUERY_ME }, { query: QUERY_CAUSES }],
         });
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
     onClose();

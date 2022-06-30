@@ -24,7 +24,7 @@ const LoginModal = ({ onClose }) => {
       });
       Auth.login(data.login.token);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
     setFormState({
       email: "",
@@ -62,12 +62,18 @@ const LoginModal = ({ onClose }) => {
               value={formState.password}
               onChange={handleChange}
             />
-                        <button type="submit" id="submit-btn" className="submit-btn">Log in</button>
-                        {error && <div><p>Login failed. Please check your credentials.</p></div>}
-                    </form>
-                </div>
-            </div>
+            <button type="submit" id="submit-btn" className="submit-btn">
+              Log in
+            </button>
+            {error && (
+              <div>
+                <p>Login failed. Please check your credentials.</p>
+              </div>
+            )}
+          </form>
         </div>
+      </div>
+    </div>
   );
 };
 

@@ -25,7 +25,7 @@ const PointsModal = ({ onClose }) => {
                     userId: data.me._id,
                     purchaseNumber: 100,
                   },
-                  refetchQueries: [{ query: QUERY_ME }, "me"],
+                  refetchQueries: [{ query: QUERY_ME }],
                 });
               }}
             >
@@ -38,7 +38,7 @@ const PointsModal = ({ onClose }) => {
                     userId: data.me._id,
                     purchaseNumber: 200,
                   },
-                  refetchQueries: [{ query: QUERY_ME }, "me"],
+                  refetchQueries: [{ query: QUERY_ME }],
                 });
               }}
             >
@@ -51,7 +51,7 @@ const PointsModal = ({ onClose }) => {
                     userId: data.me._id,
                     purchaseNumber: 300,
                   },
-                  refetchQueries: [{ query: QUERY_ME }, "me"],
+                  refetchQueries: [{ query: QUERY_ME }],
                 });
               }}
             >
@@ -64,7 +64,7 @@ const PointsModal = ({ onClose }) => {
                     userId: data.me._id,
                     purchaseNumber: 400,
                   },
-                  refetchQueries: [{ query: QUERY_ME }, "me"],
+                  refetchQueries: [{ query: QUERY_ME }],
                 });
               }}
             >
@@ -77,7 +77,7 @@ const PointsModal = ({ onClose }) => {
                     userId: data.me._id,
                     purchaseNumber: 500,
                   },
-                  refetchQueries: [{ query: QUERY_ME }, "me"],
+                  refetchQueries: [{ query: QUERY_ME }],
                 });
               }}
             >
