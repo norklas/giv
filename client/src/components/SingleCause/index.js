@@ -64,7 +64,7 @@ const SingleCause = (props) => {
                     alt="Platinum Medal"
                     title="Platinum Medal"
                   />
-                  <span class="plat-amount">{platinums}</span>
+                  <span className="plat-amount">{platinums}</span>
                 </div>
               );
             }
@@ -78,7 +78,7 @@ const SingleCause = (props) => {
                     alt="Gold Medal" 
                     title="Gold Medal"
                     />
-                  <span class="gold-amount">{golds}</span>
+                  <span className="gold-amount">{golds}</span>
                 </div>
               );
             }
@@ -92,7 +92,7 @@ const SingleCause = (props) => {
                     alt="Silver Medal"
                     title="Silver Medal"
                   />
-                  <span class="silver-amount">{silvers}</span>
+                  <span className="silver-amount">{silvers}</span>
                 </div>
               );
             }
@@ -106,7 +106,7 @@ const SingleCause = (props) => {
                     alt="Bronze Medal"
                     title="Bronze Medal"
                   />
-                  <span class="bronze-amount">{bronzes}</span>
+                  <span className="bronze-amount">{bronzes}</span>
                 </div>
               );
             }
