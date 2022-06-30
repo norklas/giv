@@ -26,6 +26,7 @@ const UserDashboard = () => {
   const [currentCauseId, setCurrentCauseId] = useState("");
   const [isPointsModalOpen, setIsPointsModalOpen] = useState(false);
   const [isUpdateCauseModalOpen, setIsUpdateCauseModalOpen] = useState(false);
+  const [currentCause, setCurrentCause] = useState({});
 
   const { loading, data, refetch } = useQuery(QUERY_ME);
 
@@ -76,7 +77,7 @@ const UserDashboard = () => {
       {isUpdateCauseModalOpen && (
         <UpdateCauseModal
           onClose={toggleUpdateCauseModal}
-          causeId={currentCauseId}
+          cause={currentCause}
         />
       )}
 
@@ -112,7 +113,6 @@ const UserDashboard = () => {
                 </div>
 
                 {(() => {
-                  console.log(formState);
                   if (updateProfile) {
                     return (
                       <div>
@@ -152,7 +152,6 @@ const UserDashboard = () => {
                         ></input>
 
                         {(() => {
-                          console.log(formState.password, formState.pwConfirm);
                           if (
                             formState.pwConfirm &&
                             formState.password != formState.pwConfirm
@@ -274,6 +273,7 @@ const UserDashboard = () => {
               onClick={() => {
                 setCurrentCauseId(userCause._id);
                 toggleUpdateCauseModal();
+                setCurrentCause(userCause);
               }}
             >
               <FontAwesomeIcon icon={faPenToSquare} />
