@@ -7,16 +7,15 @@ const CauseList = () => {
   const { data: causesData, loading: causesLoading } = useQuery(QUERY_CAUSES);
   const causesDataObject = causesData?.causes || [];
   const [selectedState, setSelectedState] = useState('')
-  const [filterswicth, setFilterSwitch] = useState(false)
+  const [filterswitch, setFilterSwitch] = useState(false)
 
 
- 
+
   const handleChange = (e) => {
     setSelectedState(e.target.value)
-    console.log(selectedState)
   }
   const handleFilterswitch = () => {
-    setFilterSwitch(!filterswicth)
+    setFilterSwitch(!filterswitch)
   }
 
   const causesDataObj = [...causesDataObject]
@@ -76,83 +75,73 @@ const CauseList = () => {
 
   return (
     <div>
-
+      <div className="filter">
       <label htmlFor="location">Filter by state:</label>
-              <select
-                key="location"
-                name="location"
-                onChange={handleChange}
-              >
-                <option value="" disabled selected>
-                  Filter by state:
-                </option>
-                {states.map((state) => (
-                  <option value={state}>{state}</option>
-                  ))}
-                  </select>
-        {(() => {
-          console.log(filterswicth)
-        if(filterswicth){return(
-        <button
-        onClick={() => {
-          handleFilterswitch();
-        }}>Clear Filter</button>
-      )}else{return(
-        <button
-        onClick={() => {
-          handleFilterswitch();
-        }}>Apply</button>
-      )
-
-
-
-      }
-      })()}
-      
-
-
-
-
+      <select
+        className="filter-select"
+        key="location"
+        name="location"
+        onChange={handleChange}
+      >
+        <option value="" disabled>
+          Filter by state:
+        </option>
+        {states.map((state) => (
+          <option key={state} value={state}>{state}</option>
+        ))}
+      </select>
       {(() => {
-
-        if(filterswicth){
+        if (filterswitch) {
+          return (
+            <button
+              className="submit-btn"
+              onClick={() => {
+                handleFilterswitch();
+              }}>Clear Filter</button>
+          )
+        } else {
+          return (
+            <button
+              className="submit-btn"
+              onClick={() => {
+                handleFilterswitch();
+              }}>Apply</button>
+          )
+        }
+      })()}
+      </div>
+      {(() => {
+        if (filterswitch) {
           let newCauseArr = []
-          for(let i =0; i < causesDataObj.length; i++){
-            if(causesDataObj[i].location === selectedState){
+          for (let i = 0; i < causesDataObj.length; i++) {
+            if (causesDataObj[i].location === selectedState) {
               newCauseArr.push(causesDataObj[i])
             }
           }
-          return(
-          newCauseArr.map((cause) => (
-            <div>
-              <SingleCause
-                cause={cause}
-                key={cause.title}
-                loading={causesLoading}
-              />
-            </div>
-          )))
-          }
-          else{
-        return(
+          return (
+            newCauseArr.map((cause) => (
+              <div key={cause._id}>
+                <SingleCause
+                  cause={cause}
+                  loading={causesLoading}
+                />
+              </div>
+            )))
+        }
+        else {
+          return (
+            causesDataObj.map((cause) => (
+              <div key={cause._id}>
+                <SingleCause
+                  cause={cause}
+                  loading={causesLoading}
+                />
 
-      causesDataObj.map((cause) => (
-        <div>
-          <SingleCause
-            cause={cause}
-            key={cause.title}
-            loading={causesLoading}
-          />
-
-        </div>
-      ))
-        )}
-    })()}
-
-
-
-
-
+              </div>
+            ))
+          )
+        }
+      })()}
     </div>
   );
 };

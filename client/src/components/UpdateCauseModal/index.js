@@ -93,7 +93,7 @@ const UpdateCauseModal = (props) => {
               value={formState.category}
               onChange={handleChange}
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Select a category
               </option>
               <option value="Animal Welfare">Animal Welfare</option>
