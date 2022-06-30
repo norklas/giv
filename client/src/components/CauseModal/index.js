@@ -164,7 +164,7 @@ const CauseModal = ({ onClose }) => {
                   Select a category
                 </option>
                 {categories.map((category) => (
-                  <option value={category}>{category}</option>
+                  <option key={category} value={category}>{category}</option>
                 ))}
               </select>
 
@@ -179,7 +179,7 @@ const CauseModal = ({ onClose }) => {
                   Select a location
                 </option>
                 {states.map((state) => (
-                  <option value={state}>{state}</option>
+                  <option key={state} value={state}>{state}</option>
                 ))}
               </select>
               <label htmlFor="description">Description</label>
