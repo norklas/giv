@@ -55,6 +55,7 @@ export const ADD_CAUSE = gql`
       url
       location
       category
+      username
     }
   }
 `;

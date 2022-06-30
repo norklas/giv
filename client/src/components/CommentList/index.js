@@ -25,7 +25,7 @@ const CommentList = (props) => {
   return (
     <div>
       {comments.map((comment) => (
-        <div className="single-comment">
+        <div className="single-comment" key={comment._id}>
           {(() => {
             if (props.contextUser === comment.username) {
               return (
@@ -57,7 +57,7 @@ const CommentList = (props) => {
             }
           })()}
           <h4>{comment.username}</h4>
-          <p class="date">Posted {comment.createdAt}</p>
+          <p className="date">Posted {comment.createdAt}</p>
           {(() => {
             if (editComment && props.contextUser === comment.username) {
               return (

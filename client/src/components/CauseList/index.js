@@ -76,6 +76,7 @@ const CauseList = () => {
 
   return (
     <div>
+
       <label htmlFor="location">Filter by state:</label>
               <select
                 key="location"
@@ -142,6 +143,7 @@ const CauseList = () => {
             key={cause.title}
             loading={causesLoading}
           />
+
         </div>
       ))
         )}

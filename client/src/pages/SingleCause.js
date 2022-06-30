@@ -17,11 +17,11 @@ const SingleCause = () => {
     variables: { id: causeParam },
   });
   const causeData = data?.cause || {};
+  console.log(data)
 
   // useState for new comment
   const [commentState, setCommentState] = useState({ body: "" });
   const [addComment, { error }] = useMutation(ADD_COMMENT);
-  console.log(error);
 
   // get username of logged in user for comment submit
   const { data: userData } = useQuery(QUERY_ME);
@@ -72,58 +72,56 @@ const SingleCause = () => {
           <h3>{causeData.title}</h3>
           <p className="date">{causeData.createdAt}</p>
           <p>{causeData.description}</p>
-          <div className="author">{causeData.location}</div>
+          <div className="location">Location: {causeData.location}</div>
+          <div className="location">Username: {causeData.username}</div>
           <button className="web-btn">
-            <a href={causeData.url}>Visit website</a>
+            <a href={causeData.url} target="_blank">Website</a>
           </button>
         </div>
       </div>
 
-
       {(() => {
-        if(AuthService.loggedIn()){
-          return(
-      <div className="card">
-        <div className="post-comment-card">
-      
-            <form id="comment-form">
-              <h3>Add a Comment</h3>
-              <label htmlFor="add-comment">
-                <p>giv this Cause some love!</p>
-              </label>
-              <input
-                className="input"
-                type="text"
-                name="add-comment"
-                value={commentState.body}
-                onChange={handleComment}
-              />
-              <button
-                type="submit"
-                className="comment-btn"
-                onClick={submitComment}
-              >
-                Post Comment
-              </button>
-              {error && (
-                <div>
-                  <p>Please enter a comment.</p>
-                </div>
-              )}
-            </form>
-        </div>
-      </div>
-      )}else{
-        return(
-          <div className="card">
-        <div className="post-comment-card">
-      
-              <h3>Log in to comment!</h3>
-        </div>
-      </div>
-        )
-      }
-      
+        if (AuthService.loggedIn()) {
+          return (
+            <div className="card">
+              <div className="post-comment-card">
+                <form id="comment-form">
+                  <h3>Add a Comment</h3>
+                  <label htmlFor="add-comment">
+                    <p>giv this Cause some love!</p>
+                  </label>
+                  <input
+                    className="input"
+                    type="text"
+                    name="add-comment"
+                    value={commentState.body}
+                    onChange={handleComment}
+                  />
+                  <button
+                    type="submit"
+                    className="comment-btn"
+                    onClick={submitComment}
+                  >
+                    Post Comment
+                  </button>
+                  {error && (
+                    <div>
+                      <p>Please enter a comment.</p>
+                    </div>
+                  )}
+                </form>
+              </div>
+            </div>
+          )
+        } else {
+          return (
+            <div className="card">
+              <div className="post-comment-card">
+                <h3>You must be logged in to comment!</h3>
+              </div>
+            </div>
+          )
+        }
       })()}
       <div className="card">
         <div className="comment-card-top">

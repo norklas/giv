@@ -35,6 +35,7 @@ const SingleCause = (props) => {
   }
 
   const [donateModalOpen, setDonateModalOpen] = useState(false);
+  console.log(cause.username)
 
   const toggleDonateModal = () => {
     setDonateModalOpen(!donateModalOpen);
@@ -62,8 +63,9 @@ const SingleCause = (props) => {
                   <img
                     src={platmedal}
                     alt="Platinum Medal"
+                    title="Platinum Medal"
                   />
-                  <span class="plat-amount">{platinums}</span>
+                  <span className="plat-amount">{platinums}</span>
                 </div>
               );
             }
@@ -74,8 +76,10 @@ const SingleCause = (props) => {
                 <div className="goldmedal" >
                   <img
                     src={goldmedal}
-                    alt="Gold Medal" />
-                  <span class="gold-amount">{golds}</span>
+                    alt="Gold Medal" 
+                    title="Gold Medal"
+                    />
+                  <span className="gold-amount">{golds}</span>
                 </div>
               );
             }
@@ -87,8 +91,9 @@ const SingleCause = (props) => {
                   <img
                     src={silvermedal}
                     alt="Silver Medal"
+                    title="Silver Medal"
                   />
-                  <span class="silver-amount">{silvers}</span>
+                  <span className="silver-amount">{silvers}</span>
                 </div>
               );
             }
@@ -99,9 +104,10 @@ const SingleCause = (props) => {
                 <div className="bronzemedal">
                   <img
                     src={bronzemedal}
-                    alt="Gold Medal"
+                    alt="Bronze Medal"
+                    title="Bronze Medal"
                   />
-                  <span class="bronze-amount">{bronzes}</span>
+                  <span className="bronze-amount">{bronzes}</span>
                 </div>
               );
             }
@@ -111,10 +117,12 @@ const SingleCause = (props) => {
         <h3>{cause.title}</h3>
         <p className="date">Posted {cause.createdAt}</p>
         <p>
-          {cause.description}{"  "}
+          {cause.description}
+          {"  "}
           <Link to={`/cause/${cause._id}`}>Learn more.</Link>
         </p>
-        <div className="author">{cause.location}</div>
+        <div className="location">Location: {cause.location}</div>
+        <div className="location">Username: {cause.username}</div>
       </div>
 
       <div className="card-bottom">

@@ -44,6 +44,11 @@ a {
   text-decoration: none;
 }
 
+.icon {
+  font-size: 1.5rem;
+}
+
+
 /* HEADER/NAVIGATION */
 
 header {
@@ -105,10 +110,12 @@ a img {
   background: linear-gradient(90deg, #143642 0%, #2EC4B6 100%);
   background-size: cover;
   background-position: center;
-  height: 60px;
+  height: 50px;
 }
 
+
 /* HOME */
+
 .dashboard,
 .home {
   padding-top: 50px;
@@ -127,11 +134,8 @@ a img {
   border: #dad9d9 solid 1px;
 }
 
-.dashboard-top {
-  display: flex;
-  justify-content: space-between;
-  margin: 30px;
-  gap: 30px;
+a svg {
+  padding-top: 5px;
 }
 
 .small-card {
@@ -155,6 +159,13 @@ a img {
   padding: 30px;
 }
 
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 .card-bottom {
   padding: 20px 30px 20px 30px;
   display: flex;
@@ -176,32 +187,6 @@ a img {
   padding: 30px;
 }
 
-/* MEDALS */
-
-.platmedal,
-.goldmedal,
-.silvermedal,
-.bronzemedal {
-  width: 30px;
-  float: right;
-  margin: 0px 20px 0px 10px;
-  position: relative;
-}
-
-.plat-amount,
-.gold-amount,
-.silver-amount,
-.bronze-amount {
-  font-size: 12px;
-  font-weight: 600;
-  float: right;
-  position: absolute;
-  top: 10px;
-  left: 35px;
-}
-
-/* OTHER */
-
 .date {
   font-size: 13px;
   font-weight: 500;
@@ -209,9 +194,9 @@ a img {
   padding-top: 10px;
 }
 
-.author {
+.location {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   padding-top: 10px;
 }
 
@@ -239,7 +224,7 @@ a img {
 .icon {
   color: #bebebe;
   padding-right: 8px;
-  font-size: 18px;
+  font-size: 1.2rem;
 }
 
 .icon:hover {
@@ -247,7 +232,35 @@ a img {
   cursor: pointer;
 }
 
+
+/* MEDALS */
+
+.platmedal,
+.goldmedal,
+.silvermedal,
+.bronzemedal {
+  width: 25px;
+  float: right;
+  margin: 0px 20px 0px 10px;
+  position: relative;
+}
+
+.plat-amount,
+.gold-amount,
+.silver-amount,
+.bronze-amount {
+  font-size: 12px;
+  font-weight: 600;
+  float: right;
+  position: absolute;
+  top: 10px;
+  left: 35px;
+}
+
+
+
 /* SINGLE CAUSE */
+
 .single-cause {
   margin-top: 60px;
 }
@@ -315,7 +328,9 @@ a img {
   cursor: pointer;
 }
 
+
 /* COMMENTS */
+
 .single-comment {
   padding-bottom: 20px;
 }
@@ -324,7 +339,9 @@ a img {
   padding: 30px;
 }
 
+
 /* FORMS */
+
 .input,
 textarea,
 select {
@@ -344,40 +361,21 @@ textarea {
   height: 100px;
 }
 
-/* SEARCH BAR */
-
-.search-bar {
-  display: flex;
-}
-
-.search {
-  border: 0px;
-  background: #f1f3f5;
-}
-
-
-.search-bar input {
-  background-image: url('../src/assets/magnifying-glass-solid.svg');
-  background-size: 17px;
-  background-position: 12px 10px; 
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  border-radius: 5px;
-}
-
-/* 
-.search-bar input[type=text]:focus {
-  background-color: lightblue;
-  outline: none;
-} */
 
 /* DASHBOARD */
-.icon {
-  font-size: 1.5rem;
+
+.dashboard-flex {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 30px;
+  align-items: center;
 }
 
-a svg {
-  padding-top: 5px;
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+  gap: 30px;
 }
 
 .dashboard-icon-1,
@@ -437,9 +435,11 @@ a svg {
   background-color: #e7941e;
 }
 
+
 /* FOOTER */
+
 footer {
-  margin-top: 60px;
+  margin-top: 300px;
   border-top: #dad9d9 solid 1px;
   font-size: 14px;
   font-weight: 500;
@@ -447,7 +447,9 @@ footer {
   padding: 30px;
 }
 
-/* MODAL */
+
+/* MODALS */
+
 .modal {
   position: fixed;
   z-index: 1;
