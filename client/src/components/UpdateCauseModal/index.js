@@ -144,7 +144,7 @@ const UpdateCauseModal = (props) => {
             <label htmlFor="url">Organization Website</label>
             <input
               className="input"
-              type="url"
+              type="link"
               key="url"
               name="url"
               value={formState.url}
