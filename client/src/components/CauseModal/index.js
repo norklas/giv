@@ -181,13 +181,9 @@ const CauseModal = ({ onClose }) => {
                   Select a location
                 </option>
                 {states.map((state) => (
-<<<<<<< HEAD
-                  <option key={state} value={state}>{state}</option>
-=======
                   <option value={state} key={state}>
                     {state}
                   </option>
->>>>>>> 228077135890e43b5dd1fd970051944bb333465f
                 ))}
               </select>
               <label htmlFor="description">Description</label>

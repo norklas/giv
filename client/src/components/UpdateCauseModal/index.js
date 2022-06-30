@@ -20,6 +20,71 @@ const UpdateCauseModal = (props) => {
   });
   const { title, description, url, location, category } = formState;
 
+  const [categories] = useState([
+    "Animal Welfare",
+    "Disaster Relief",
+    "Education",
+    "Environmental",
+    "Housing",
+    "Hunger",
+    "Medical Research",
+    "Medical Support",
+    "Veterans Support",
+    "Other",
+  ]);
+  const [states] = useState([
+    "Alabama",
+    "Alaska",
+    "Arizona",
+    "Arkansas",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "Delaware",
+    "Florida",
+    "Georgia",
+    "Hawaii",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Iowa",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Maine",
+    "Maryland",
+    "Massachusetts",
+    "Michigan",
+    "Minnesota",
+    "Mississippi",
+    "Missouri",
+    "Montana",
+    "Nebraska",
+    "Nevada",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "New York",
+    "North Carolina",
+    "North Dakota",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Pennsylvania",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Vermont",
+    "Virginia",
+    "Washington",
+    "West Virginia",
+    "Wisconsin",
+    "Wyoming",
+  ]);
+
   const handleChange = (event) => {
     if (!event.target.value.length) {
       let missingField = event.target.name;
@@ -93,30 +158,32 @@ const UpdateCauseModal = (props) => {
               value={formState.category}
               onChange={handleChange}
             >
-              <option value="" disabled selected>
-                Select a category
+              <option value="" disabled>
+                  Select a category
               </option>
-              <option value="Animal Welfare">Animal Welfare</option>
-              <option value="Disaster Relief">Disaster Relief</option>
-              <option value="Education">Education</option>
-              <option value="Environmental">Environmental</option>
-              <option value="Housing">Housing</option>
-              <option value="Hunger">Hunger</option>
-              <option value="Medical Research">Medical Research</option>
-              <option value="Medical Support">Medical Support</option>
-              <option value="Veterans Support">Veterans Support</option>
-              <option value="Other">Other</option>
+              {categories.map((category) => (
+                <option value={category} key={category}>
+                  {category}
+                </option>
+              ))}
             </select>
 
             <label htmlFor="location">Location</label>
-            <input
-              className="input"
-              type="string"
+            <select
               key="location"
               name="location"
               value={formState.location}
               onChange={handleChange}
-            />
+            >
+              <option value="" disabled>
+                Select a location
+              </option>
+              {states.map((state) => (
+                <option value={state} key={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
 
             <label htmlFor="description">Description</label>
             <textarea
