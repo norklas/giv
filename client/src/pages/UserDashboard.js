@@ -281,7 +281,7 @@ const UserDashboard = () => {
             <h3>{userCause.title}</h3>
             <p className="date">Posted June 16, 2022</p>
             <p>{userCause.description}</p>
-            <div className="author">{userCause.location}</div>
+            <div className="location">{userCause.location}</div>
             <button className="web-btn">Visit website</button>
           </div>
           <div className="card-bottom">
