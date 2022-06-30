@@ -59,11 +59,8 @@ const SingleCause = (props) => {
             if (platinums) {
               return (
                 <div className="platmedal">
-                  <img
-                    src={platmedal}
-                    alt="Platinum Medal"
-                  />
-                  <span class="plat-amount">{platinums}</span>
+                  <img src={platmedal} alt="Platinum Medal" />
+                  <span className="plat-amount">{platinums}</span>
                 </div>
               );
             }
@@ -71,11 +68,9 @@ const SingleCause = (props) => {
           {(() => {
             if (golds) {
               return (
-                <div className="goldmedal" >
-                  <img
-                    src={goldmedal}
-                    alt="Gold Medal" />
-                  <span class="gold-amount">{golds}</span>
+                <div className="goldmedal">
+                  <img src={goldmedal} alt="Gold Medal" />
+                  <span className="gold-amount">{golds}</span>
                 </div>
               );
             }
@@ -84,11 +79,8 @@ const SingleCause = (props) => {
             if (silvers) {
               return (
                 <div className="silvermedal">
-                  <img
-                    src={silvermedal}
-                    alt="Silver Medal"
-                  />
-                  <span class="silver-amount">{silvers}</span>
+                  <img src={silvermedal} alt="Silver Medal" />
+                  <span className="silver-amount">{silvers}</span>
                 </div>
               );
             }
@@ -97,11 +89,8 @@ const SingleCause = (props) => {
             if (bronzes) {
               return (
                 <div className="bronzemedal">
-                  <img
-                    src={bronzemedal}
-                    alt="Gold Medal"
-                  />
-                  <span class="bronze-amount">{bronzes}</span>
+                  <img src={bronzemedal} alt="Gold Medal" />
+                  <span className="bronze-amount">{bronzes}</span>
                 </div>
               );
             }
@@ -111,7 +100,8 @@ const SingleCause = (props) => {
         <h3>{cause.title}</h3>
         <p className="date">Posted {cause.createdAt}</p>
         <p>
-          {cause.description}{"  "}
+          {cause.description}
+          {"  "}
           <Link to={`/cause/${cause._id}`}>Learn more.</Link>
         </p>
         <div className="author">{cause.location}</div>

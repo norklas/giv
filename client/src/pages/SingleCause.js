@@ -21,7 +21,6 @@ const SingleCause = () => {
   // useState for new comment
   const [commentState, setCommentState] = useState({ body: "" });
   const [addComment, { error }] = useMutation(ADD_COMMENT);
-  console.log(error);
 
   // get username of logged in user for comment submit
   const { data: userData } = useQuery(QUERY_ME);
@@ -79,51 +78,48 @@ const SingleCause = () => {
         </div>
       </div>
 
-
       {(() => {
-        if(AuthService.loggedIn()){
-          return(
-      <div className="card">
-        <div className="post-comment-card">
-      
-            <form id="comment-form">
-              <h3>Add a Comment</h3>
-              <label htmlFor="add-comment">
-                <p>giv this Cause some love!</p>
-              </label>
-              <input
-                className="input"
-                type="text"
-                name="add-comment"
-                value={commentState.body}
-                onChange={handleComment}
-              />
-              <button
-                type="submit"
-                className="comment-btn"
-                onClick={submitComment}
-              >
-                Post Comment
-              </button>
-              {error && (
-                <div>
-                  <p>Please enter a comment.</p>
-                </div>
-              )}
-            </form>
-        </div>
-      </div>
-      )}else{
-        return(
-          <div className="card">
-        <div className="post-comment-card">
-      
-              <h3>Log in to comment!</h3>
-        </div>
-      </div>
-        )
-      }
-      
+        if (AuthService.loggedIn()) {
+          return (
+            <div className="card">
+              <div className="post-comment-card">
+                <form id="comment-form">
+                  <h3>Add a Comment</h3>
+                  <label htmlFor="add-comment">
+                    <p>giv this Cause some love!</p>
+                  </label>
+                  <input
+                    className="input"
+                    type="text"
+                    name="add-comment"
+                    value={commentState.body}
+                    onChange={handleComment}
+                  />
+                  <button
+                    type="submit"
+                    className="comment-btn"
+                    onClick={submitComment}
+                  >
+                    Post Comment
+                  </button>
+                  {error && (
+                    <div>
+                      <p>Please enter a comment.</p>
+                    </div>
+                  )}
+                </form>
+              </div>
+            </div>
+          );
+        } else {
+          return (
+            <div className="card">
+              <div className="post-comment-card">
+                <h3>Log in to comment!</h3>
+              </div>
+            </div>
+          );
+        }
       })()}
       <div className="card">
         <div className="comment-card-top">
