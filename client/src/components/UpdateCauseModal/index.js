@@ -144,7 +144,7 @@ const UpdateCauseModal = (props) => {
             <label htmlFor="url">Organization Website</label>
             <input
               className="input"
-              type="link"
+              type="url"
               key="url"
               name="url"
               value={formState.url}
@@ -159,7 +159,7 @@ const UpdateCauseModal = (props) => {
               onChange={handleChange}
             >
               <option value="" disabled>
-                  Select a category
+                Select a category
               </option>
               {categories.map((category) => (
                 <option value={category} key={category}>
