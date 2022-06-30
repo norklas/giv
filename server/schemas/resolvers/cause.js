@@ -201,7 +201,7 @@ module.exports = {
         if (args.causeId) {
           if (args.title) {
             console.log(args);
-            return await Cause.findByIdAndUpdate(
+            await Cause.findByIdAndUpdate(
               { _id: args.causeId },
               { title: args.title },
               { new: true }
@@ -209,7 +209,7 @@ module.exports = {
           }
           if (args.description) {
             console.log(args);
-            return await Cause.findByIdAndUpdate(
+            await Cause.findByIdAndUpdate(
               { _id: args.causeId },
               { description: args.description },
               { new: true }
@@ -217,7 +217,7 @@ module.exports = {
           }
           if (args.url) {
             console.log(args);
-            return await Cause.findByIdAndUpdate(
+            await Cause.findByIdAndUpdate(
               { _id: args.causeId },
               { url: args.url },
               { new: true }
@@ -225,7 +225,7 @@ module.exports = {
           }
           if (args.location) {
             console.log(args);
-            return await Cause.findByIdAndUpdate(
+            await Cause.findByIdAndUpdate(
               { _id: args.causeId },
               { location: args.location },
               { new: true }
@@ -233,12 +233,13 @@ module.exports = {
           }
           if (args.category) {
             console.log(args);
-            return await Cause.findByIdAndUpdate(
+            await Cause.findByIdAndUpdate(
               { _id: args.causeId },
               { category: args.category },
               { new: true }
             );
           }
+          return Cause.findById({ _id: args.causeId });
         }
         throw new UserInputError("No cause found with this ID!");
       }
