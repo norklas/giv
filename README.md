@@ -1,19 +1,18 @@
 <img src="./client/src/assets/givlogo.svg" alt="Giv Logo" style="width: 250px; margin-bottom: 30px" />
 
 # this is giv.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Table of contents
 * [User Story](#user-story)
 * [Description](#description)
-* [Motivation](#motivation)
 * [Technologies](#technologies)
-* [Challanges](#challanges)
-* [Successes](#successes)
 * [Directions for Future Development](#directions-for-future-development)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Credits](#credits)
 * [Results](#results)
+* [Preview](#preview)
 * [Contributers](#contributers)
 * [License](#license)
 
@@ -37,10 +36,6 @@ giv. is a social media application where users can post their Cause to promote a
 
 Causes with more points also appear towards the top of the homepage feed, allowing users to have influence on the reputation of the Cause and help willing donors to determine if a charity is reputable enough to giv.
 
-
-## Motivation
-
-
 ## Technologies
 This project was created using:
 * HTML/CSS
@@ -55,23 +50,6 @@ This project was created using:
 * Apollo
 * Heroku
 * JSON Web Tokens
-
-## Challenges
-* Occasional merge conflicts
-* Displaying updated data in real time
-* GraphQL
-
-## Successes
-* Group collaboration and enthusiasm
-* Designed a clean and successful application that satisfies MVP requires
-
-## Directions for Future Development
-* Geolocation to find/categorize feed by local charities and causes
-* Ability to upload images for a cause page or profile image
-* Direct message/collaboration capabilities
-* Search or filter functionality
-* Payment implementation to purchase points
-
 
 ## Installation
 To clone this repository, open the terminal and type the following to install all the packages:
@@ -97,8 +75,16 @@ Use the Heroku link below to use giv.
 * [Heroku URL]()
 * [GitHub Repository](https://github.com/Jesse-Lemieux/giv)
 
+## Preview
+![homepagemockup](./assets/giv-home.png)
+![dashboardmockup](./assets/giv-dashboard.png)
 
-![mockup]()
+## Directions for Future Development
+* Geolocation to find/categorize feed by local charities and causes
+* Ability to upload images for a cause page or profile image
+* Direct message/collaboration capabilities
+* Search or filter functionality
+* Payment implementation to purchase points
 
 
 ## Contributers
@@ -106,5 +92,8 @@ Use the Heroku link below to use giv.
 * [Nick Melanson](https://github.com/norklas)
 * [Matt Noreika](https://github.com/noreikam)
 * [Erica Trenholm](https://github.com/etrenholm)
+
+## License
+This project is covered by the [MIT License](https://opensource.org/licenses/MIT)
 
 ### ©️ June 2022
