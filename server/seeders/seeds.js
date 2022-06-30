@@ -15,6 +15,8 @@ db.once("open", async () => {
 
   const categories = ["Animal Welfare", "Disaster Relief", "Education", "Environmental", "Housing", "Hunger", "Medical Research", "Medical Support", "Veterans Support", "Other"]
 
+  const states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
+    "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
     // create users
   const userData = [];
 
@@ -47,7 +49,7 @@ db.once("open", async () => {
     const description = faker.lorem.paragraph();
     const url = faker.internet.url();
     const category = categories[Math.floor(Math.random() * categories.length)];
-    const location = faker.address.cityName();
+    const location = states[Math.floor(Math.random() * states.length)];
     const points = Math.floor(Math.random() * 20000);
     const username = userData[Math.floor(Math.random() * userData.length)].username
 
