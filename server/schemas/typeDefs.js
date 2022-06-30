@@ -34,6 +34,7 @@ const typeDefs = gql`
     category: String
     points: Int
     createdAt: String
+    username: String
   }
 
   type Query {
@@ -60,6 +61,7 @@ const typeDefs = gql`
       url: String!
       location: String!
       category: String!
+      username: String
     ): Cause
     addComment(causeId: ID!, body: String!): Cause
     deleteUser(userId: ID!): Auth

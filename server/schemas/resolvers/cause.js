@@ -136,7 +136,7 @@ module.exports = {
     },
     addCause: async (parent, args, context) => {
       if (context.user) {
-        const cause = await Cause.create({ ...args, userId: context.user._id });
+        const cause = await Cause.create({ ...args, userId: context.user._id, username: context.user.username });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
