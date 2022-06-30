@@ -29,7 +29,6 @@ module.exports = {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-      console.log(args, user, token);
 
       return { token, user };
     },
@@ -50,7 +49,6 @@ module.exports = {
       return { token, user };
     },
     addUserPoints: async (parent, args, context) => {
-      console.log(args, context.user);
       if (context.user) {
         const count = args.purchaseNumber;
 
@@ -61,7 +59,7 @@ module.exports = {
         );
         return count;
       }
-      
+
       throw new AuthenticationError("You need to be logged in!");
     },
     deleteUser: async (parent, args, context) => {
@@ -71,7 +69,6 @@ module.exports = {
     updateUser: async (parent, args, context) => {
       if (context.user) {
         if (args.username) {
-          console.log(args);
           return await User.findByIdAndUpdate(
             { _id: context.user._id },
             { username: args.username },
@@ -81,7 +78,6 @@ module.exports = {
         if (args.password) {
           const saltRounds = 12;
           const hash = await bcrypt.hash(args.password, saltRounds);
-          console.log(args);
           return await User.findByIdAndUpdate(
             { _id: context.user._id },
             { password: hash },
@@ -89,7 +85,6 @@ module.exports = {
           );
         }
         if (args.email) {
-          console.log(args);
           return await User.findByIdAndUpdate(
             { _id: context.user._id },
             { email: args.email },
