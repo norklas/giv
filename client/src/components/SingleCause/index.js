@@ -122,7 +122,7 @@ const SingleCause = (props) => {
           <Link to={`/cause/${cause._id}`}>Learn more.</Link>
         </p>
         <div className="location">Location: {cause.location}</div>
-        <div className="location">Username: {cause.username}</div>
+        <div className="location">Posted by {cause.username}</div>
       </div>
 
       <div className="card-bottom">

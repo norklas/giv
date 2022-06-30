@@ -68,8 +68,6 @@ const LoginModal = ({ onClose }) => {
                 </div>
             </div>
         </div>
-      </div>
-    </div>
   );
 };
 
