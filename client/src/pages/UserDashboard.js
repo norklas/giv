@@ -258,7 +258,7 @@ const UserDashboard = () => {
 
       <h3>Your causes</h3>
       {userCauses.map((userCause) => (
-        <div className="card">
+        <div className="card" key={userCause._id}>
           <div className="card-top">
             <button
               className="delete-btn edit"

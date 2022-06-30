@@ -8,13 +8,9 @@ const CauseList = () => {
 
   return (
     <div>
-      {causesDataObj.map((cause) => (
-        <div>
-          <SingleCause
-            cause={cause}
-            key={cause.title}
-            loading={causesLoading}
-          />
+      {causesDataObj.map((cause, i) => (
+        <div key={cause._id}>
+          <SingleCause cause={cause} loading={causesLoading} />
         </div>
       ))}
     </div>

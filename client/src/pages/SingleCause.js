@@ -80,13 +80,11 @@ const SingleCause = () => {
         </div>
       </div>
 
-
       {(() => {
         if (AuthService.loggedIn()) {
           return (
             <div className="card">
               <div className="post-comment-card">
-
                 <form id="comment-form">
                   <h3>Add a Comment</h3>
                   <label htmlFor="add-comment">
@@ -124,7 +122,6 @@ const SingleCause = () => {
             </div>
           )
         }
-
       })()}
       <div className="card">
         <div className="comment-card-top">
