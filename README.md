@@ -72,7 +72,7 @@ Use the Heroku link below to use giv.
 * npm: https://www.npmjs.com/
 
 ## Results
-* [Heroku URL]()
+* [Heroku URL](https://giv-social.herokuapp.com/)
 * [GitHub Repository](https://github.com/Jesse-Lemieux/giv)
 
 ## Preview
