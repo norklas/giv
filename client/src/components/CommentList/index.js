@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useMutation } from "@apollo/client";
 import { DELETE_COMMENT, UPDATE_COMMENT } from "../../utils/mutations";
-import { QUERY_CAUSE } from "../../utils/queries";
+import { QUERY_CAUSES } from "../../utils/queries";
 import { useState } from "react";
 
 const CommentList = (props) => {
@@ -36,7 +36,7 @@ const CommentList = (props) => {
                           causeId: props.causeData._id,
                           commentId: comment._id,
                         },
-                        refetchQueries: [{ query: QUERY_CAUSE }],
+                        refetchQueries: [{ query: QUERY_CAUSES }],
                       });
                     }}
                   >
